@@ -11,6 +11,7 @@ using UnityEngine;
 namespace HTC.UnityPlugin.Vive
 {
     // This script creates and handles SteamVR_RenderModel using viveRole property or device index
+    // Loads controller based on hardware
     [DisallowMultipleComponent]
     [AddComponentMenu("HTC/VIU/Hooks/Render Model Hook", 10)]
     public class RenderModelHook : MonoBehaviour, IViveRoleComponent
