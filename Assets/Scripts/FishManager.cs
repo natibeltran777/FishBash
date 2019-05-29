@@ -6,7 +6,8 @@ namespace FishBash
     public class FishManager : MonoBehaviour
     {
         public int fishToSpawn;
-        public int radius;
+        public int maxRadius;
+        public int minRadius;
         public GameObject fishPrefab;
         public GameObject platform;
 
@@ -26,7 +27,7 @@ namespace FishBash
 
         IFish SpawnFish(GameObject fishToSpawn)
         {
-            Vector2 position = Utility.RandomPointOnUnitCircle(radius);
+            Vector2 position = Utility.RandomPointOnUnitCircle(maxRadius, minRadius);
             GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
             IFish toReturn = fish.GetComponent<IFish>();
             return toReturn;

@@ -5,11 +5,14 @@ using UnityEngine.AI;
 
 namespace FishBash
 {
-    [RequireComponent(typeof(NavMeshAgent))]
     public class SimpleFish : MonoBehaviour, IFish
     {
-        NavMeshAgent agent;
+
         private GameObject platform;
+
+        [SerializeField]
+        [Range(0,10)]
+        private float speed;
 
         public void SetGoal(GameObject goal)
         {
@@ -19,14 +22,14 @@ namespace FishBash
         // Start is called before the first frame update
         void Start()
         {
-            agent = GetComponent<NavMeshAgent>();
-            agent.destination = platform.transform.position;
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            Vector3 direction = (platform.transform.position-transform.position).normalized;
+            transform.position += direction * speed;
         }
     }
 }
