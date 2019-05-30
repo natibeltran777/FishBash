@@ -8,6 +8,12 @@ namespace FishBash
     
     public interface IFish
     {
+
+        /// <summary>
+        /// Sets the destination object for the fish
+        /// </summary>
+        /// <param name="goal">Destination</param>
         void SetGoal(GameObject goal);
+
     }
 }

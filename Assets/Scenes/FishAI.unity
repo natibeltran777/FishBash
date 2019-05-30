@@ -127,17 +127,17 @@ PrefabInstance:
     - target: {fileID: 4709863031840712187, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.039580196
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709863031840712187, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0047823787
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709863031840712187, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.16348965
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709863031840712187, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
         type: 3}
@@ -313,6 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 504337171}
   - component: {fileID: 504337170}
+  - component: {fileID: 504337172}
   m_Layer: 0
   m_Name: FishManager
   m_TagString: Untagged
@@ -352,13 +353,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &504337172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504337169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc299aba7a4d00478dcf4865799626b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 1
+  freq: 1
 --- !u!43 &549556076
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-58562
+  m_Name: pb_Mesh-1102
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -518,7 +533,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-58574
+  m_Name: pb_Mesh-1104
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -684,7 +699,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-58586
+  m_Name: pb_Mesh-1100
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
