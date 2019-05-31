@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -39,16 +40,9 @@ namespace FishBash
 
         protected Vector3 pos;
 
-        /// <summary>
-        /// Sets goal as the fish's destination
-        /// </summary>
-        /// <param name="goal">Object for the fish to move towards</param>
-        public void SetGoal(GameObject goal)
-        {
-            platform = goal;
-            unitDirection = (platform.transform.position - transform.position).normalized;
-            crossDirection = Vector3.Cross(unitDirection, Vector3.up);
-        }
+        protected Rigidbody rb;
+
+        private bool hasLeapt = false;
 
         protected void UpdateMovement()
         {
@@ -56,15 +50,42 @@ namespace FishBash
             transform.position = pattern(pos, crossDirection, Time.time);
         }
 
+        public void SetSpeed(float s)
+        {
+            speed = s;
+        }
+
+        public bool CheckRadius(float radius)
+        {
+            return Vector3.Distance(transform.position, platform.transform.position) < radius;
+        }
+
         #region UNITY_MONOBEHAVIOUR_METHODS
         protected void Start()
         {
+            rb = GetComponent<Rigidbody>();
             pos = transform.position;
+            this.platform = FishManager.instance.platform;
+            unitDirection = (platform.transform.position - transform.position).normalized;
+
+            crossDirection = Vector3.Cross(unitDirection, Vector3.up);
         }
 
         void Update()
         {
-            UpdateMovement();
+            if (!hasLeapt && !CheckRadius(FishManager.instance.innerRadius)) {
+                UpdateMovement();
+            }
+            else
+            {
+                rb.AddForce(Vector3.up + unitDirection, ForceMode.Impulse);
+                hasLeapt = true;
+                LeapBehavior();
+            }
+        }
+
+        protected void LeapBehavior()
+        {
         }
         #endregion //UNITY_MONOBEHAVIOUR_METHODS
     }

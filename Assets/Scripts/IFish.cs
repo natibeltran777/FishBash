@@ -10,10 +10,17 @@ namespace FishBash
     {
 
         /// <summary>
-        /// Sets the destination object for the fish
+        /// Checks if the fish is within a set radius of the fish's goal
         /// </summary>
-        /// <param name="goal">Destination</param>
-        void SetGoal(GameObject goal);
+        /// <returns>True if it is close</returns>
+        bool CheckRadius(float radius);
+
+
+        /// <summary>
+        /// Sets the fish speed
+        /// </summary>
+        /// <param name="s">New speed</param>
+        void SetSpeed(float s);
 
     }
 }

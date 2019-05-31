@@ -16,7 +16,7 @@ namespace FishBash
         /// Magnitude of the sine wave
         /// </summary>
         [SerializeField]
-        [Range(0,1)]
+        [Range(0,5)]
         private float magnitude;
 
 
@@ -24,7 +24,7 @@ namespace FishBash
         /// Frequency of the sine wave
         /// </summary>
         [SerializeField]
-        [Range(0, 1)]
+        [Range(0, 5)]
         private float freq;
 
         private void Awake()
@@ -57,7 +57,22 @@ namespace FishBash
         /// <returns>Modified position with sin wave in direction dir at time t</returns>
         public static Vector3 SinWave(Vector3 pos, Vector3 dir, float t)
         {
-            return pos + (dir * Mathf.Sin(t * instance.freq) * instance.magnitude);
+            return SinWave(instance.magnitude, instance.freq, pos, dir, t);
+        }
+
+
+        /// <summary>
+        /// Adjusts position based on a sine wave - controllable
+        /// </summary>
+        /// <param name="mag">Magnitude</param>
+        /// <param name="freq">Frequency</param>
+        /// <param name="pos">Input position</param>
+        /// <param name="dir">Direction of the sin wave (cross product of object direction)</param>
+        /// <param name="t">Time</param>
+        /// <returns>Modified position with sin wave in direction dir at time t</returns>
+        public static Vector3 SinWave(float mag, float freq, Vector3 pos, Vector3 dir, float t)
+        {
+            return pos + (dir * Mathf.Sin(t * freq) * mag);
         }
 
         /// <summary>
