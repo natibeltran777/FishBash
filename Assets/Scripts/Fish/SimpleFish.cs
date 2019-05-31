@@ -60,32 +60,54 @@ namespace FishBash
             return Vector3.Distance(transform.position, platform.transform.position) < radius;
         }
 
+        protected void LeapBehavior()
+        {
+            Vector3 force = GetUnitDirection() + Vector3.up;
+            rb.AddForce(force*7.5f, ForceMode.Impulse);
+            hasLeapt = true;
+        }
+
+        protected Vector3 GetUnitDirection()
+        {
+            return (platform.transform.position - transform.position).normalized;
+        }
+
+        public void Destroy(float t)
+        {
+            Destroy(this.gameObject, t);
+        }
+
         #region UNITY_MONOBEHAVIOUR_METHODS
         protected void Start()
         {
             rb = GetComponent<Rigidbody>();
             pos = transform.position;
             this.platform = FishManager.instance.platform;
-            unitDirection = (platform.transform.position - transform.position).normalized;
+            unitDirection = GetUnitDirection();
 
             crossDirection = Vector3.Cross(unitDirection, Vector3.up);
         }
 
         void Update()
         {
-            if (!hasLeapt && !CheckRadius(FishManager.instance.innerRadius)) {
-                UpdateMovement();
-            }
-            else
+            if (!hasLeapt)
             {
-                rb.AddForce(Vector3.up + unitDirection, ForceMode.Impulse);
-                hasLeapt = true;
-                LeapBehavior();
+                if (!CheckRadius(FishManager.instance.innerRadius))
+                {
+                    UpdateMovement();
+                }
+                else
+                {
+                    LeapBehavior();
+                }
             }
-        }
+            if (hasLeapt)
+            {
+                //Probably need to make this more complicated, and implement some kind of score system here
+                FishManager.instance.DestroyFish(this, 3f);
 
-        protected void LeapBehavior()
-        {
+            }
+            
         }
         #endregion //UNITY_MONOBEHAVIOUR_METHODS
     }

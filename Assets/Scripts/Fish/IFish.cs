@@ -22,5 +22,7 @@ namespace FishBash
         /// <param name="s">New speed</param>
         void SetSpeed(float s);
 
+        void Destroy(float t);
+
     }
 }
