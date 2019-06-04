@@ -1043,6 +1043,7 @@ GameObject:
   - component: {fileID: 319911759}
   - component: {fileID: 319911758}
   - component: {fileID: 319911757}
+  - component: {fileID: 319911760}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1123,6 +1124,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319911755}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &319911760
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319911755}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &373854136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,30 +2431,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1209312789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6676003134405423726, guid: 3fa5910cad776c3448229e72f44f91be,
-    type: 3}
-  m_PrefabInstance: {fileID: 6676003133467235451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1209312794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6676003134405423713, guid: 3fa5910cad776c3448229e72f44f91be,
     type: 3}
   m_PrefabInstance: {fileID: 6676003133467235451}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1209312797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209312789}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64df7b66cddcea64cabfd1811fc88990, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1336571906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 475840, guid: 2b3a4efa04a7cf2428e0835b20f15fdc,
@@ -7100,7 +7099,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh5508
+  m_Name: pb_Mesh5614
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -9514,6 +9513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676003134405423726, guid: 3fa5910cad776c3448229e72f44f91be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6676003134405423713, guid: 3fa5910cad776c3448229e72f44f91be,
         type: 3}

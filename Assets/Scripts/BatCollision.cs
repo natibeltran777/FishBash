@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using Unity;
 using UnityEngine;
+using HTC.UnityPlugin.Vive;
 
 
 
 public class BatCollision : MonoBehaviour
 {
+    [SerializeField]
+    private HandRole rightController;
     private Rigidbody rigidbody;
     private void Start()
     {
@@ -15,7 +18,8 @@ public class BatCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
             Rigidbody rg = collision.collider.attachedRigidbody;
-            rg.AddForce(2 * rigidbody.velocity);
+            rg.AddForce(rigidbody.velocity);
+            ViveInput.TriggerHapticPulse(rightController,500);
 
     }
 }
