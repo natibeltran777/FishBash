@@ -44,16 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828fe194ba67e5945b16ce5ff3028eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishToSpawn: 6
-  maxRadius: 60
-  minRadius: 30
+  waveList: {fileID: 11400000, guid: e4b68c91fe5a07544a408d4442a92e7a, type: 2}
+  uiText: {fileID: 0}
   innerRadius: 6
-  speedMax: 6
-  speedMin: 3
-  fishPrefab:
-  - {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d, type: 3}
-  - {fileID: 590241755569322703, guid: a891d7072bece3e4c912463df2e10675, type: 3}
-  - {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720, type: 3}
   platform: {fileID: 0}
 --- !u!114 &6325823911790532568
 MonoBehaviour:
