@@ -17,6 +17,7 @@ public class BatCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+            
             Rigidbody rg = collision.collider.attachedRigidbody;
             rg.AddForce(rigidbody.velocity);
             ViveInput.TriggerHapticPulse(rightController,500);
