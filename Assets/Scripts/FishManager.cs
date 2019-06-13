@@ -45,17 +45,26 @@ namespace FishBash
             fishList = new List<IFish>();
             for(int i = 0; i < fishToSpawn; i++)
             {
-                IFish fish = SpawnFish(fishPrefab[UnityEngine.Random.Range(0,fishPrefab.Length)]);
+                Vector2 position = Utility.RandomPointOnUnitCircle(maxRadius, minRadius);
+                IFish fish = SpawnFish(fishPrefab[UnityEngine.Random.Range(0,fishPrefab.Length)], position, UnityEngine.Random.Range(speedMin, speedMax));
                 fishList.Add(fish);
             }
         }
 
-        IFish SpawnFish(GameObject fishToSpawn)
+
+        /// <summary>
+        /// Creates a fish of the specified object at the given position with the given speed
+        /// </summary>
+        /// <param name="fishToSpawn">Fish Object to use</param>
+        /// <param name="position">Vector2 specifying x and z position of the fish</param>
+        /// <param name="speed">Speed of the newly created fish</param>
+        /// <returns>IFish component created</returns>
+        IFish SpawnFish(GameObject fishToSpawn, Vector2 position, float speed)
         {
-            Vector2 position = Utility.RandomPointOnUnitCircle(maxRadius, minRadius);
+            
             GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
             IFish toReturn = fish.GetComponent<IFish>();
-            toReturn.SetSpeed(UnityEngine.Random.Range(speedMin, speedMax));
+            toReturn.SetSpeed(speed);
             return toReturn;
         }
 
