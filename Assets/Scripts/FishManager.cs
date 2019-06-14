@@ -9,7 +9,7 @@ namespace FishBash
     {
         public static FishManager instance = null;
 
-        public Waves waveList;
+        public WaveScriptable[] waveList;
         public TextMeshProUGUI uiText;
 
         int currWave = 0;
@@ -107,10 +107,10 @@ namespace FishBash
         /// <returns></returns>
         IEnumerator BeginGame()
         {
-            while (currWave < waveList.waves.Length)
+            while (currWave < waveList.Length)
             {
                 yield return Break(currWave);
-                yield return BeginWave(waveList.waves[currWave]);
+                yield return BeginWave(waveList[currWave]);
                 Debug.Log("Wave Over");
                 currWave++;
             }

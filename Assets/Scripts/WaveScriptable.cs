@@ -4,13 +4,9 @@ using UnityEngine;
 
 namespace FishBash
 {
-    [CreateAssetMenu(fileName = "Data", menuName = "Waves/List", order = 1)]
-    public class Waves : ScriptableObject
-    {
-        public WaveScriptable[] waves;
-    }
 
     [CreateAssetMenu(fileName = "Wave", menuName = "Waves/New Wave", order = 2)]
+    [System.Serializable]
     public class WaveScriptable : ScriptableObject
     {
         public string waveName;
@@ -36,6 +32,7 @@ namespace FishBash
     }
 
     [CreateAssetMenu(fileName = "Enemy", menuName = "Waves/New Enemy", order = 3)]
+    [System.Serializable]
     public class FishScriptable : ScriptableObject
     {
         public GameObject fishPrefab;
