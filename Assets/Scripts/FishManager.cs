@@ -139,17 +139,31 @@ namespace FishBash
             else
             {
                 //Spawns fish in specified order
-                foreach (char c in wave.order.ToCharArray()){
-                    if (char.IsDigit(c))
-                    {
-                        IFish f = SpawnFish(wave.fishInWave[(int) char.GetNumericValue(c)], wave);
-                        fishList.Add(f);
-                    }
+                foreach (int i in ProcessString(wave.order)){
+                    IFish f = SpawnFish(wave.fishInWave[i], wave);
+                    fishList.Add(f);
                     yield return new WaitForSeconds(wave.timeBetweenFish);
                 }
             
             }
             yield return null;
+        }
+
+
+        /// <summary>
+        /// Given a string outlining the order of fish, breaks string up into enumerable. Uses '.' as a seperator character
+        /// </summary>
+        /// <param name="order">String to process</param>
+        /// <returns>Enumerable list providing order of fish</returns>
+        IEnumerable<int> ProcessString(string order)
+        {
+            string[] toReturn = order.Split('.');
+            int[] t = new int[toReturn.Length];
+            for (int i = 0; i < toReturn.Length; i++)
+            {
+                t[i] = int.Parse(toReturn[i]);
+            }
+            return t;
         }
 
 
