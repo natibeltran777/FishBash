@@ -68,7 +68,7 @@ namespace FishBash
             float speed;
 
             if (fishToSpawn.randomPosition) {
-                position = Utility.RandomPointOnUnitCircle(currentWave.maxRadius, currentWave.minRadius);
+                position = Utility.RandomPointOnUnitCircle(currentWave.radius.rangeEnd, currentWave.radius.rangeStart);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace FishBash
 
             if (fishToSpawn.randomSpeed)
             {
-                speed = UnityEngine.Random.Range(currentWave.speedMin, currentWave.speedMax);
+                speed = currentWave.speed.GetRandomValue();
             }
             else
             {

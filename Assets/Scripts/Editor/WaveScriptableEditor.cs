@@ -32,7 +32,10 @@ namespace FishBash
                 EditorGUILayout.HelpBox("Enter the order as a list of ordered indices. For example, if you would like to spawn the fish in index 1 five times, enter \"11111\"", MessageType.None);
                 ws.order = EditorGUILayout.TextField("Order", ws.order);
             }
-            
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("radius"));
+
 
             ws.timeBetweenFish = EditorGUILayout.FloatField("Spawn time between fish", ws.timeBetweenFish);
 

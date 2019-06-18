@@ -12,7 +12,7 @@ namespace FishBash
         {
             FishScriptable fs = (FishScriptable)target;
 
-            fs.fishPrefab = (GameObject) EditorGUILayout.ObjectField("Fish Prefab", fs.fishPrefab, typeof(IFish), false);
+            fs.fishPrefab = (GameObject) EditorGUILayout.ObjectField("Fish Prefab", fs.fishPrefab, typeof(GameObject), false);
 
             EditorGUILayout.HelpBox("Set these to true if the position and speed should be randomly set based on the current wave", MessageType.Info);
 
