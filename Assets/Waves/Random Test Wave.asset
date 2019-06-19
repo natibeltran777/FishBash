@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a815f1c27bbdb74439361df6b61d5cf5, type: 3}
+  m_Name: Random Test Wave
+  m_EditorClassIdentifier: 
+  waveName: Random Fish
+  fishInWave:
+  - {fileID: 11400000, guid: b1fe49e9e62db3c43b9e068724f4a4a8, type: 2}
+  - {fileID: 11400000, guid: c9626e5239009894782808c26f13e200, type: 2}
+  timeBetweenFish: 1
+  randomFish: 1
+  fishCount: 20
+  order: 
+  speed:
+    rangeStart: 0
+    rangeEnd: 0
+  radius:
+    rangeStart: 0
+    rangeEnd: 0
