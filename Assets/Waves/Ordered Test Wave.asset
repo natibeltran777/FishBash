@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveName: Ordered fish
   fishInWave:
-  - {fileID: 11400000, guid: c9626e5239009894782808c26f13e200, type: 2}
   - {fileID: 11400000, guid: b1fe49e9e62db3c43b9e068724f4a4a8, type: 2}
+  - {fileID: 11400000, guid: bd25549bff7aae24c867ff622612f3e0, type: 2}
   timeBetweenFish: 1
   randomFish: 0
   fishCount: 0
-  order: 0101010111110101
+  order: 0.0.0.0.1.1.0.1.0.1.0.0.0.0.0.0
   speed:
-    rangeStart: 0
-    rangeEnd: 0
+    rangeStart: 3.5471745
+    rangeEnd: 8.896223
   radius:
-    rangeStart: 0
-    rangeEnd: 0
+    rangeStart: 47.94811
+    rangeEnd: 70.98581
