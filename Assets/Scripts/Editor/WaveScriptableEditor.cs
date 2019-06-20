@@ -8,6 +8,16 @@ namespace FishBash
     [CustomEditor(typeof(WaveScriptable))]
     public class WaveScriptableEditor : Editor
     {
+        SerializedProperty sProp;
+        SerializedProperty rProp;
+
+
+        private void OnEnable()
+        {
+            sProp = serializedObject.FindProperty("speed");
+            rProp = serializedObject.FindProperty("radius");
+        }
+
         public override void OnInspectorGUI()
         {
 
@@ -33,11 +43,14 @@ namespace FishBash
                 ws.order = EditorGUILayout.TextField("Order", ws.order);
             }
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("radius"));
+
+            EditorGUILayout.PropertyField(sProp);
+            EditorGUILayout.PropertyField(rProp);
 
 
             ws.timeBetweenFish = EditorGUILayout.FloatField("Spawn time between fish", ws.timeBetweenFish);
+
+            serializedObject.ApplyModifiedProperties();
 
         }
 
