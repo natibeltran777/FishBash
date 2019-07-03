@@ -46,8 +46,10 @@ namespace FishBash
 
         protected void UpdateMovement()
         {
+            //Debug.Log("move");
             pos += unitDirection * speed * Time.deltaTime;
             transform.position = pattern(pos, crossDirection, Time.time);
+
         }
 
         public void SetSpeed(float s)
@@ -62,8 +64,10 @@ namespace FishBash
 
         protected void LeapBehavior()
         {
+
             Vector3 force = GetUnitDirection() + Vector3.up;
-            rb.AddForce(force*7.5f, ForceMode.Impulse);
+            Debug.DrawLine(Vector3.zero,force, Color.red);
+            rb.AddForce(force*7.2f, ForceMode.Impulse);
             hasLeapt = true;
         }
 
@@ -104,6 +108,7 @@ namespace FishBash
             if (hasLeapt)
             {
                 //Probably need to make this more complicated, and implement some kind of score system here
+                rb.AddForce(Vector3.down * 9.8f, ForceMode.Acceleration);
                 FishManager.instance.DestroyFish(this, 3f);
 
             }
