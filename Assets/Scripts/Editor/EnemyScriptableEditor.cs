@@ -29,7 +29,7 @@ namespace FishBash
             {
                 fs.speed = EditorGUILayout.FloatField("Speed", fs.speed);
             }
-
+            serializedObject.ApplyModifiedProperties();
 
         }
 
