@@ -37,8 +37,7 @@ namespace FishBash
         // Start is called before the first frame update
         void Start()
         {
-            fishList = new List<IFish>();
-            StartCoroutine(BeginGame());
+           
         }
         #endregion //UNITY_METHODS
 
@@ -52,6 +51,22 @@ namespace FishBash
         {
             fishList.Remove(toDestroy);
             toDestroy.Destroy(t);
+        }
+
+        /// <summary>
+        /// Begins a new game
+        /// </summary>
+        public void StartGame()
+        {
+            if (fishList != null)
+            {
+                fishList.Clear();
+            }
+            else
+            {
+                fishList = new List<IFish>();
+            }
+            StartCoroutine(BeginGame());
         }
         #endregion //PUBLIC_METHODS
 
@@ -119,9 +134,21 @@ namespace FishBash
                 Debug.Log("Wave Over");
                 currWave++;
             }
-            yield return DisplayText("Game Over!", 3);
+            yield return EndGame();
         }
 
+        /// <summary>
+        /// Handles game ending behavior - for when all waves are over \todo - add losing & winning behavior
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator EndGame()
+        {
+            while(fishList.Count != 0)
+            {
+                yield return null;
+            }
+            yield return DisplayText("Game Over!", 3);
+        }
 
         /// <summary>
         /// Handles internal wave logic
