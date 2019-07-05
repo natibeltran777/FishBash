@@ -11,6 +11,12 @@ namespace FishBash
         [SerializeField]
         private bool test = false;
 
+        [SerializeField]
+        private GameObject menu;
+        [SerializeField]
+        private GameObject pointers;
+        private bool hasGameStarted = false;
+
         public static GameManager instance = null;
 
         public TextMeshProUGUI uiText;
@@ -44,17 +50,32 @@ namespace FishBash
         /// </summary>
         public void StartGame()
         {
+            hasGameStarted = true;
+            menu.SetActive(false);
+            pointers.SetActive(false);
             FishManager.instance.InitializeWaves();
             StartCoroutine(BeginGame());
         }
-        #endregion //PUBLIC_METHODS
 
-        #region COROUTINES
         /// <summary>
-        /// Central game loop - runs each wave until all waves have been executed
+        /// Exis the game
         /// </summary>
-        /// <returns></returns>
-        IEnumerator BeginGame()
+        public void ExitGame()
+        {
+        #if UNITY_EDITOR
+            Debug.Log("Quit game");
+        #else
+            Application.Quit();
+        #endif
+         }
+#endregion //PUBLIC_METHODS
+
+            #region COROUTINES
+            /// <summary>
+            /// Central game loop - runs each wave until all waves have been executed
+            /// </summary>
+            /// <returns></returns>
+            IEnumerator BeginGame()
         {
             yield return FishManager.instance.HandleWaves();
             yield return EndGame();
@@ -71,6 +92,9 @@ namespace FishBash
                 yield return null;
             }
             yield return DisplayText("Game Over!", 3);
+            hasGameStarted = true;
+            menu.SetActive(true);
+            pointers.SetActive(true);
         }
 
         /// <summary>
@@ -87,6 +111,6 @@ namespace FishBash
             uiText.gameObject.SetActive(false);
             yield return null;
         }
-        #endregion //COROUTINES
+#endregion //COROUTINES
     }
 }
