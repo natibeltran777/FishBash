@@ -58,6 +58,7 @@ namespace HTC.UnityPlugin.Vive
                 VIUSteamVRActionFile partialFile;
 
                 if (!VIUSteamVRActionFile.TryLoad(m_mainDirPath, mainFileName, out mainFile)) { return false; }
+                if (SteamVR_Input.actions == null || SteamVR_Input.actions.Length == 0) { return false; }
                 if (!VIUSteamVRActionFile.TryLoad(m_partialDirPath, m_partialFileName, out partialFile)) { return true; }
 
                 if (m_mainFileVersion != mainFile.lastWriteTime || m_partialFileVersion != partialFile.lastWriteTime)
@@ -418,10 +419,10 @@ namespace HTC.UnityPlugin.Vive
                     else if (!PackageManagerHelper.IsPackageInList(OPENVR_PACKAGE_NAME))
                     {
                         GUI.enabled = false;
-                        ShowToggle(new GUIContent(title, "OpenVR package required."), false, GUILayout.Width(230f));
+                        ShowToggle(new GUIContent(title, "OpenVR (Desktop) package required."), false, GUILayout.Width(230f));
                         GUI.enabled = true;
                         GUILayout.FlexibleSpace();
-                        ShowAddPackageButton("OpenVR", OPENVR_PACKAGE_NAME);
+                        ShowAddPackageButton("OpenVR (Desktop)", OPENVR_PACKAGE_NAME);
                     }
                     else if (!VRModule.isSteamVRPluginDetected)
                     {
