@@ -8,17 +8,35 @@ namespace FishBash
     public class FishManager : MonoBehaviour
     {
         public static FishManager instance = null;
+        public int CurrWave { get; private set; } = 0;
 
-        public WaveScriptable[] waveList;
-        public TextMeshProUGUI uiText;
-
-        int currWave = 0;
+        /// <summary>
+        /// Returns total waves
+        /// </summary>
+        public int TotalWaves {
+            get
+            {
+                return waveList.Length;
+            }
+        }
+        /// <summary>
+        /// Returns fish remaining in current wave
+        /// </summary>
+        public int FishRemaining
+        {
+            get
+            {
+                return fishList.Count;
+            }
+        }
 
         [Range(1,10)]
         public float innerRadius;
 
         public GameObject platform;
 
+        [SerializeField]
+        private WaveScriptable[] waveList;
         private IList<IFish> fishList;
 
         #region UNITY_METHODS
@@ -54,9 +72,9 @@ namespace FishBash
         }
 
         /// <summary>
-        /// Begins a new game
+        /// Initializes fish list for new game
         /// </summary>
-        public void StartGame()
+        public void InitializeWaves()
         {
             if (fishList != null)
             {
@@ -66,7 +84,7 @@ namespace FishBash
             {
                 fishList = new List<IFish>();
             }
-            StartCoroutine(BeginGame());
+            CurrWave = 0;
         }
         #endregion //PUBLIC_METHODS
 
@@ -125,29 +143,16 @@ namespace FishBash
         /// Central game loop - runs each wave until all waves have been executed
         /// </summary>
         /// <returns></returns>
-        IEnumerator BeginGame()
+        public IEnumerator HandleWaves()
         {
-            while (currWave < waveList.Length)
+            while (CurrWave < waveList.Length)
             {
-                yield return Break(currWave);
-                yield return BeginWave(waveList[currWave]);
+                yield return Break(CurrWave);
+                yield return BeginWave(waveList[CurrWave]);
                 Debug.Log("Wave Over");
-                currWave++;
+                CurrWave++;
             }
-            yield return EndGame();
-        }
-
-        /// <summary>
-        /// Handles game ending behavior - for when all waves are over \todo - add losing & winning behavior
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator EndGame()
-        {
-            while(fishList.Count != 0)
-            {
-                yield return null;
-            }
-            yield return DisplayText("Game Over!", 3);
+            yield return null;
         }
 
         /// <summary>
@@ -155,7 +160,7 @@ namespace FishBash
         /// </summary>
         /// <param name="wave">Current wave</param>
         /// <returns></returns>
-        IEnumerator BeginWave(WaveScriptable wave)
+        private IEnumerator BeginWave(WaveScriptable wave)
         {
             if (wave.randomFish)
             {
@@ -178,8 +183,14 @@ namespace FishBash
                 }
             
             }
+            while(FishRemaining > 0)
+            {
+                yield return null;
+            }
             yield return null;
         }
+
+
 
         /// <summary>
         /// Given a string outlining the order of fish, breaks string up into enumerable. Uses '.' as a seperator character
@@ -202,24 +213,9 @@ namespace FishBash
         /// </summary>
         /// <param name="nextWave">Name of next wave</param>
         /// <returns></returns>
-        IEnumerator Break(int nextWave)
+        private IEnumerator Break(int nextWave)
         {
-            yield return DisplayText("Beginning wave " + (nextWave+1) + "...", 3);
-        }
-
-        /// <summary>
-        /// Displays given text on screen for a set period of time
-        /// </summary>
-        /// <param name="text">Text to display</param>
-        /// <param name="timeToDisplay">Time to display text</param>
-        /// <returns></returns>
-        IEnumerator DisplayText(string text, float timeToDisplay)
-        {
-            uiText.text = text;
-            uiText.gameObject.SetActive(true);
-            yield return new WaitForSeconds(timeToDisplay);
-            uiText.gameObject.SetActive(false);
-            yield return null;
+            yield return GameManager.instance.DisplayText("Beginning wave " + (nextWave+1) + "...", 3);
         }
         #endregion //COROUTINES
     }
