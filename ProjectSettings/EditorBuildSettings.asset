@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/OculusBuildScene.unity
+    guid: f38c8707da32ad44784c80463c14cf0e
   m_configObjects: {}
