@@ -4,6 +4,11 @@
 *.cginc text
 *.shader text
 
+ProjectSettings/ProjectSettings.asset merge=ours
+ProjectSettings/GraphicsSettings.asset merge=ours
+ProjectSettings/QualitySettings.asset merge=ours
+ProjectSettings/EditorBuildSettings.asset merge=ours
+
 *.mat merge=unityyamlmerge eol=lf
 *.anim merge=unityyamlmerge eol=lf
 *.unity merge=unityyamlmerge eol=lf
@@ -13,7 +18,6 @@
 *.asset merge=unityyamlmerge eol=lf
 *.meta merge=unityyamlmerge eol=lf
 *.controller merge=unityyamlmerge eol=lf
-
 
 ## git-lfs ##
 
