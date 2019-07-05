@@ -21,6 +21,7 @@ namespace FishBash
 
         private IList<IFish> fishList;
 
+        #region UNITY_METHODS
         private void Awake()
         {
             if(instance == null)
@@ -39,7 +40,22 @@ namespace FishBash
             fishList = new List<IFish>();
             StartCoroutine(BeginGame());
         }
+        #endregion //UNITY_METHODS
 
+        #region PUBLIC_METHODS
+        /// <summary>
+        /// Destroys the given fish after a set time
+        /// </summary>
+        /// <param name="toDestroy">Fish object to destroy</param>
+        /// <param name="t">Time in seconds to wait before destroying</param>
+        public void DestroyFish(IFish toDestroy, float t)
+        {
+            fishList.Remove(toDestroy);
+            toDestroy.Destroy(t);
+        }
+        #endregion //PUBLIC_METHODS
+
+        #region PRIVATE_METHODS
         /// <summary>
         /// Creates a fish of the specified object at the given position with the given speed
         /// </summary>
@@ -62,7 +78,7 @@ namespace FishBash
         /// <param name="fishToSpawn">Scriptable fish to spawn in</param>
         /// <param name="currentWave">Scriptable wave setting external parameters</param>
         /// <returns></returns>
-        IFish SpawnFish(FishScriptable fishToSpawn, WaveScriptable currentWave)
+        private IFish SpawnFish(FishScriptable fishToSpawn, WaveScriptable currentWave)
         {
             Vector2 position;
             float speed;
@@ -87,20 +103,9 @@ namespace FishBash
             return SpawnFish(fishToSpawn.fishPrefab, position, speed);
 
         }
+        #endregion PRIVATE_METHODS
 
-
-        /// <summary>
-        /// Destroys the given fish after a set time
-        /// </summary>
-        /// <param name="toDestroy">Fish object to destroy</param>
-        /// <param name="t">Time in seconds to wait before destroying</param>
-        public void DestroyFish(IFish toDestroy, float t)
-        {
-            fishList.Remove(toDestroy);
-            toDestroy.Destroy(t);
-        }
-
-
+        #region COROUTINES
         /// <summary>
         /// Central game loop - runs each wave until all waves have been executed
         /// </summary>
@@ -149,7 +154,6 @@ namespace FishBash
             yield return null;
         }
 
-
         /// <summary>
         /// Given a string outlining the order of fish, breaks string up into enumerable. Uses '.' as a seperator character
         /// </summary>
@@ -165,7 +169,6 @@ namespace FishBash
             }
             return t;
         }
-
 
         /// <summary>
         /// Filler coroutine to run before each wave
@@ -191,5 +194,6 @@ namespace FishBash
             uiText.gameObject.SetActive(false);
             yield return null;
         }
+        #endregion //COROUTINES
     }
 }
