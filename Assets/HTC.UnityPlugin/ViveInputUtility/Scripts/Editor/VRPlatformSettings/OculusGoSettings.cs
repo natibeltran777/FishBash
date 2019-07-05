@@ -425,7 +425,7 @@ namespace HTC.UnityPlugin.Vive
                 get
                 {
 #if UNITY_2018_1_OR_NEWER
-                    return activeBuildTargetGroup == BuildTargetGroup.Standalone && VRModule.isOculusVRPluginDetected && PackageManagerHelper.IsPackageInList(OCULUS_ANDROID_PACKAGE_NAME);
+                    return activeBuildTargetGroup == BuildTargetGroup.Android && PackageManagerHelper.IsPackageInList(OCULUS_ANDROID_PACKAGE_NAME);
 #elif UNITY_5_6_OR_NEWER
                     return activeBuildTargetGroup == BuildTargetGroup.Android && VRModule.isOculusVRPluginDetected;
 #else
@@ -469,8 +469,9 @@ namespace HTC.UnityPlugin.Vive
                         }
                     }
 
-                    OculusSDK.enabled = value;
                     VIUSettings.activateOculusVRModule = value;
+                    OculusSDK.enabled = value;
+                    VIUSettings.activateUnityNativeVRModule = value;
                 }
 #else
                 get { return false; }
@@ -480,7 +481,7 @@ namespace HTC.UnityPlugin.Vive
 
             public override void OnPreferenceGUI()
             {
-                const string title = "Oculus Go";
+                const string title = "Oculus (Android)";
                 if (canSupport)
                 {
                     support = Foldouter.ShowFoldoutBlankWithEnabledToggle(new GUIContent(title), support);
@@ -501,10 +502,10 @@ namespace HTC.UnityPlugin.Vive
                     else if (!PackageManagerHelper.IsPackageInList(OCULUS_ANDROID_PACKAGE_NAME))
                     {
                         GUI.enabled = false;
-                        ShowToggle(new GUIContent(title, "Oculus(Android) package required."), false, GUILayout.Width(230f));
+                        ShowToggle(new GUIContent(title, "Oculus (Android) package required."), false, GUILayout.Width(230f));
                         GUI.enabled = true;
                         GUILayout.FlexibleSpace();
-                        ShowAddPackageButton("Oculus(Android)", OCULUS_ANDROID_PACKAGE_NAME);
+                        ShowAddPackageButton("Oculus (Android)", OCULUS_ANDROID_PACKAGE_NAME);
                     }
                     else if (!VRModule.isOculusVRPluginDetected)
                     {
