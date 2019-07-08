@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f21c51a6a45c36478af3d71052b3e33, type: 3}
   m_Name: LineFish 1
   m_EditorClassIdentifier: 
-  fishPrefab: {fileID: 0}
+  fishPrefab: {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720,
+    type: 3}
   randomSpeed: 1
   randomPosition: 1
   spawnPosition: {x: 0, y: 0}
