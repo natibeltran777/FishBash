@@ -8,11 +8,17 @@ namespace FishBash
     [CustomEditor(typeof(FishScriptable))]
     public class EnemyScriptableEditor : Editor
     {
+        private SerializedProperty fp;
+        public void OnEnable()
+        {
+            fp = serializedObject.FindProperty("fishPrefab");
+        }
+
         public override void OnInspectorGUI()
         {
             FishScriptable fs = (FishScriptable)target;
-
-            fs.fishPrefab = (GameObject) EditorGUILayout.ObjectField("Fish Prefab", fs.fishPrefab, typeof(GameObject), false);
+            serializedObject.Update();
+            EditorGUILayout.PropertyField(fp);
 
             EditorGUILayout.HelpBox("Set these to true if the position and speed should be randomly set based on the current wave", MessageType.Info);
 

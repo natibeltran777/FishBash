@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6325823911790532575}
   - component: {fileID: 6325823911790532574}
   - component: {fileID: 6325823911790532568}
+  - component: {fileID: 169306295}
   m_Layer: 0
   m_Name: FishManager
   m_TagString: Untagged
@@ -44,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828fe194ba67e5945b16ce5ff3028eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveList: {fileID: 11400000, guid: e4b68c91fe5a07544a408d4442a92e7a, type: 2}
-  uiText: {fileID: 0}
   innerRadius: 6
   platform: {fileID: 0}
+  waveList:
+  - {fileID: 11400000, guid: bc7a4c75508666c48ad060147a80308f, type: 2}
+  - {fileID: 11400000, guid: 8305e065753f4f54a8a6aabdf73b2ee4, type: 2}
 --- !u!114 &6325823911790532568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,3 +64,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnitude: 2
   freq: 3
+--- !u!114 &169306295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325823911790532573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cf0c55906d3ee4bbaf4b52bdd8e6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
+  menu: {fileID: 0}
+  pointers: {fileID: 0}
+  uiText: {fileID: 0}
