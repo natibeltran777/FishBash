@@ -8,19 +8,38 @@ namespace FishBash
     public class FishManager : MonoBehaviour
     {
         public static FishManager instance = null;
+        public int CurrWave { get; private set; } = 0;
 
-        public WaveScriptable[] waveList;
-        public TextMeshProUGUI uiText;
-
-        int currWave = 0;
+        /// <summary>
+        /// Returns total waves
+        /// </summary>
+        public int TotalWaves {
+            get
+            {
+                return waveList.Length;
+            }
+        }
+        /// <summary>
+        /// Returns fish remaining in current wave
+        /// </summary>
+        public int FishRemaining
+        {
+            get
+            {
+                return fishList.Count;
+            }
+        }
 
         [Range(1,10)]
         public float innerRadius;
 
         public GameObject platform;
 
+        [SerializeField]
+        private WaveScriptable[] waveList;
         private IList<IFish> fishList;
 
+        #region UNITY_METHODS
         private void Awake()
         {
             if(instance == null)
@@ -36,10 +55,40 @@ namespace FishBash
         // Start is called before the first frame update
         void Start()
         {
-            fishList = new List<IFish>();
-            StartCoroutine(BeginGame());
+           
+        }
+        #endregion //UNITY_METHODS
+
+        #region PUBLIC_METHODS
+        /// <summary>
+        /// Destroys the given fish after a set time
+        /// </summary>
+        /// <param name="toDestroy">Fish object to destroy</param>
+        /// <param name="t">Time in seconds to wait before destroying</param>
+        public void DestroyFish(IFish toDestroy, float t)
+        {
+            fishList.Remove(toDestroy);
+            toDestroy.Destroy(t);
         }
 
+        /// <summary>
+        /// Initializes fish list for new game
+        /// </summary>
+        public void InitializeWaves()
+        {
+            if (fishList != null)
+            {
+                fishList.Clear();
+            }
+            else
+            {
+                fishList = new List<IFish>();
+            }
+            CurrWave = 0;
+        }
+        #endregion //PUBLIC_METHODS
+
+        #region PRIVATE_METHODS
         /// <summary>
         /// Creates a fish of the specified object at the given position with the given speed
         /// </summary>
@@ -62,7 +111,7 @@ namespace FishBash
         /// <param name="fishToSpawn">Scriptable fish to spawn in</param>
         /// <param name="currentWave">Scriptable wave setting external parameters</param>
         /// <returns></returns>
-        IFish SpawnFish(FishScriptable fishToSpawn, WaveScriptable currentWave)
+        private IFish SpawnFish(FishScriptable fishToSpawn, WaveScriptable currentWave)
         {
             Vector2 position;
             float speed;
@@ -87,43 +136,31 @@ namespace FishBash
             return SpawnFish(fishToSpawn.fishPrefab, position, speed);
 
         }
+        #endregion PRIVATE_METHODS
 
-
-        /// <summary>
-        /// Destroys the given fish after a set time
-        /// </summary>
-        /// <param name="toDestroy">Fish object to destroy</param>
-        /// <param name="t">Time in seconds to wait before destroying</param>
-        public void DestroyFish(IFish toDestroy, float t)
-        {
-            fishList.Remove(toDestroy);
-            toDestroy.Destroy(t);
-        }
-
-
+        #region COROUTINES
         /// <summary>
         /// Central game loop - runs each wave until all waves have been executed
         /// </summary>
         /// <returns></returns>
-        IEnumerator BeginGame()
+        public IEnumerator HandleWaves()
         {
-            while (currWave < waveList.Length)
+            while (CurrWave < waveList.Length)
             {
-                yield return Break(currWave);
-                yield return BeginWave(waveList[currWave]);
+                yield return Break(CurrWave);
+                yield return BeginWave(waveList[CurrWave]);
                 Debug.Log("Wave Over");
-                currWave++;
+                CurrWave++;
             }
-            yield return DisplayText("Game Over!", 3);
+            yield return null;
         }
-
 
         /// <summary>
         /// Handles internal wave logic
         /// </summary>
         /// <param name="wave">Current wave</param>
         /// <returns></returns>
-        IEnumerator BeginWave(WaveScriptable wave)
+        private IEnumerator BeginWave(WaveScriptable wave)
         {
             if (wave.randomFish)
             {
@@ -146,8 +183,13 @@ namespace FishBash
                 }
             
             }
+            while(FishRemaining > 0)
+            {
+                yield return null;
+            }
             yield return null;
         }
+
 
 
         /// <summary>
@@ -166,30 +208,15 @@ namespace FishBash
             return t;
         }
 
-
         /// <summary>
         /// Filler coroutine to run before each wave
         /// </summary>
         /// <param name="nextWave">Name of next wave</param>
         /// <returns></returns>
-        IEnumerator Break(int nextWave)
+        private IEnumerator Break(int nextWave)
         {
-            yield return DisplayText("Beginning wave " + (nextWave+1) + "...", 3);
+            yield return GameManager.instance.DisplayText("Beginning wave " + (nextWave+1) + "...", 3);
         }
-
-        /// <summary>
-        /// Displays given text on screen for a set period of time
-        /// </summary>
-        /// <param name="text">Text to display</param>
-        /// <param name="timeToDisplay">Time to display text</param>
-        /// <returns></returns>
-        IEnumerator DisplayText(string text, float timeToDisplay)
-        {
-            uiText.text = text;
-            uiText.gameObject.SetActive(true);
-            yield return new WaitForSeconds(timeToDisplay);
-            uiText.gameObject.SetActive(false);
-            yield return null;
-        }
+        #endregion //COROUTINES
     }
 }
