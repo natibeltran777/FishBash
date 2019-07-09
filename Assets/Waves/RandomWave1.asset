@@ -12,14 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5e5c196474b7f4db4205db871ab0b5, type: 3}
   m_Name: RandomWave1
   m_EditorClassIdentifier: 
-  waveName: 
-  fishInWave: []
-  defaultSpeed: 0
-  timeBetweenFish: 0
-  fishCount: 0
+  waveName: Random1
+  fishInWave:
+  - fishPrefab: {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720,
+      type: 3}
+    pointVal: 0
+    spawnPosition: {x: 0, y: 0}
+  - fishPrefab: {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d,
+      type: 3}
+    pointVal: 0
+    spawnPosition: {x: 0, y: 0}
+  defaultSpeed: 5
+  timeBetweenFish: 2
+  fishCount: 10
   radius:
-    rangeStart: 5
-    rangeEnd: 5
+    rangeStart: 48.03218
+    rangeEnd: 67.784645
   radians:
-    rangeStart: 0
-    rangeEnd: 0
+    rangeStart: 1.0420135
+    rangeEnd: 2.2706585

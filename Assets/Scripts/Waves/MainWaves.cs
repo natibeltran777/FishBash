@@ -6,37 +6,38 @@ namespace FishBash
 {
     namespace Waves
     {
-        public class MainWaves : CustomYieldInstruction, IWaves<WaveScriptable>
+        public class MainWaves : IWaves<WaveScriptable>
         {
-            private float _timeBetweenWaves = 0;
+            private readonly float _timeBetweenWaves = 0;
             private WaveScriptable[] _subWaves;
+            private GameManager _caller;
 
-            private bool allSubWavesOver = false;
-
-            public override bool keepWaiting => !allSubWavesOver;
-
-            public MainWaves(WaveScriptable[] subWaves, float timeBetweenWaves)
+            public MainWaves(WaveScriptable[] subWaves, float timeBetweenWaves, GameManager caller)
             {
                 _subWaves = subWaves;
                 _timeBetweenWaves = timeBetweenWaves;
+                _caller = caller;
                 Debug.Log("Constructor called");
-                BeginWave();
             }
-
+            
             public IEnumerator BeginWave()
             {
                 foreach (WaveScriptable s in _subWaves)
                 {
-                    Debug.Log("Begin wave");
+                    Debug.Log("Begin subwave");
+                    IWaves<FishContainer> subWave;
                     if (s.GetType() == typeof(RandomWaveScriptable))
                     {
                         Debug.Log("Type identified");
-                        yield return new RandomSubWave((RandomWaveScriptable) s);
+                        subWave = new RandomSubWave((RandomWaveScriptable) s);
+                        yield return _caller.StartCoroutine(subWave.BeginWave());
                     }
                     else
                     {
-                        yield return new DeterministicSubWave(s);
+                        subWave = new DeterministicSubWave(s);
+                        yield return _caller.StartCoroutine(subWave.BeginWave());
                     }
+                    Debug.Log("Finish subwave. Waiting...");
                     yield return new WaitForSeconds(_timeBetweenWaves);
                 }
 
@@ -44,11 +45,8 @@ namespace FishBash
                 {
                     yield return null;
                 }
-
-                allSubWavesOver = true;
-
             }
-
+            
 
             public WaveScriptable[] GetData()
             {

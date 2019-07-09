@@ -6,23 +6,19 @@ namespace FishBash
 {
     namespace Waves
     {
-        public class DeterministicSubWave : CustomYieldInstruction, IWaves<FishContainer>
+        public class DeterministicSubWave : IWaves<FishContainer>
         {
-            private WaveScriptable toBuild;
-            private bool isOver = false;
+            private readonly WaveScriptable toBuild;
             private FishContainer[] data;
-            private float _delay;
-            private float _speed;
+            private readonly float _delay;
+            private readonly float _speed;
 
             public DeterministicSubWave(WaveScriptable toBuild)
             {
                 _speed = toBuild.defaultSpeed;
                 _delay = toBuild.timeBetweenFish;
                 data = toBuild.fishInWave;
-                BeginWave();
             }
-
-            public override bool keepWaiting => !isOver;
 
             public IEnumerator BeginWave()
             {
@@ -32,7 +28,6 @@ namespace FishBash
                     yield return new WaitForSeconds(_delay);
 
                 }
-                isOver = true;
             }
 
             public FishContainer[] GetData()

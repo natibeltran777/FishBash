@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FishBash.Waves;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -108,8 +109,8 @@ namespace FishBash
             while (CurrWave < waveList.Length)
             {
                 yield return Break(CurrWave);
-                yield return new Waves.MainWaves(waveList[CurrWave].subwaves, waveList[CurrWave].timeBetweenSubwaves);
-                Debug.Log("Wave Over");
+                IWaves<WaveScriptable> wave = new MainWaves(waveList[CurrWave].subwaves, waveList[CurrWave].timeBetweenSubwaves, instance);
+                yield return StartCoroutine(wave.BeginWave());
                 CurrWave++;
             }
             yield return null;

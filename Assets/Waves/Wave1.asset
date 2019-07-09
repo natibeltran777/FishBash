@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a815f1c27bbdb74439361df6b61d5cf5, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  waveName: 
-  fishInWave: []
-  defaultSpeed: 0
-  timeBetweenFish: 0
+  waveName: Preset1
+  fishInWave:
+  - fishPrefab: {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720,
+      type: 3}
+    pointVal: 0
+    spawnPosition: {x: 20, y: 25}
+  - fishPrefab: {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d,
+      type: 3}
+    pointVal: 0
+    spawnPosition: {x: 15, y: 30}
+  - fishPrefab: {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d,
+      type: 3}
+    pointVal: 0
+    spawnPosition: {x: 0, y: 30}
+  - fishPrefab: {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720,
+      type: 3}
+    pointVal: 0
+    spawnPosition: {x: 30, y: 35}
+  defaultSpeed: 5
+  timeBetweenFish: 2

@@ -7,17 +7,15 @@ namespace FishBash
     namespace Waves
     {
 
-        public class RandomSubWave : CustomYieldInstruction, IWaves<FishContainer>
+        public class RandomSubWave : IWaves<FishContainer>
         {
-            private bool isOver = false;
-            public override bool keepWaiting => !isOver;
-            private int _fishCount;
+            private readonly int _fishCount;
             private FishContainer[] data;
-            private float _delay;
-            private float _speed;
+            private readonly float _delay;
+            private readonly float _speed;
 
-            private MinMaxRange _radiusRange;
-            private MinMaxRange _radiansRange;
+            private readonly MinMaxRange _radiusRange;
+            private readonly MinMaxRange _radiansRange;
 
             public RandomSubWave(RandomWaveScriptable toBuild)
             {
@@ -27,7 +25,6 @@ namespace FishBash
                 _fishCount = toBuild.fishCount;
                 _radiusRange = toBuild.radius;
                 _radiansRange = toBuild.radians;
-                BeginWave();
             }
 
             public IEnumerator BeginWave()
@@ -38,7 +35,6 @@ namespace FishBash
                     FishManager.instance.RandomSpawnFish(toSpawn, _speed, _radiusRange, _radiansRange);
                     yield return new WaitForSeconds(_delay);
                 }
-                isOver = true;
             }
 
             public FishContainer[] GetData()
