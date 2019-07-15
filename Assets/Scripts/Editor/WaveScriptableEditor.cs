@@ -11,12 +11,14 @@ namespace FishBash
     {
         SerializedProperty sProp;
         SerializedProperty rProp;
+        SerializedProperty fiw;
 
 
         private void OnEnable()
         {
             sProp = serializedObject.FindProperty("speed");
             rProp = serializedObject.FindProperty("radius");
+            fiw = serializedObject.FindProperty("fishInWave");
         }
 
         public override void OnInspectorGUI()
@@ -26,11 +28,7 @@ namespace FishBash
 
             ws.waveName = EditorGUILayout.TextField("Wave label", ws.waveName);
 
-            SerializedProperty fiw = serializedObject.FindProperty("fishInWave");
-            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(fiw, true);
-            if (EditorGUI.EndChangeCheck())
-                serializedObject.ApplyModifiedProperties();
 
             
             ws.randomFish = EditorGUILayout.Toggle("Spawn fish in random order?", ws.randomFish);
