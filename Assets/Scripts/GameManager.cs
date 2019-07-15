@@ -175,15 +175,5 @@ namespace FishBash
         }
         #endregion //COROUTINES
 
-        #region INTERNAL_STRUCTS
-        [System.Serializable]
-        internal struct WaveContainer
-        {
-            public Waves.WaveScriptable[] subwaves;
-            public float timeBetweenSubwaves;
-            public int totalPoints;
-        }
-        #endregion //INTERNAL_STRUCTS
-
     }
 }

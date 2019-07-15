@@ -14,8 +14,8 @@ namespace FishBash
             private readonly float _delay;
             private readonly float _speed;
 
-            private readonly MinMaxRange _radiusRange;
-            private readonly MinMaxRange _radiansRange;
+            private readonly Vector2 _radiusRange;
+            private readonly Vector2 _radiansRange;
 
             public RandomSubWave(RandomWaveScriptable toBuild)
             {

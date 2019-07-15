@@ -381,6 +381,68 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishManager
       objectReference: {fileID: 0}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[0].subwaves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[1].subwaves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 6299441030055420021}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: uiText
+      value: 
+      objectReference: {fileID: 1092434684}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: pointers
+      value: 
+      objectReference: {fileID: 388500835}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[0].timeBetweenSubwaves
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[0].subwaves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ff2d75ba847bcdd4eb19eb91eb5fd95e,
+        type: 2}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[0].subwaves.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a4f88b1fe90490c41bbab1dcc12e3ba8,
+        type: 2}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[1].subwaves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a4f88b1fe90490c41bbab1dcc12e3ba8,
+        type: 2}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[1].subwaves.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ff2d75ba847bcdd4eb19eb91eb5fd95e,
+        type: 2}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[1].timeBetweenSubwaves
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 85a422376eb2b0b4db91640ac164a3a4,
+        type: 2}
+    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: waveList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b9c134141f687ce44b3a08eee92f3ffd,
+        type: 2}
     - target: {fileID: 6325823911790532575, guid: 2ecea16b655396647adda8f7fd700c1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -441,58 +503,6 @@ PrefabInstance:
       propertyPath: platform
       value: 
       objectReference: {fileID: 1619782044}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[0].subwaves.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[1].subwaves.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: menu
-      value: 
-      objectReference: {fileID: 6299441030055420021}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: uiText
-      value: 
-      objectReference: {fileID: 1092434684}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: pointers
-      value: 
-      objectReference: {fileID: 388500835}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[0].timeBetweenSubwaves
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[0].subwaves.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: ff2d75ba847bcdd4eb19eb91eb5fd95e,
-        type: 2}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[0].subwaves.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: a4f88b1fe90490c41bbab1dcc12e3ba8,
-        type: 2}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[1].subwaves.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: a4f88b1fe90490c41bbab1dcc12e3ba8,
-        type: 2}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[1].subwaves.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: ff2d75ba847bcdd4eb19eb91eb5fd95e,
-        type: 2}
-    - target: {fileID: 169306295, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
-      propertyPath: waveList.Array.data[1].timeBetweenSubwaves
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
 --- !u!114 &1092434684 stripped

@@ -28,9 +28,9 @@ namespace FishBash
         /// </summary>
         /// <param name="range">Range of distance</param>
         /// <returns>Vector2 Point in 2D space</returns>
-        public static Vector2 RandomPointOnUnitCircle(MinMaxRange range)
+        public static Vector2 RandomPointOnUnitCircle(Vector2 range)
         {
-            return RandomPointOnUnitCircle(minRadius: range.rangeStart, maxRadius: range.rangeEnd);
+            return RandomPointOnUnitCircle(minRadius: range.x, maxRadius: range.y);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace FishBash
         /// <param name="range">Range of distance</param>
         /// <param name="angle">Range of angles</param>
         /// <returns>Vector2 Point in 2D space</returns>
-        public static Vector2 RandomPointOnUnitCircle(MinMaxRange range, MinMaxRange angle)
+        public static Vector2 RandomPointOnUnitCircle(Vector2 range, Vector2 angle)
         {
-            return RandomPointOnUnitCircle(range.rangeStart, range.rangeEnd, angle.rangeStart, angle.rangeEnd);
+            return RandomPointOnUnitCircle(range.x, range.y, angle.x, angle.y);
         }
 
         /// <summary>

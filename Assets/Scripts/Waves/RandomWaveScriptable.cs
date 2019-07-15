@@ -12,11 +12,11 @@ namespace FishBash
         {
             public int fishCount;
 
-            [MinMaxRange(5, 100)]
-            public MinMaxRange radius;
+            [Sirenix.OdinInspector.MinMaxSlider(5, 100, showFields: true)]
+            public Vector2 radius;
 
-            [MinMaxRange(0, (2 * (float)System.Math.PI))]
-            public MinMaxRange radians;
+            [Sirenix.OdinInspector.MinMaxSlider(0, (2 * (float)System.Math.PI), showFields: true)]
+            public Vector2 radians;
 
         }
     }

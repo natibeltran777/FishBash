@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -75,7 +76,7 @@ namespace FishBash
         /// <param name="defaultSpeed">Default speed for this wave</param>
         public void SpawnFish(FishContainer f, float defaultSpeed)
         {
-            IFish fish = SpawnFish(f.fishPrefab, f.spawnPosition, f.speedOverride.GetValueOrDefault(defaultSpeed));
+            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.Value, f.speedOverride.GetValueOrDefault(defaultSpeed));
             fishList.Add(fish);
         }
 
@@ -86,10 +87,10 @@ namespace FishBash
         /// <param name="defaultSpeed">Default speed for this wave</param>
         /// <param name="distance">Range of distance for this wave</param>
         /// <param name="distance">Range of angles (in radians) for this wave</param>
-        public void RandomSpawnFish(FishContainer f, float defaultSpeed, MinMaxRange distance, MinMaxRange angle)
+        public void RandomSpawnFish(FishContainer f, float defaultSpeed, Vector2 distance, Vector2 angle)
         {
             Vector2 position = Utility.RandomPointOnUnitCircle(distance, angle);
-            IFish fish = SpawnFish(f.fishPrefab, position, f.speedOverride.GetValueOrDefault(defaultSpeed));
+            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.GetValueOrDefault(position), f.speedOverride.GetValueOrDefault(defaultSpeed));
             fishList.Add(fish);
         }
 
