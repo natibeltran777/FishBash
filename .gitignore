@@ -37,6 +37,7 @@ sysinfo.txt
 
 # Ignore the auto-generated AOT compatibility dll.
 /Assets/Plugins/Sirenix/Assemblies/AOT/*
+/Assets/Plugins/Sirenix/Assemblies/AOT.meta
 
 # Ignore all unpacked demos.
 /Assets/Plugins/Sirenix/Demos/*

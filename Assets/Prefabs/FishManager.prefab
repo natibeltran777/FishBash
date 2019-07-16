@@ -47,9 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   innerRadius: 6
   platform: {fileID: 0}
-  waveList:
-  - {fileID: 11400000, guid: bc7a4c75508666c48ad060147a80308f, type: 2}
-  - {fileID: 11400000, guid: 8305e065753f4f54a8a6aabdf73b2ee4, type: 2}
 --- !u!114 &6325823911790532568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,4 +76,7 @@ MonoBehaviour:
   test: 0
   menu: {fileID: 0}
   pointers: {fileID: 0}
+  waveList:
+  - {fileID: 11400000, guid: 85a422376eb2b0b4db91640ac164a3a4, type: 2}
+  - {fileID: 11400000, guid: b9c134141f687ce44b3a08eee92f3ffd, type: 2}
   uiText: {fileID: 0}
