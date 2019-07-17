@@ -100,6 +100,7 @@ namespace FishBash
         {
             
             GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
+            fish.layer = 10;
             IFish toReturn = fish.GetComponent<IFish>();
             toReturn.SetSpeed(speed);
             return toReturn;

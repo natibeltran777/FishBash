@@ -36,10 +36,11 @@ namespace FishBash
 
         private void Start()
         {
-            if (test)
-            {
+            print("=== Start ===");
+            // if (test)
+            // {
                 StartGame();
-            }
+            // }
         }
 
         #endregion //UNITY_METHODS
@@ -78,6 +79,7 @@ namespace FishBash
             IEnumerator BeginGame()
         {
             yield return FishManager.instance.HandleWaves();
+            print("=== Begin game ===");
             yield return EndGame();
         }
 
