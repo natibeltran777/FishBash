@@ -44,6 +44,8 @@ namespace FishBash
 
         private bool hasLeapt = false;
 
+        public int score; 
+
         protected void UpdateMovement()
         {
             //Debug.Log("move");

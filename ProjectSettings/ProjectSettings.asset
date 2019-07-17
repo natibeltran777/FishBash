@@ -604,6 +604,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
+    1: VIU_PLUGIN
     7: VIU_PLUGIN
   platformArchitecture: {}
   scriptingBackend: {}
