@@ -5,30 +5,32 @@ using UnityEngine;
 using HTC.UnityPlugin.Vive;
 
 
-
-public class BatCollision : MonoBehaviour
+namespace FishBash
 {
-    [SerializeField]
-    private HandRole rightController;
-    private Rigidbody rigidbody;
-    private int score = 0;
-    private void Start()
+    public class BatCollision : MonoBehaviour
     {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-    
-        Rigidbody rg = collision.collider.attachedRigidbody;
-        rg.AddForce(rigidbody.velocity);
-        ViveInput.TriggerHapticPulse(rightController,500);
-        incrementScore(1);
-        Debug.Log("Score is now " + score);
-        
+        [SerializeField]
+        private HandRole rightController;
+        private Rigidbody rigidbody;
+        private int score = 0;
+        private void Start()
+        {
+            rigidbody = gameObject.GetComponent<Rigidbody>();
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+
+            Rigidbody rg = collision.collider.attachedRigidbody;
+            rg.AddForce(rigidbody.velocity);
+            ViveInput.TriggerHapticPulse(rightController, 500);
+            fishHasBeenHit(collision.gameObject.GetComponent<IFish>());
+            
+
+        }
+        private void fishHasBeenHit(IFish fish)
+        {
+            fish.HasBeenHit = true;
+        }
     }
 
-    private void incrementScore(int scoreToAdd)
-    {
-        score += scoreToAdd;
-    }
 }

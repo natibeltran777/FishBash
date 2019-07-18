@@ -44,7 +44,9 @@ namespace FishBash
 
         private bool hasLeapt = false;
 
-        public int score; 
+        public int scoreValue;
+
+        public bool HasBeenHit { get; set; }  
 
         protected void UpdateMovement()
         {
@@ -80,6 +82,13 @@ namespace FishBash
 
         public void Destroy(float t)
         {
+            if (HasBeenHit)
+            {
+                Debug.Log("@@Destroy function");
+                GameManager.instance.IncrementScore(scoreValue);
+            }
+
+
             Destroy(this.gameObject, t);
         }
 

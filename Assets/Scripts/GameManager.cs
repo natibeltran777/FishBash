@@ -16,7 +16,7 @@ namespace FishBash
         [SerializeField]
         private GameObject pointers;
         private bool hasGameStarted = false;
-
+        private int playerScore = 0;
         public static GameManager instance = null;
 
         public TextMeshProUGUI uiText;
@@ -111,6 +111,16 @@ namespace FishBash
             uiText.gameObject.SetActive(false);
             yield return null;
         }
-#endregion //COROUTINES
+
+
+        #endregion //COROUTINES
+
+        public void IncrementScore(int toAdd)
+        {
+            playerScore += toAdd;
+            string scoreText = "Fish Hit! Score is: " + playerScore;
+            StartCoroutine(DisplayText(scoreText, 3));
+        }
+
     }
 }

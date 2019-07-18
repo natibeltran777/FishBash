@@ -9,6 +9,8 @@ namespace FishBash
     public interface IFish
     {
 
+        bool HasBeenHit { get; set; }
+
         /// <summary>
         /// Checks if the fish is within a set radius of the fish's goal
         /// </summary>
