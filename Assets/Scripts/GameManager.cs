@@ -16,6 +16,7 @@ namespace FishBash
         [SerializeField]
         private GameObject pointers;
         private bool hasGameStarted = false;
+        private List<int> fishIDsHitPlayer = new List<int>();
 
         public static GameManager instance = null;
 
@@ -37,10 +38,10 @@ namespace FishBash
         private void Start()
         {
             print("=== Start ===");
-            // if (test)
-            // {
+            if (test)
+            {
                 StartGame();
-            // }
+            }
         }
 
         #endregion //UNITY_METHODS
@@ -68,6 +69,16 @@ namespace FishBash
         #else
             Application.Quit();
         #endif
+         }
+         
+
+         // methods to keep track of the fishes run into player
+         public void handleFishHitPlayer(int itemID, string itemName)
+         {
+            if (! fishIDsHitPlayer.Contains(itemID) && itemName.Contains("Fish")) {
+                fishIDsHitPlayer.Add(itemID);
+                print("=== in game manager === HIT " + fishIDsHitPlayer.Count);
+            }
          }
 #endregion //PUBLIC_METHODS
 
