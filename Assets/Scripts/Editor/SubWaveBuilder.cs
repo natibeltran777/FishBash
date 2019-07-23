@@ -16,6 +16,8 @@ namespace FishBash
         public class SubWaveBuilder : OdinEditorWindow
         {
 
+            private static Texture2D tex;
+
             WaveScriptable toBuild;
             bool showRandomPanel = false;
             bool showPanel = false;
@@ -24,6 +26,8 @@ namespace FishBash
             private static void OpenWindow()
             {
                 var window = GetWindow<SubWaveBuilder>();
+
+                tex = (Texture2D)EditorGUIUtility.Load("PlayArea.png");
 
                 window.position = GUIHelper.GetEditorWindowRect().AlignCenter(700, 700);
             }
@@ -114,9 +118,7 @@ namespace FishBash
                 public float timeBetweenEnemies;
 
                 [HorizontalGroup]
-                [InlineEditor(InlineEditorModes.LargePreview)]
-                [HideLabel]
-                public Texture background;
+                public SubWaveGraphic background;
 
                 [HorizontalGroup]//(Width = 0.5f)]
                 [InfoBox("Click the picture to add a new fish.")]
@@ -129,6 +131,7 @@ namespace FishBash
                     speed = 0;
                     timeBetweenEnemies = 0;
                     enemyTypes = new FishContainer[0];
+                    //background = new InteractableTexture();
                 }
             }
 
@@ -142,9 +145,7 @@ namespace FishBash
                 public int enemies;
 
                 [HorizontalGroup]
-                [InlineEditor(InlineEditorModes.LargePreview)]
-                [HideLabel]
-                public Texture background;
+                public SubWaveGraphic background;
 
                 [HorizontalGroup]//(Width = 0.5f)]
                 [InfoBox("Hit the plus to add a new enemy type. For random subwaves, its best to leave the position null.")]
@@ -161,10 +162,22 @@ namespace FishBash
                 }
             }
 
+
+            [Serializable]
+            public class SubWaveGraphic
+            {
+                [HideLabel, OnInspectorGUI("DrawPreview")]
+                public Texture2D texture = tex;
+
+                private void DrawPreview()
+                {
+                    if (tex == null) return;
+                    GUILayout.Label(tex, GUILayout.Width(250));
+                }
+
+            }
+
         }
-
-        
-
 
 
     }
