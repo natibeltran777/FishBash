@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,10 +13,12 @@ namespace FishBash
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Rotate(0, -5f, 0);
+                GameManager.instance.relocateMenuOnTurn(transform.rotation.y);
             }
             if(Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Rotate(0, 5f, 0);
+                GameManager.instance.relocateMenuOnTurn(transform.rotation.y);
             }
         }
     }

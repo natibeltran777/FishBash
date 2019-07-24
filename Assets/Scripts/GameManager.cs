@@ -80,6 +80,20 @@ namespace FishBash
                 print("=== in game manager === HIT " + fishIDsHitPlayer.Count);
             }
          }
+
+         public void relocateMenuOnTurn(float angle) 
+         {
+            float radian_angle = angle * Mathf.Deg2Rad;
+            float side = menu.transform.position.z;
+            float area = side * side * Mathf.Sin(radian_angle) / 2.0f;
+            float new_x = 2.0f * area / side;
+
+            float radian_another_angle = (180 - 90 - Mathf.Abs(angle)) * Mathf.Deg2Rad;
+            float radian_right_angle = 90 * Mathf.Deg2Rad;
+            float new_z = side * Mathf.Sin(radian_another_angle) /  Mathf.Sin(radian_right_angle);
+            print("=== on turn === " + new_x + " " + new_z);
+         }
+
 #endregion //PUBLIC_METHODS
 
             #region COROUTINES
