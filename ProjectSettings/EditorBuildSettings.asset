@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/OculusBuildScene.unity
     guid: f38c8707da32ad44784c80463c14cf0e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/uiDev.unity
     guid: a8892cb403cdd564d8269caf230e89a8
+  - enabled: 1
+    path: Assets/Scenes/OculusBuild.unity
+    guid: c2936e022c7f1ee44bbd477a70595242
   m_configObjects: {}
