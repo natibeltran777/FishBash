@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FishBash.Waves;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,23 @@ namespace FishBash
         private GameObject menu;
         [SerializeField]
         private GameObject pointers;
+
+        public int CurrWave { get; private set; } = 0;
+
+        /// <summary>
+        /// Returns total waves
+        /// </summary>
+        public int TotalWaves
+        {
+            get
+            {
+                return waveList.Length;
+            }
+        }
+
+        [SerializeField]
+        private WaveContainer[] waveList;
+
         private bool hasGameStarted = false;
         private List<int> fishIDsHitPlayer = new List<int>();
 
@@ -55,7 +73,8 @@ namespace FishBash
             hasGameStarted = true;
             menu.SetActive(false);
             pointers.SetActive(false);
-            FishManager.instance.InitializeWaves();
+            FishManager.instance.InitializeFishList();
+            CurrWave = 0;
             StartCoroutine(BeginGame());
         }
 
@@ -70,8 +89,6 @@ namespace FishBash
             Application.Quit();
         #endif
          }
-         
-
          // methods to keep track of the fishes run into player
          public void handleFishHitPlayer(int itemID, string itemName)
          {
@@ -81,7 +98,7 @@ namespace FishBash
             }
          }
 
-         public void relocateMenuOnTurn(float angle) 
+         public void relocateMenuOnTurn(float angle)
          {
             float radian_angle = angle * Mathf.Deg2Rad;
             float side = menu.transform.position.z;
@@ -93,19 +110,60 @@ namespace FishBash
             float new_z = side * Mathf.Sin(radian_another_angle) /  Mathf.Sin(radian_right_angle);
             print("=== on turn === " + new_x + " " + new_z);
          }
+        #endregion //PUBLIC_METHODS
 
-#endregion //PUBLIC_METHODS
-
-            #region COROUTINES
-            /// <summary>
-            /// Central game loop - runs each wave until all waves have been executed
-            /// </summary>
-            /// <returns></returns>
-            IEnumerator BeginGame()
+        #region COROUTINES
+        /// <summary>
+        /// Central game loop - runs each wave until all waves have been executed
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator BeginGame()
         {
-            yield return FishManager.instance.HandleWaves();
-            print("=== Begin game ===");
+            yield return HandleWaves();
             yield return EndGame();
+        }
+
+        /// <summary>
+        /// Central game loop - runs each wave until all waves have been executed
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator HandleWaves()
+        {
+            while (CurrWave < waveList.Length)
+            {
+                yield return Break(CurrWave);
+                IWaves<WaveScriptable> wave = new MainWaves(waveList[CurrWave].subwaves, waveList[CurrWave].timeBetweenSubwaves, instance);
+                yield return StartCoroutine(wave.BeginWave());
+                CurrWave++;
+            }
+            yield return null;
+        }
+
+        /// \deprecated
+        /// <summary>
+        /// Given a string outlining the order of fish, breaks string up into enumerable. Uses '.' as a seperator character
+        /// </summary>
+        /// <param name="order">String to process</param>
+        /// <returns>Enumerable list providing order of fish</returns>
+        IEnumerable<int> ProcessString(string order)
+        {
+            string[] toReturn = order.Split('.');
+            int[] t = new int[toReturn.Length];
+            for (int i = 0; i < toReturn.Length; i++)
+            {
+                t[i] = int.Parse(toReturn[i]);
+            }
+            return t;
+        }
+
+        /// <summary>
+        /// Filler coroutine to run before each wave
+        /// </summary>
+        /// <param name="nextWave">Name of next wave</param>
+        /// <returns></returns>
+        private IEnumerator Break(int nextWave)
+        {
+            yield return DisplayText("Beginning wave " + (nextWave + 1) + "...", 3);
         }
 
         /// <summary>
@@ -138,6 +196,7 @@ namespace FishBash
             uiText.gameObject.SetActive(false);
             yield return null;
         }
-#endregion //COROUTINES
+        #endregion //COROUTINES
+
     }
 }
