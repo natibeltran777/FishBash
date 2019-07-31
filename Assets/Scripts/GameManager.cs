@@ -38,6 +38,12 @@ namespace FishBash
 
         public static GameManager instance = null;
 
+        //TODO : Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. 
+        // However, in that case we should have a global variable to choose between the quest and go builds
+        [SerializeField, Tooltip("Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. However, in that case we should have a global variable to choose between the quest and go builds")]
+        private bool _isOculusGo;
+        public bool IsOculusGo { get => _isOculusGo; }
+
         public TextMeshProUGUI uiText;
 
         #region UNITY_METHODS
@@ -55,7 +61,6 @@ namespace FishBash
 
         private void Start()
         {
-            print("=== Start ===");
             if (test)
             {
                 StartGame();
@@ -90,7 +95,7 @@ namespace FishBash
         #endif
          }
          // methods to keep track of the fishes run into player
-         public void handleFishHitPlayer(int itemID, string itemName)
+         public void HandleFishHitPlayer(int itemID, string itemName)
          {
             if (! fishIDsHitPlayer.Contains(itemID) && itemName.Contains("Fish")) {
                 fishIDsHitPlayer.Add(itemID);
@@ -98,7 +103,7 @@ namespace FishBash
             }
          }
 
-         public void relocateMenuOnTurn(float angle)
+         public void RelocateMenuOnTurn(float angle)
          {
             float radian_angle = angle * Mathf.Deg2Rad;
             float side = menu.transform.position.z;
@@ -145,7 +150,7 @@ namespace FishBash
         /// </summary>
         /// <param name="order">String to process</param>
         /// <returns>Enumerable list providing order of fish</returns>
-        IEnumerable<int> ProcessString(string order)
+        [System.Obsolete] IEnumerable<int> ProcessString(string order)
         {
             string[] toReturn = order.Split('.');
             int[] t = new int[toReturn.Length];

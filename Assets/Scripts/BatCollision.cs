@@ -26,6 +26,8 @@ public class BatCollision : MonoBehaviour
             ViveInput.TriggerHapticPulse(rightController,500);
 
     }
+
+    /*
     public void OnTriggerEnter(Collider col)
     {
         int itemID = col.gameObject.GetInstanceID();
@@ -36,4 +38,5 @@ public class BatCollision : MonoBehaviour
         }
         print("=== on trigger === " + gameObject.name +" dynamically meets " + itemName + " - " + itemID + " - length: " + fishesCatched.Count);
     }
+    */
 }

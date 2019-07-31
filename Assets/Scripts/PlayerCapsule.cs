@@ -11,7 +11,7 @@ namespace FishBash {
 	        int itemID = col.gameObject.GetInstanceID();
 	        string itemName = col.gameObject.name;
 
-	        GameManager.instance.handleFishHitPlayer(itemID, itemName);
+	        GameManager.instance.HandleFishHitPlayer(itemID, itemName);
 	    }
 	}
 }
