@@ -159,7 +159,7 @@ PlayerSettings:
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 0
-  AndroidPreferredInstallLocation: 1
+  AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
@@ -605,7 +605,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    1: VIU_PLUGIN;ODIN_INSPECTOR
+    1: VIU_PLUGIN;ODIN_INSPECTOR;VIU_OCULUSVR
     7: VIU_PLUGIN;ODIN_INSPECTOR
   platformArchitecture: {}
   scriptingBackend: {}
