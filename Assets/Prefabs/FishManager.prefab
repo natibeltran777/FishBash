@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6325823911790532574}
   - component: {fileID: 6325823911790532568}
   - component: {fileID: 169306295}
+  - component: {fileID: 833364968133662637}
   m_Layer: 0
   m_Name: FishManager
   m_TagString: Untagged
@@ -76,11 +77,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   test: 0
   menu: {fileID: 7867180298504321628}
-  pointers: {fileID: 0}
   waveList:
   - {fileID: 11400000, guid: 85a422376eb2b0b4db91640ac164a3a4, type: 2}
   - {fileID: 11400000, guid: b9c134141f687ce44b3a08eee92f3ffd, type: 2}
+  _isOculusGo: 0
   uiText: {fileID: 1571334702}
+--- !u!114 &833364968133662637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325823911790532573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f773140e49351b248b657d606b13902f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1044603544472107251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7867180298504321628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2b1e31883da9a448d7efe16c7e28a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeDuringGame: 0
+  activeOnStart: 1
 --- !u!1001 &6299441030111228070
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ namespace FishBash
         private GameObject leftHandObj;
         [SerializeField]
         private GameObject rightHandObj;
+        [SerializeField]
+        private GameObject batObj;
 
         private VivePoseTracker _pt;
 
@@ -54,7 +56,13 @@ namespace FishBash
         void Start()
         {
             _pt = this.gameObject.GetComponent<VivePoseTracker>();
+            batObj.SetActive(false);
+            EventManager.StartListening("GAMESTART", StartGame);
+            EventManager.StartListening("GAMEEND", EndGame);
+        }
 
+        private void StartGame()
+        {
             if (rightHandIsOn)
             {
                 SetRightHand();
@@ -79,6 +87,13 @@ namespace FishBash
             }
         }
 
+        private void EndGame()
+        {
+            batObj.SetActive(false);
+            leftHandObj.SetActive(true);
+            rightHandObj.SetActive(true);
+        }
+
         private void GoProperty_onRoleChanged()
         {
             _pt.viveRole.roleValue = goProperty.roleValue;
@@ -99,12 +114,14 @@ namespace FishBash
             _pt.viveRole.SetEx(HandRole.RightHand);
             rightHandObj.SetActive(false);
             leftHandObj.SetActive(true);
+            batObj.SetActive(true);
         }
         private void SetLeftHand()
         {
             _pt.viveRole.SetEx(HandRole.LeftHand);
             rightHandObj.SetActive(true);
             leftHandObj.SetActive(false);
+            batObj.SetActive(true);
         }
 
         public void RightTrigger()

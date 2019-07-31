@@ -14,8 +14,6 @@ namespace FishBash
 
         [SerializeField]
         private GameObject menu;
-        [SerializeField]
-        private GameObject pointers;
 
         public int CurrWave { get; private set; } = 0;
 
@@ -33,7 +31,6 @@ namespace FishBash
         [SerializeField]
         private WaveContainer[] waveList;
 
-        private bool hasGameStarted = false;
         private List<int> fishIDsHitPlayer = new List<int>();
 
         public static GameManager instance = null;
@@ -75,11 +72,9 @@ namespace FishBash
         /// </summary>
         public void StartGame()
         {
-            hasGameStarted = true;
-            menu.SetActive(false);
-            pointers.SetActive(false);
             FishManager.instance.InitializeFishList();
             CurrWave = 0;
+            EventManager.TriggerEvent("GAMESTART");
             StartCoroutine(BeginGame());
         }
 
@@ -182,9 +177,7 @@ namespace FishBash
                 yield return null;
             }
             yield return DisplayText("Game Over!", 3);
-            hasGameStarted = true;
-            menu.SetActive(true);
-            pointers.SetActive(true);
+            EventManager.TriggerEvent("GAMEEND");
         }
 
         /// <summary>

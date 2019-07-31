@@ -104,6 +104,20 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_toggleGameObjectOnVirtualClick: []
   m_toggleComponentOnVirtualClick: []
+--- !u!114 &6639931223140639805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508006582718697450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2b1e31883da9a448d7efe16c7e28a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeDuringGame: 0
+  activeOnStart: 1
 --- !u!1 &1508006582814712448
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +202,7 @@ MonoBehaviour:
   rightHand: {fileID: 1508006581721511230}
   leftHandObj: {fileID: 1508006581721487840}
   rightHandObj: {fileID: 1508006581721520792}
+  batObj: {fileID: 5427828883268126212}
 --- !u!114 &7291767134909112315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +449,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ee41758a687f54e98120e486ccd16e, type: 3}
+--- !u!1 &1508006582718697450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152968, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1508006582718585442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1508006582718465404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e,
@@ -507,18 +528,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.9150001
       objectReference: {fileID: 0}
-    - target: {fileID: 1032841682073360865, guid: 3fa5910cad776c3448229e72f44f91be,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898958705207157379, guid: 3fa5910cad776c3448229e72f44f91be,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa5910cad776c3448229e72f44f91be, type: 3}
+--- !u!1 &5427828883268126212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6898958705207157382, guid: 3fa5910cad776c3448229e72f44f91be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1508006582942393474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5427828884556486933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6898958703641460119, guid: 3fa5910cad776c3448229e72f44f91be,
