@@ -44,7 +44,7 @@
 				};
 
 				float4 _Tint;
-				uniform sampler2D _CameraDepthTexture; //Depth Texture
+				UNITY_DECLARE_DEPTH_TEXTURE(_CameraDepthTexture); //Depth Texture
 				sampler2D _MainTex, _NoiseTex;//
 				float4 _MainTex_ST;
 				float _Speed, _Amount, _Height, _Foam;//
