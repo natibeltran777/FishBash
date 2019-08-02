@@ -1,32 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 
 
-namespace FishBash
-{
+namespace FishBash {
     public class BatCollision : MonoBehaviour
     {
-        [SerializeField]
-        private HandRole rightController;
-        private Rigidbody rigidbody;
-        private int score = 0;
+        private Rigidbody rb;
+        private List<int> fishesCatched = new List<int>();
+		private int score = 0;
+
         private void Start()
         {
-            rigidbody = gameObject.GetComponent<Rigidbody>();
+            rb = gameObject.GetComponent<Rigidbody>();
         }
         private void OnCollisionEnter(Collision collision)
         {
 
             Rigidbody rg = collision.collider.attachedRigidbody;
-            rg.AddForce(rigidbody.velocity);
-            ViveInput.TriggerHapticPulse(rightController, 500);
             fishHasBeenHit(collision.gameObject.GetComponent<IFish>());
-            
+            rg.AddForce(rb.velocity);
+            ViveInput.TriggerHapticPulse(BatHandler.instance.BatPose, 500);
 
         }
+
         private void fishHasBeenHit(IFish fish)
         {
             fish.HasBeenHit = true;

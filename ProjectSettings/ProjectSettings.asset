@@ -8,11 +8,11 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: EMLx
+  companyName: Wabel Games
   productName: FishBash
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -154,11 +154,12 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.EMLx.FishBash
+    Standalone: com.wablegames.fishbash
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 0
-  AndroidPreferredInstallLocation: 1
+  AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
@@ -604,8 +605,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    1: VIU_PLUGIN
-    7: VIU_PLUGIN
+    1: VIU_PLUGIN;ODIN_INSPECTOR;VIU_OCULUSVR
+    7: VIU_PLUGIN;ODIN_INSPECTOR;VIU_OCULUSVR
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
