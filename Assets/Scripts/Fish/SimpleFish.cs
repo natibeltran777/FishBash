@@ -40,6 +40,8 @@ namespace FishBash
 
         protected Vector3 pos;
 
+        protected Vector3 prevPos = new Vector3();
+
         protected Rigidbody rb;
 
         private bool hasLeapt = false;
@@ -49,7 +51,8 @@ namespace FishBash
             //Debug.Log("move");
             pos += unitDirection * speed * Time.deltaTime;
             transform.position = pattern(pos, crossDirection, Time.time);
-
+            transform.rotation = Quaternion.LookRotation(prevPos- transform.position, Vector3.up);
+            prevPos = transform.position;
         }
 
         public void SetSpeed(float s)

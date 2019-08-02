@@ -308,19 +308,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5435637278309032039}
   m_Mesh: {fileID: 43156752750704060, guid: fe458c07e1eda5b4582f5757532c3b26, type: 2}
---- !u!114 &7905343418322598887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6391907736762614284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 774ee0bd533ccc14e820293bd369242b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.41
 --- !u!135 &7064797534474388950
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -334,6 +321,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12.693779
   m_Center: {x: 0.05260849, y: 0, z: 0}
+--- !u!114 &7905343418322598887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391907736762614284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774ee0bd533ccc14e820293bd369242b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.41
 --- !u!1 &7380719463318016433
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,11 +453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1877820345123788271, guid: 1ed4bcea703b13c42abd46269b2b1e49,
-        type: 3}
-      propertyPath: m_Name
-      value: RandomSineFish
-      objectReference: {fileID: 0}
     - target: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,6 +506,36 @@ PrefabInstance:
     - target: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877820345123788271, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_Name
+      value: RandomSineFish
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092242013789083774, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092242013789083774, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
