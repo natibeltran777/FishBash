@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 169306295}
   - component: {fileID: 833364968133662637}
   m_Layer: 0
-  m_Name: FishManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,12 +76,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: 0
-  menu: {fileID: 7867180298504321628}
+  textField: {fileID: 4180163559664903105}
+  initLives: 5
+  invulnerableTime: 0.5
   waveList:
   - {fileID: 11400000, guid: 85a422376eb2b0b4db91640ac164a3a4, type: 2}
   - {fileID: 11400000, guid: b9c134141f687ce44b3a08eee92f3ffd, type: 2}
   _isOculusGo: 0
-  uiText: {fileID: 1571334702}
 --- !u!114 &833364968133662637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,20 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f773140e49351b248b657d606b13902f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1044603544472107251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7867180298504321628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2b1e31883da9a448d7efe16c7e28a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeDuringGame: 0
-  activeOnStart: 1
 --- !u!1001 &6299441030111228070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,21 +180,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6299441030111228070}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1571334702 stripped
+--- !u!114 &4180163559664903105 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6299441031111006856, guid: ff9f8969bd8ab5646998ee76f6abdc78,
+  m_CorrespondingSourceObject: {fileID: 7885504574530196327, guid: ff9f8969bd8ab5646998ee76f6abdc78,
     type: 3}
   m_PrefabInstance: {fileID: 6299441030111228070}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 644091707b430644f8a6c961ae287fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7867180298504321628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4197859464507935482, guid: ff9f8969bd8ab5646998ee76f6abdc78,
-    type: 3}
-  m_PrefabInstance: {fileID: 6299441030111228070}
-  m_PrefabAsset: {fileID: 0}

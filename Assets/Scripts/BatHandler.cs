@@ -34,18 +34,12 @@ namespace FishBash
             {
                 Destroy(this);
             }
+            _pt = this.gameObject.GetComponent<VivePoseTracker>();
         }
 
-        public HandRole BatPose {
+        public ViveRoleProperty BatPose {
             get {
-                if (rightHandIsOn)
-                {
-                    return HandRole.RightHand;
-                }
-                else
-                {
-                    return HandRole.LeftHand;
-                }
+                return _pt.viveRole;
 
             }
         }
@@ -55,7 +49,7 @@ namespace FishBash
         // Start is called before the first frame update
         void Start()
         {
-            _pt = this.gameObject.GetComponent<VivePoseTracker>();
+            
             batObj.SetActive(false);
             EventManager.StartListening("GAMESTART", StartGame);
             EventManager.StartListening("GAMEEND", EndGame);
@@ -89,6 +83,11 @@ namespace FishBash
 
         private void EndGame()
         {
+            if (!GameManager.instance.IsOculusGo)
+            {
+                ViveInput.RemovePress(HandRole.LeftHand, ControllerButton.Trigger, LeftTrigger);
+                ViveInput.RemovePress(HandRole.RightHand, ControllerButton.Trigger, RightTrigger);
+            }
             batObj.SetActive(false);
             leftHandObj.SetActive(true);
             rightHandObj.SetActive(true);

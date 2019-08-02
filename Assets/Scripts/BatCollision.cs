@@ -24,18 +24,5 @@ namespace FishBash {
             ViveInput.TriggerHapticPulse(BatHandler.instance.BatPose, 500);
 
         }
-
-        /*
-        public void OnTriggerEnter(Collider col)
-        {
-            int itemID = col.gameObject.GetInstanceID();
-            string itemName = col.gameObject.name;
-
-            if (! fishesCatched.Contains(itemID) && itemName.Contains("Fish")) {
-                fishesCatched.Add(itemID);
-            }
-            print("=== on trigger === " + gameObject.name +" dynamically meets " + itemName + " - " + itemID + " - length: " + fishesCatched.Count);
-        }
-        */
     }
 }

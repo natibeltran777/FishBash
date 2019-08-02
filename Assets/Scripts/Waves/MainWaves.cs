@@ -17,18 +17,18 @@ namespace FishBash
                 _subWaves = subWaves;
                 _timeBetweenWaves = timeBetweenWaves;
                 _caller = caller;
-                Debug.Log("Constructor called");
+                //Debug.Log("Constructor called");
             }
             
             public IEnumerator BeginWave()
             {
                 foreach (WaveScriptable s in _subWaves)
                 {
-                    Debug.Log("Begin subwave");
+                    //Debug.Log("Begin subwave");
                     IWaves<FishContainer> subWave;
                     if (s.GetType() == typeof(RandomWaveScriptable))
                     {
-                        Debug.Log("Type identified");
+                        //Debug.Log("Type identified");
                         subWave = new RandomSubWave((RandomWaveScriptable) s);
                         yield return _caller.StartCoroutine(subWave.BeginWave());
                     }
@@ -37,7 +37,7 @@ namespace FishBash
                         subWave = new DeterministicSubWave(s);
                         yield return _caller.StartCoroutine(subWave.BeginWave());
                     }
-                    Debug.Log("Finish subwave. Waiting...");
+                    //Debug.Log("Finish subwave. Waiting...");
                     yield return new WaitForSeconds(_timeBetweenWaves);
                 }
 

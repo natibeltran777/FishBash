@@ -13,12 +13,12 @@ namespace FishBash
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Rotate(0, -5f, 0);
-                GameManager.instance.RelocateMenuOnTurn(transform.rotation.y);
+                //GameManager.instance.RelocateMenuOnTurn(transform.rotation.y);
             }
             if(Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Rotate(0, 5f, 0);
-                GameManager.instance.RelocateMenuOnTurn(transform.rotation.y);
+                //GameManager.instance.RelocateMenuOnTurn(transform.rotation.y);
             }
         }
     }

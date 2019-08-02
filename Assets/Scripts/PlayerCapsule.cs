@@ -6,12 +6,25 @@ using UnityEngine;
 namespace FishBash {
 	public class PlayerCapsule : MonoBehaviour
 	{
-	    public void OnTriggerEnter(Collider col)
+        private Transform cameraTransform;
+        private float offset;
+        private void Start()
+        {
+            cameraTransform = Camera.main.transform;
+            offset = transform.localPosition.y;
+        }
+
+        private void Update()
+        {
+            Vector3 position = cameraTransform.position;
+            position.y += offset;
+            transform.position = position;
+        }
+        public void OnTriggerEnter(Collider col)
 	    {
 	        int itemID = col.gameObject.GetInstanceID();
-	        string itemName = col.gameObject.name;
 
-	        GameManager.instance.HandleFishHitPlayer(itemID, itemName);
+	        GameManager.instance.HandleFishHitPlayer(itemID);
 	    }
 	}
 }

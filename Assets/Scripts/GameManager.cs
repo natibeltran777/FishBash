@@ -1,4 +1,5 @@
 ﻿using FishBash.Waves;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,10 +13,20 @@ namespace FishBash
         [SerializeField]
         private bool test = false;
 
-        [SerializeField]
-        private GameObject menu;
-
         public int CurrWave { get; private set; } = 0;
+
+        [SerializeField]
+        private DisplayTextInViewField textField;
+
+        [SerializeField]
+        private int initLives = 3;
+
+        [SerializeField, Tooltip("After getting hit, the player will be invulnerable for this long")]
+        private float invulnerableTime = 0.5f;
+
+        public int CurrLives { get => lives; }
+        private int lives;
+        private bool isPlayerInvulnerable = false;
 
         /// <summary>
         /// Returns total waves
@@ -34,14 +45,15 @@ namespace FishBash
         private List<int> fishIDsHitPlayer = new List<int>();
 
         public static GameManager instance = null;
+        private IEnumerator currentExecutingWave;
+        private IEnumerator currentExecutingGame;
+        private IEnumerator waveHandler;
 
         //TODO : Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. 
         // However, in that case we should have a global variable to choose between the quest and go builds
         [SerializeField, Tooltip("Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. However, in that case we should have a global variable to choose between the quest and go builds")]
         private bool _isOculusGo;
         public bool IsOculusGo { get => _isOculusGo; }
-
-        public TextMeshProUGUI uiText;
 
         #region UNITY_METHODS
         private void Awake()
@@ -73,9 +85,11 @@ namespace FishBash
         public void StartGame()
         {
             FishManager.instance.InitializeFishList();
+            lives = initLives;
             CurrWave = 0;
             EventManager.TriggerEvent("GAMESTART");
-            StartCoroutine(BeginGame());
+            currentExecutingGame = BeginGame();
+            StartCoroutine(currentExecutingGame);
         }
 
         /// <summary>
@@ -90,27 +104,40 @@ namespace FishBash
         #endif
          }
          // methods to keep track of the fishes run into player
-         public void HandleFishHitPlayer(int itemID, string itemName)
+         public void HandleFishHitPlayer(int itemID)
          {
-            if (! fishIDsHitPlayer.Contains(itemID) && itemName.Contains("Fish")) {
+            if (! fishIDsHitPlayer.Contains(itemID)) {
                 fishIDsHitPlayer.Add(itemID);
-                print("=== in game manager === HIT " + fishIDsHitPlayer.Count);
+                if (!isPlayerInvulnerable)
+                {
+                    StartCoroutine(DetractLives());
+                }
             }
          }
-
-         public void RelocateMenuOnTurn(float angle)
-         {
-            float radian_angle = angle * Mathf.Deg2Rad;
-            float side = menu.transform.position.z;
-            float area = side * side * Mathf.Sin(radian_angle) / 2.0f;
-            float new_x = 2.0f * area / side;
-
-            float radian_another_angle = (180 - 90 - Mathf.Abs(angle)) * Mathf.Deg2Rad;
-            float radian_right_angle = 90 * Mathf.Deg2Rad;
-            float new_z = side * Mathf.Sin(radian_another_angle) /  Mathf.Sin(radian_right_angle);
-            print("=== on turn === " + new_x + " " + new_z);
-         }
         #endregion //PUBLIC_METHODS
+
+
+        /// <summary>
+        /// Handles game ending behavior - for when all waves are over \todo - add losing & winning behavior
+        /// </summary>
+        private void EndGame(bool isWin)
+        {
+            if (isWin)
+            {
+                //Win behaviour
+
+            }
+            else
+            {
+                //Lose behaviour
+                FishManager.instance.DestroyAllFish();
+                StopAllCoroutines();
+            }
+
+            
+            StartCoroutine(EndGameDisplay());
+            EventManager.TriggerEvent("GAMEEND");
+        }
 
         #region COROUTINES
         /// <summary>
@@ -119,8 +146,9 @@ namespace FishBash
         /// <returns></returns>
         IEnumerator BeginGame()
         {
-            yield return HandleWaves();
-            yield return EndGame();
+            waveHandler = HandleWaves();
+            yield return StartCoroutine(waveHandler);
+            EndGame(true);
         }
 
         /// <summary>
@@ -133,19 +161,19 @@ namespace FishBash
             {
                 yield return Break(CurrWave);
                 IWaves<WaveScriptable> wave = new MainWaves(waveList[CurrWave].subwaves, waveList[CurrWave].timeBetweenSubwaves, instance);
-                yield return StartCoroutine(wave.BeginWave());
+                currentExecutingWave = wave.BeginWave();
+                yield return StartCoroutine(currentExecutingWave);
                 CurrWave++;
             }
             yield return null;
         }
 
-        /// \deprecated
         /// <summary>
         /// Given a string outlining the order of fish, breaks string up into enumerable. Uses '.' as a seperator character
         /// </summary>
         /// <param name="order">String to process</param>
         /// <returns>Enumerable list providing order of fish</returns>
-        [System.Obsolete] IEnumerable<int> ProcessString(string order)
+        [Obsolete] IEnumerable<int> ProcessString(string order)
         {
             string[] toReturn = order.Split('.');
             int[] t = new int[toReturn.Length];
@@ -163,36 +191,34 @@ namespace FishBash
         /// <returns></returns>
         private IEnumerator Break(int nextWave)
         {
-            yield return DisplayText("Beginning wave " + (nextWave + 1) + "...", 3);
+            yield return textField.DisplayText("Beginning wave " + (nextWave + 1) + "...", 3);
         }
 
-        /// <summary>
-        /// Handles game ending behavior - for when all waves are over \todo - add losing & winning behavior
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator EndGame()
+        
+        IEnumerator EndGameDisplay()
         {
             while (FishManager.instance.FishRemaining > 0)
             {
                 yield return null;
             }
-            yield return DisplayText("Game Over!", 3);
-            EventManager.TriggerEvent("GAMEEND");
+            yield return textField.DisplayText("Game Over!", 3);
         }
 
-        /// <summary>
-        /// Displays given text on screen for a set period of time
-        /// </summary>
-        /// <param name="text">Text to display</param>
-        /// <param name="timeToDisplay">Time to display text</param>
-        /// <returns></returns>
-        public IEnumerator DisplayText(string text, float timeToDisplay)
+        IEnumerator DetractLives()
         {
-            uiText.text = text;
-            uiText.gameObject.SetActive(true);
-            yield return new WaitForSeconds(timeToDisplay);
-            uiText.gameObject.SetActive(false);
-            yield return null;
+            isPlayerInvulnerable = true;
+            lives--;
+            EventManager.TriggerEvent("PLAYERHIT");
+            if (lives > 0)
+            {
+                yield return new WaitForSeconds(invulnerableTime);
+                isPlayerInvulnerable = false;
+            }
+            else
+            {
+                isPlayerInvulnerable = false;
+                EndGame(false);
+            }
         }
         #endregion //COROUTINES
 
