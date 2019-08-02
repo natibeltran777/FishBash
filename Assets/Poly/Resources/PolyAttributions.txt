@@ -1,0 +1,19 @@
+This project uses the following items from Poly (http://poly.google.com):
+
+Title: Fish of Nightmares
+Author: Clay Bavor
+URL: https://poly.google.com/view/df0KaOqgFFr
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Goldfish
+Author: Poly by Google
+URL: https://poly.google.com/view/0bOZGc8ONrx
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Pufferfish
+Author: Poly by Google
+URL: https://poly.google.com/view/3tgZD06mzCe
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
