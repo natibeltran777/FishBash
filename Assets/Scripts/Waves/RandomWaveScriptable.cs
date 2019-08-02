@@ -15,7 +15,7 @@ namespace FishBash
             [Sirenix.OdinInspector.MinMaxSlider(5, 100, showFields: true)]
             public Vector2 radius;
 
-            [Sirenix.OdinInspector.MinMaxSlider(0, (2 * (float)System.Math.PI), showFields: true)]
+            [Sirenix.OdinInspector.MinMaxSlider(-(2 * (float)System.Math.PI), (2 * (float)System.Math.PI), showFields: true)]
             public Vector2 radians;
 
         }

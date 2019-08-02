@@ -55,6 +55,18 @@ namespace FishBash
         }
 
         /// <summary>
+        /// Destroys all active fish
+        /// </summary>
+        public void DestroyAllFish()
+        {
+            while (fishList.Count > 0)
+            {
+                DestroyFish(fishList[0], 0);
+            }
+                
+        }
+
+        /// <summary>
         /// Initializes fish list for new game
         /// </summary>
         public void InitializeFishList()

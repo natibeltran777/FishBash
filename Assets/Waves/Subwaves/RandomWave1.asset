@@ -131,4 +131,4 @@ MonoBehaviour:
   timeBetweenFish: 2
   fishCount: 10
   radius: {x: 43.782772, y: 67.26592}
-  radians: {x: 0, y: 1.8745416}
+  radians: {x: -1.36, y: 1.360526}

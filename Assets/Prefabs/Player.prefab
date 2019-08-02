@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 223973622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.75000006, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1508006582814712449}
   m_RootOrder: 4
@@ -58,110 +58,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca636aa19c35423469c193e4bea71605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1519840409
+--- !u!1 &1845633803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1845633804}
+  - component: {fileID: 1845633805}
+  m_Layer: 0
+  m_Name: HandCanvasObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1845633804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845633803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1508006582814712449}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1845633805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508006581721561774}
+  m_GameObject: {fileID: 1845633803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ab9066e8186884da64ee239717c741, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fdc450c311d1e94291658aa5ec57b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_combineInputsOperator: 0
-  m_inputs:
-  - viveRole:
-      m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
-      m_roleValueName: LeftHand
-      m_roleValueInt: 1
-    button: 0
-  m_onVirtualPress:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2666345105789195095}
-        m_MethodName: LeftTrigger
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_onVirtualClick:
+  posOffset: {x: 0, y: 0, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
+  origin: {fileID: 0}
+  m_viveRole:
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: LeftHand
+    m_roleValueInt: 1
+  onIsValidChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+    m_TypeName: HTC.UnityPlugin.Vive.VivePoseTracker+UnityEventBool, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_onVirtualPressDown:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_onVirtualPressUp:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_toggleGameObjectOnVirtualClick: []
-  m_toggleComponentOnVirtualClick: []
---- !u!114 &7243171266540643038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508006581721561774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ab9066e8186884da64ee239717c741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_combineInputsOperator: 0
-  m_inputs:
-  - viveRole:
-      m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
-      m_roleValueName: RightHand
-      m_roleValueInt: 0
-    button: 0
-  m_onVirtualPress:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2666345105789195095}
-        m_MethodName: RightTrigger
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_onVirtualClick:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_onVirtualPressDown:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_onVirtualPressUp:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_toggleGameObjectOnVirtualClick: []
-  m_toggleComponentOnVirtualClick: []
+  role: -2
 --- !u!114 &6639931223140639805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +160,7 @@ Transform:
   - {fileID: 1508006582718465404}
   - {fileID: 6050013884007579811}
   - {fileID: 223973623}
+  - {fileID: 1845633804}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -387,12 +340,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb3370c18187bb444b240cfb08dcc02f, type: 3}
---- !u!1 &1508006581721561774 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 175660, guid: cb3370c18187bb444b240cfb08dcc02f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1508006581721388162}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1508006581721318866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 463184, guid: cb3370c18187bb444b240cfb08dcc02f,
