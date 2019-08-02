@@ -118,7 +118,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6420
+  m_Name: pb_Mesh-1644
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -348,15 +348,36 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1645735280}
+    - target: {fileID: 2145048139057146601, guid: 2ecea16b655396647adda8f7fd700c1b,
+        type: 3}
+      propertyPath: cameraHeading
+      value: 
+      objectReference: {fileID: 1430736309}
+    - target: {fileID: 1891324125, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1645735280}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
+--- !u!114 &1430736309 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6755669256191778021, guid: 44cd3314cc574924785fd673d80dd8c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525219003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3509647c3b1704fbe016ce64bf8f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1451112919
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6422
+  m_Name: pb_Mesh-1646
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -530,7 +551,7 @@ PrefabInstance:
     - target: {fileID: 1508006582814712449, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.951
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1508006582814712449, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}
@@ -730,7 +751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26926
+  m_Name: pb_Mesh-1304
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -956,7 +977,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6424
+  m_Name: pb_Mesh-1648
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
