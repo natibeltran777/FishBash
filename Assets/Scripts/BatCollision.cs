@@ -11,7 +11,6 @@ namespace FishBash {
     {
         private Rigidbody rb;
         private List<int> fishesCatched = new List<int>();
-		private int score = 0;
 
         private void Start()
         {
@@ -21,15 +20,10 @@ namespace FishBash {
         {
 
             Rigidbody rg = collision.collider.attachedRigidbody;
-            fishHasBeenHit(collision.gameObject.GetComponent<IFish>());
+            collision.gameObject.GetComponent<IFish>().HitFish();
             rg.AddForce(rb.velocity);
             ViveInput.TriggerHapticPulse(BatHandler.instance.BatPose, 500);
 
-        }
-
-        private void fishHasBeenHit(IFish fish)
-        {
-            fish.HasBeenHit = true;
         }
     }
 

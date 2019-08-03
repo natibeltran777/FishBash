@@ -14,6 +14,8 @@ namespace FishBash
         private GameObject canvasObj;
         [SerializeField]
         private TextMeshProUGUI livesLabel;
+        [SerializeField]
+        private TextMeshProUGUI pointsLabel;
 
         // Start is called before the first frame update
         void Start()
@@ -34,6 +36,7 @@ namespace FishBash
             EventManager.StartListening("GAMESTART", GameStart);
             EventManager.StartListening("GAMEEND", GameEnd);
             EventManager.StartListening("PLAYERHIT", PlayerHit);
+            EventManager.StartListening("FISHHIT", FishHit);
         }
 
         void ChangeHand()
@@ -62,6 +65,11 @@ namespace FishBash
         void PlayerHit()
         {
             livesLabel.text = GameManager.instance.CurrLives.ToString();
+        }
+
+        void FishHit()
+        {
+            pointsLabel.text = GameManager.instance.GetScore.ToString();
         }
     }
 }

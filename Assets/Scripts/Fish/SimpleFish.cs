@@ -48,7 +48,7 @@ namespace FishBash
 
         public int scoreValue;
 
-        public bool HasBeenHit { get; set; }  
+        public bool HasBeenHit { get; set; } = false;
 
         protected void UpdateMovement()
         {
@@ -69,6 +69,17 @@ namespace FishBash
             return Vector3.Distance(transform.position, platform.transform.position) < radius;
         }
 
+
+        public void HitFish()
+        {
+            if (!HasBeenHit)
+            {
+                HasBeenHit = true;
+                GameManager.instance.IncrementScore(scoreValue);
+                EventManager.TriggerEvent("FISHHIT");
+            }
+        }
+
         protected void LeapBehavior()
         {
 
@@ -85,13 +96,6 @@ namespace FishBash
 
         public void Destroy(float t)
         {
-            if (HasBeenHit)
-            {
-                Debug.Log("@@Destroy function");
-                GameManager.instance.IncrementScore(scoreValue);
-            }
-
-
             Destroy(this.gameObject, t);
         }
 

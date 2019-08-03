@@ -26,5 +26,6 @@ namespace FishBash
 
         void Destroy(float t);
 
+        void HitFish();
     }
 }

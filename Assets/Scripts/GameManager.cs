@@ -24,6 +24,7 @@ namespace FishBash
         [SerializeField, Tooltip("After getting hit, the player will be invulnerable for this long")]
         private float invulnerableTime = 0.5f;
 
+        public int GetScore { get => playerScore; }
         public int CurrLives { get => lives; }
         private int lives;
         private bool isPlayerInvulnerable = false;
@@ -41,6 +42,7 @@ namespace FishBash
 
         [SerializeField]
         private int playerScore = 0;
+        [SerializeField]
         private WaveContainer[] waveList;
 
         private List<int> fishIDsHitPlayer = new List<int>();
@@ -114,6 +116,13 @@ namespace FishBash
                 }
             }
          }
+
+        public void IncrementScore(int toAdd)
+        {
+            playerScore += toAdd;
+            //Debug.Log("Fish Hit! Score is: " + playerScore);
+            //StartCoroutine(DisplayText(scoreText, 3));
+        }
         #endregion //PUBLIC_METHODS
 
 
@@ -192,14 +201,6 @@ namespace FishBash
         private IEnumerator Break(int nextWave)
         {
             yield return textField.DisplayText("Beginning wave " + (nextWave + 1) + "...", 3);
-        }
-
-
-        public void IncrementScore(int toAdd)
-        {
-            playerScore += toAdd;
-            //string scoreText = "Fish Hit! Score is: " + playerScore;
-            //StartCoroutine(DisplayText(scoreText, 3));
         }
         
         IEnumerator EndGameDisplay()
