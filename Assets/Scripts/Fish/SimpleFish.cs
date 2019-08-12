@@ -9,9 +9,8 @@ namespace FishBash
 
     /// <summary>
     /// Basic fish behavior. Fish moves toward goal and is modified according to some base pattern
-    /// \todo : handle reaching the goal
     /// </summary>
-    public abstract class SimpleFish : MonoBehaviour, IFish
+    public class SimpleFish : MonoBehaviour, IFish
     {
 
         private GameObject platform;
@@ -23,6 +22,9 @@ namespace FishBash
         [Range(0,10)]
         protected float speed;
 
+        [SerializeField]
+        private FishPatterns currentPattern;
+
         /// <summary>
         /// Direction for fish to move in
         /// </summary>
@@ -33,11 +35,12 @@ namespace FishBash
         /// </summary>
         protected Vector3 crossDirection;
 
+        
         /// <summary>
         /// Pattern for fish to move in
         /// </summary>
-        protected FishMovement.fishPattern pattern;
-
+        protected FishMovement.FishPattern pattern;
+        
         protected Vector3 pos;
 
         protected Vector3 prevPos = new Vector3();
@@ -106,6 +109,7 @@ namespace FishBash
             pos = transform.position;
             this.platform = FishManager.instance.platform;
             unitDirection = GetUnitDirection();
+            pattern = FishMovement.patterns[(int)currentPattern];
 
             crossDirection = Vector3.Cross(unitDirection, Vector3.up);
         }
