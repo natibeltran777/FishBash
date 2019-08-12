@@ -88,6 +88,7 @@ namespace FishBash
         {
             FishManager.instance.InitializeFishList();
             lives = initLives;
+            playerScore = 0;
             CurrWave = 0;
             EventManager.TriggerEvent("GAMESTART");
             currentExecutingGame = BeginGame();
