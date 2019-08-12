@@ -8,7 +8,7 @@ namespace FishBash
     
     public interface IFish
     {
-
+        float Speed { get; set; }
         bool HasBeenHit { get; set; }
 
         /// <summary>
@@ -16,13 +16,6 @@ namespace FishBash
         /// </summary>
         /// <returns>True if it is close</returns>
         bool CheckRadius(float radius);
-
-
-        /// <summary>
-        /// Sets the fish speed
-        /// </summary>
-        /// <param name="s">New speed</param>
-        void SetSpeed(float s);
 
         void Destroy(float t);
 

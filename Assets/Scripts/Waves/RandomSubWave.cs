@@ -12,14 +12,14 @@ namespace FishBash
             private readonly int _fishCount;
             private FishContainer[] data;
             private readonly float _delay;
-            private readonly float _speed;
+            private readonly float _speedMultiplier;
 
             private readonly Vector2 _radiusRange;
             private readonly Vector2 _radiansRange;
 
             public RandomSubWave(RandomWaveScriptable toBuild)
             {
-                _speed = toBuild.defaultSpeed;
+                _speedMultiplier = toBuild.speedMultiplier;
                 _delay = toBuild.timeBetweenFish;
                 data = toBuild.fishInWave;
                 _fishCount = toBuild.fishCount;
@@ -32,7 +32,7 @@ namespace FishBash
                 for (int i = 0; i < _fishCount; i++)
                 {
                     FishContainer toSpawn = data[Random.Range(0, data.Length)];
-                    FishManager.instance.RandomSpawnFish(toSpawn, _speed, _radiusRange, _radiansRange);
+                    FishManager.instance.RandomSpawnFish(toSpawn, _speedMultiplier, _radiusRange, _radiansRange);
                     yield return new WaitForSeconds(_delay);
                 }
             }

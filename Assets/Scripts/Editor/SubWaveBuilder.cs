@@ -66,7 +66,7 @@ namespace FishBash
                             showRandomPanel = true;
                             randompanel.enemies = w.fishCount;
                             randompanel.name = w.name;
-                            randompanel.speed = w.defaultSpeed;
+                            randompanel.speedMultiplier = w.speedMultiplier;
                             randompanel.timeBetweenEnemies = w.timeBetweenFish;
                             randompanel.enemyTypes = w.fishInWave;
                         }
@@ -75,7 +75,7 @@ namespace FishBash
                             showPanel = true;
                             showRandomPanel = false;
                             panel.name = toBuild.name;
-                            panel.speed = toBuild.defaultSpeed;
+                            panel.speedMultiplier = toBuild.speedMultiplier;
                             panel.timeBetweenEnemies = toBuild.timeBetweenFish;
                             panel.enemyTypes = toBuild.fishInWave;
                         }
@@ -114,7 +114,7 @@ namespace FishBash
             {
                 [InfoBox("You are now building a deterministic sub wave. You must manually lay out each of the enemy locations.")]
                 public string name;
-                public float speed;
+                public float speedMultiplier;
                 public float timeBetweenEnemies;
 
                 [HorizontalGroup]
@@ -128,7 +128,7 @@ namespace FishBash
                 public void Reset()
                 {
                     name = null;
-                    speed = 0;
+                    speedMultiplier = 1;
                     timeBetweenEnemies = 0;
                     enemyTypes = new FishContainer[0];
                     //background = new InteractableTexture();
@@ -140,7 +140,7 @@ namespace FishBash
             {
                 [InfoBox("You are now building a random sub wave. You must specify paremeters for each enemy type, and specify a quantity.")]
                 public string name;
-                public float speed;
+                public float speedMultiplier;
                 public float timeBetweenEnemies;
                 public int enemies;
 
@@ -155,7 +155,7 @@ namespace FishBash
                 public void Reset()
                 {
                     name = null;
-                    speed = 0;
+                    speedMultiplier = 1;
                     timeBetweenEnemies = 0;
                     enemies = 0;
                     enemyTypes = new FishContainer[0];

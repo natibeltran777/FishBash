@@ -16,7 +16,7 @@ namespace FishBash
             [NonSerialized, OdinSerialize]
             public FishContainer[] fishInWave;
 
-            public float defaultSpeed;
+            public float speedMultiplier;
 
             public float timeBetweenFish;
 

@@ -85,10 +85,10 @@ namespace FishBash
         /// Spawns a fish in a fixed position
         /// </summary>
         /// <param name="f">Fish object</param>
-        /// <param name="defaultSpeed">Default speed for this wave</param>
-        public void SpawnFish(FishContainer f, float defaultSpeed)
+        /// <param name="speedMultiplier">Speed multiplier for this wave</param>
+        public void SpawnFish(FishContainer f, float speedMultipler)
         {
-            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.Value, f.speedOverride.GetValueOrDefault(defaultSpeed));
+            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.Value, speedMultipler);
             fishList.Add(fish);
         }
 
@@ -96,13 +96,13 @@ namespace FishBash
         /// Spawns a fish in a random position
         /// </summary>
         /// <param name="f">Fish object</param>
-        /// <param name="defaultSpeed">Default speed for this wave</param>
+        /// <param name="speedMultiplier">Speed multiplier for this wave</param>
         /// <param name="distance">Range of distance for this wave</param>
         /// <param name="distance">Range of angles (in radians) for this wave</param>
-        public void RandomSpawnFish(FishContainer f, float defaultSpeed, Vector2 distance, Vector2 angle)
+        public void RandomSpawnFish(FishContainer f, float speedMultiplier, Vector2 distance, Vector2 angle)
         {
             Vector2 position = Utility.RandomPointOnUnitCircle(distance, angle);
-            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.GetValueOrDefault(position), f.speedOverride.GetValueOrDefault(defaultSpeed));
+            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.GetValueOrDefault(position), speedMultiplier);
             fishList.Add(fish);
         }
 
@@ -114,15 +114,15 @@ namespace FishBash
         /// </summary>
         /// <param name="fishToSpawn">Fish Object to use</param>
         /// <param name="position">Vector2 specifying x and z position of the fish</param>
-        /// <param name="speed">Speed of the newly created fish</param>
+        /// <param name="speedMultiplier">Optional multiplier for the fish speed</param>
         /// <returns>IFish component created</returns>
-        private IFish SpawnFish(GameObject fishToSpawn, Vector2 position, float speed)
+        private IFish SpawnFish(GameObject fishToSpawn, Vector2 position, float speedMultiplier = 1)
         {
             
             GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
             fish.layer = 10;
             IFish toReturn = fish.GetComponent<IFish>();
-            toReturn.SetSpeed(speed);
+            toReturn.Speed *= speedMultiplier;
             return toReturn;
         }
         #endregion PRIVATE_METHODS

@@ -11,11 +11,11 @@ namespace FishBash
             private readonly WaveScriptable toBuild;
             private FishContainer[] data;
             private readonly float _delay;
-            private readonly float _speed;
+            private readonly float _speedMultiplier;
 
             public DeterministicSubWave(WaveScriptable toBuild)
             {
-                _speed = toBuild.defaultSpeed;
+                _speedMultiplier = toBuild.speedMultiplier;
                 _delay = toBuild.timeBetweenFish;
                 data = toBuild.fishInWave;
             }
@@ -24,7 +24,7 @@ namespace FishBash
             {
                 foreach(FishContainer f in data)
                 {
-                    FishManager.instance.SpawnFish(f, _speed);
+                    FishManager.instance.SpawnFish(f, _speedMultiplier);
                     yield return new WaitForSeconds(_delay);
 
                 }

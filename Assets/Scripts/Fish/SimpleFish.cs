@@ -21,6 +21,7 @@ namespace FishBash
         [SerializeField]
         [Range(0,10)]
         protected float speed;
+        public float Speed { get => speed; set => speed = value; }
 
         [SerializeField]
         private FishPatterns currentPattern;

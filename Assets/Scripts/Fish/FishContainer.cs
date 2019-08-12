@@ -15,6 +15,5 @@ namespace FishBash
         public int pointVal;
 
         public Vector2? spawnPositionOverride;
-        public float? speedOverride;
     }
 }
