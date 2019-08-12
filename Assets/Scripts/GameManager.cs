@@ -210,6 +210,7 @@ namespace FishBash
             {
                 yield return null;
             }
+            yield return new WaitForSeconds(0.3f);
             yield return textField.DisplayText("Game Over!", 3);
         }
 
