@@ -56,15 +56,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -91,15 +82,6 @@ MonoBehaviour:
       Data: -45
     - Name: 
       Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -134,15 +116,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -169,15 +142,6 @@ MonoBehaviour:
       Data: 0
     - Name: 
       Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -212,15 +176,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -247,15 +202,6 @@ MonoBehaviour:
       Data: 45
     - Name: 
       Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -290,15 +236,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -325,15 +262,6 @@ MonoBehaviour:
       Data: 45
     - Name: 
       Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -368,15 +296,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -403,15 +322,6 @@ MonoBehaviour:
       Data: 0
     - Name: 
       Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -446,15 +356,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -481,15 +382,6 @@ MonoBehaviour:
       Data: -45
     - Name: 
       Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -524,15 +416,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -543,5 +426,5 @@ MonoBehaviour:
       Entry: 8
       Data: 
   waveName: Preset1
-  defaultSpeed: 5
+  speedMultiplier: 1
   timeBetweenFish: 2

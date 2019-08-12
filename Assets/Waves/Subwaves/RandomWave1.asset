@@ -48,15 +48,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -72,15 +63,6 @@ MonoBehaviour:
     - Name: spawnPositionOverride
       Entry: 7
       Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
     - Name: 
       Entry: 6
       Data: 
@@ -108,15 +90,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: speedOverride
-      Entry: 7
-      Data: System.Nullable`1[[System.Single, mscorlib]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -127,7 +100,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   waveName: Random1
-  defaultSpeed: 5
+  speedMultiplier: 1
   timeBetweenFish: 2
   fishCount: 10
   radius: {x: 43.782772, y: 67.26592}
