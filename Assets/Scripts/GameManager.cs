@@ -144,9 +144,8 @@ namespace FishBash
                 StopAllCoroutines();
             }
 
-            
             StartCoroutine(EndGameDisplay());
-            EventManager.TriggerEvent("GAMEEND");
+            
         }
 
         #region COROUTINES
@@ -210,7 +209,8 @@ namespace FishBash
             {
                 yield return null;
             }
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(1f);
+            EventManager.TriggerEvent("GAMEEND");
             yield return textField.DisplayText("Game Over!", 3);
         }
 

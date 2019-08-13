@@ -100,7 +100,7 @@ namespace FishBash
     /// <summary>
     /// Labels for all simple fish patterns - should be the same as the array patterns
     /// </summary>
-    internal enum FishPatterns
+    public enum FishPatterns
     {
         Line, SineWave
     }

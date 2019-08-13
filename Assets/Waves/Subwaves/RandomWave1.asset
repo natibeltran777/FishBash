@@ -18,7 +18,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720, type: 3}
     - {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d, type: 3}
-    - {fileID: 590241755569322703, guid: a891d7072bece3e4c912463df2e10675, type: 3}
+    - {fileID: 335069951650211738, guid: f8eca319d2e98514cb5ed3e97dea67c6, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -100,7 +100,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   waveName: Random1
-  speedMultiplier: 1
+  speedMultiplier: 3
   timeBetweenFish: 2
   fishCount: 10
   radius: {x: 43.782772, y: 67.26592}

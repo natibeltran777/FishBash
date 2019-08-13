@@ -203,20 +203,15 @@ PrefabInstance:
       propertyPath: parentTracker
       value: 
       objectReference: {fileID: 1845633805}
-    - target: {fileID: 6299441029831074941, guid: 2ecea16b655396647adda8f7fd700c1b,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1645735280}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ecea16b655396647adda8f7fd700c1b, type: 3}
---- !u!43 &942665026
+--- !u!43 &879352895
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1338
+  m_Name: pb_Mesh-1542
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -376,7 +371,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1768
+  m_Name: pb_Mesh-1882
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -548,7 +543,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1770
+  m_Name: pb_Mesh-1884
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -773,12 +768,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 942665026}
+      objectReference: {fileID: 879352895}
     - target: {fileID: 5427828883268126209, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 942665026}
+      objectReference: {fileID: 879352895}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cd3314cc574924785fd673d80dd8c0, type: 3}
 --- !u!1001 &1619782043
@@ -1000,7 +995,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1682
+  m_Name: pb_Mesh-1886
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2

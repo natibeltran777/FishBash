@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd0a4e675d48cc479016cec9085617d, type: 3}
   m_Name: CircleWaves
   m_EditorClassIdentifier: 
-  subwaves: []
-  timeBetweenSubwaves: 0
+  subwaves:
+  - {fileID: 11400000, guid: 7f2c66e11880d19459cf6a24d2ed0f93, type: 2}
+  - {fileID: 11400000, guid: 7f2c66e11880d19459cf6a24d2ed0f93, type: 2}
+  - {fileID: 11400000, guid: 7f2c66e11880d19459cf6a24d2ed0f93, type: 2}
+  - {fileID: 11400000, guid: 7f2c66e11880d19459cf6a24d2ed0f93, type: 2}
+  - {fileID: 11400000, guid: 7f2c66e11880d19459cf6a24d2ed0f93, type: 2}
+  timeBetweenSubwaves: 2
   totalPoints: 0

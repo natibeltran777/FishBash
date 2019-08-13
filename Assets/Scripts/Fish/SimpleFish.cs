@@ -24,7 +24,7 @@ namespace FishBash
         public float Speed { get => speed; set => speed = value; }
 
         [SerializeField]
-        private FishPatterns currentPattern;
+        protected FishPatterns currentPattern;
 
         /// <summary>
         /// Direction for fish to move in

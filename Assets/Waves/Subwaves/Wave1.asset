@@ -426,5 +426,5 @@ MonoBehaviour:
       Entry: 8
       Data: 
   waveName: Preset1
-  speedMultiplier: 1
+  speedMultiplier: 3
   timeBetweenFish: 2
