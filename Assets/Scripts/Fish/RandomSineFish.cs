@@ -7,12 +7,16 @@ namespace FishBash
     public class RandomSineFish : SimpleFish
     {
         private SinWaveGenerator gen;
+        [SerializeField, Sirenix.OdinInspector.MinMaxSlider(0, 5, showFields: true)]
+        private Vector2 magnitudeRange;
+        [SerializeField, Sirenix.OdinInspector.MinMaxSlider(0, 5, showFields: true)]
+        private Vector2 frequencyRange;
 
         //Sets pattern to a sine wave
         new void Start()
         {
             base.Start();
-            gen = new SinWaveGenerator(Random.Range(0, 5), Random.Range(0, 5));
+            gen = new SinWaveGenerator(Random.Range(magnitudeRange.x, magnitudeRange.y), Random.Range(frequencyRange.x, frequencyRange.y));
             pattern = gen.SineWave;
         }
 

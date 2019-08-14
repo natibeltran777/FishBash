@@ -334,7 +334,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.41
+  currentPattern: 0
   scoreValue: 10
+  magnitudeRange: {x: 0.5, y: 5}
+  frequencyRange: {x: 0.5, y: 5}
 --- !u!1 &7380719463318016433
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,16 +462,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RandomSineFish
       objectReference: {fileID: 0}
-    - target: {fileID: 4092242013789083774, guid: 1ed4bcea703b13c42abd46269b2b1e49,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4092242013789083774, guid: 1ed4bcea703b13c42abd46269b2b1e49,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -538,6 +531,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092242013789083774, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092242013789083774, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed4bcea703b13c42abd46269b2b1e49, type: 3}
