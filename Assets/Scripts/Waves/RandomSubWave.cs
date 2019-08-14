@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace FishBash
 {
@@ -10,7 +11,8 @@ namespace FishBash
         public class RandomSubWave : IWaves<FishContainer>
         {
             private readonly int _fishCount;
-            private FishContainer[] data;
+            private Dictionary<FishContainer, int> data;
+            private FishContainer[] fishTypes;
             private readonly float _delay;
             private readonly float _speedMultiplier;
 
@@ -22,16 +24,23 @@ namespace FishBash
                 _speedMultiplier = toBuild.speedMultiplier;
                 _delay = toBuild.timeBetweenFish;
                 data = toBuild.fishInWave;
-                _fishCount = toBuild.fishCount;
+                _fishCount = toBuild.FishCount;
                 _radiusRange = toBuild.radius;
                 _radiansRange = toBuild.radians;
+                fishTypes = data.Keys.ToArray();
             }
 
             public IEnumerator BeginWave()
             {
                 for (int i = 0; i < _fishCount; i++)
                 {
-                    FishContainer toSpawn = data[Random.Range(0, data.Length)];
+                    FishContainer toSpawn = fishTypes[Random.Range(0, fishTypes.Length)];
+                    data[toSpawn]--;
+                    if(data[toSpawn] < 1)
+                    {
+                        data.Remove(toSpawn);
+                        fishTypes = data.Keys.ToArray();
+                    }
                     FishManager.instance.RandomSpawnFish(toSpawn, _speedMultiplier, _radiusRange, _radiansRange);
                     yield return new WaitForSeconds(_delay);
                 }
@@ -39,7 +48,7 @@ namespace FishBash
 
             public FishContainer[] GetData()
             {
-                return data;
+                return fishTypes;
             }
 
             public int GetLength()

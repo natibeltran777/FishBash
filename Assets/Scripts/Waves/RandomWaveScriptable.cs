@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using Sirenix.Serialization;
 
 namespace FishBash
 {
@@ -10,7 +12,10 @@ namespace FishBash
         [System.Serializable]
         public class RandomWaveScriptable : WaveScriptable
         {
-            public int fishCount;
+            [Tooltip("List of all fish that can be spawned. Keys are the fish type themselves, value is the number of this type to spawn")]
+            public new Dictionary<FishContainer, int> fishInWave;
+            [Sirenix.OdinInspector.ShowInInspector]
+            public int FishCount { get => fishInWave.Values.Sum(); }
 
             [Sirenix.OdinInspector.MinMaxSlider(5, 100, showFields: true)]
             public Vector2 radius;

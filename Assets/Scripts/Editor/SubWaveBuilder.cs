@@ -64,7 +64,6 @@ namespace FishBash
                             RandomWaveScriptable w = (RandomWaveScriptable)toBuild;
                             showPanel = false;
                             showRandomPanel = true;
-                            randompanel.enemies = w.fishCount;
                             randompanel.name = w.name;
                             randompanel.speedMultiplier = w.speedMultiplier;
                             randompanel.timeBetweenEnemies = w.timeBetweenFish;
@@ -142,7 +141,6 @@ namespace FishBash
                 public string name;
                 public float speedMultiplier;
                 public float timeBetweenEnemies;
-                public int enemies;
 
                 [HorizontalGroup]
                 public SubWaveGraphic background;
@@ -150,15 +148,14 @@ namespace FishBash
                 [HorizontalGroup]//(Width = 0.5f)]
                 [InfoBox("Hit the plus to add a new enemy type. For random subwaves, its best to leave the position null.")]
                 [NonSerialized, OdinSerialize, ShowInInspector]
-                public FishContainer[] enemyTypes;
+                public Dictionary<FishContainer, int> enemyTypes;
 
                 public void Reset()
                 {
                     name = null;
                     speedMultiplier = 1;
                     timeBetweenEnemies = 0;
-                    enemies = 0;
-                    enemyTypes = new FishContainer[0];
+                    enemyTypes = new Dictionary<FishContainer, int>();
                 }
             }
 

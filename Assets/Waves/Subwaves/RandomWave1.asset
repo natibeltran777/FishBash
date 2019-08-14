@@ -25,14 +25,28 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: fishInWave
+      Entry: 6
+      Data: 
+    - Name: RandomWaveScriptable+fishInWave
       Entry: 7
-      Data: 0|FishBash.FishContainer[], Assembly-CSharp
+      Data: 0|System.Collections.Generic.Dictionary`2[[FishBash.FishContainer, Assembly-CSharp],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[FishBash.FishContainer,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 7
-      Data: 1|FishBash.FishContainer, Assembly-CSharp
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 2|FishBash.FishContainer, Assembly-CSharp
     - Name: fishPrefab
       Entry: 10
       Data: 0
@@ -51,9 +65,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: $v
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 7
-      Data: 2|FishBash.FishContainer, Assembly-CSharp
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 3|FishBash.FishContainer, Assembly-CSharp
     - Name: fishPrefab
       Entry: 10
       Data: 1
@@ -72,9 +95,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: $v
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 7
-      Data: 3|FishBash.FishContainer, Assembly-CSharp
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 4|FishBash.FishContainer, Assembly-CSharp
     - Name: fishPrefab
       Entry: 10
       Data: 2
@@ -93,6 +125,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: $v
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -102,6 +140,5 @@ MonoBehaviour:
   waveName: Random1
   speedMultiplier: 3
   timeBetweenFish: 2
-  fishCount: 10
   radius: {x: 43.782772, y: 67.26592}
   radians: {x: -1.36, y: 1.360526}
