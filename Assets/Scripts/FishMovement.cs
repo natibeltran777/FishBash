@@ -46,7 +46,7 @@ namespace FishBash
         /// <param name="dir">Direction of modification</param>
         /// <param name="t">Time</param>
         /// <returns>pos modified according to pattern</returns>
-        public delegate Vector3 fishPattern(Vector3 pos, Vector3 dir, float t);
+        public delegate Vector3 FishPattern(Vector3 pos, Vector3 dir, float t);
 
         /// <summary>
         /// Adjusts pos based on a sine wave pattern
@@ -87,5 +87,21 @@ namespace FishBash
             return pos;
         }
 
+        
+
+        /// <summary>
+        /// Static array of all simple fish patterns - should be the same as the FishPatterns enum
+        /// </summary>
+        public static FishPattern[] patterns = { Line, SinWave };
+
+    }
+
+
+    /// <summary>
+    /// Labels for all simple fish patterns - should be the same as the array patterns
+    /// </summary>
+    public enum FishPatterns
+    {
+        Line, SineWave
     }
 }

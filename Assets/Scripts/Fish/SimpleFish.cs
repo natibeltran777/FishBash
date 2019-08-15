@@ -9,9 +9,8 @@ namespace FishBash
 
     /// <summary>
     /// Basic fish behavior. Fish moves toward goal and is modified according to some base pattern
-    /// \todo : handle reaching the goal
     /// </summary>
-    public abstract class SimpleFish : MonoBehaviour, IFish
+    public class SimpleFish : MonoBehaviour, IFish
     {
 
         private GameObject platform;
@@ -22,6 +21,10 @@ namespace FishBash
         [SerializeField]
         [Range(0,10)]
         protected float speed;
+        public float Speed { get => speed; set => speed = value; }
+
+        [SerializeField]
+        protected FishPatterns currentPattern;
 
         /// <summary>
         /// Direction for fish to move in
@@ -33,23 +36,31 @@ namespace FishBash
         /// </summary>
         protected Vector3 crossDirection;
 
+        
         /// <summary>
         /// Pattern for fish to move in
         /// </summary>
-        protected FishMovement.fishPattern pattern;
-
+        protected FishMovement.FishPattern pattern;
+        
         protected Vector3 pos;
+
+        protected Vector3 prevPos = new Vector3();
 
         protected Rigidbody rb;
 
         private bool hasLeapt = false;
+
+        public int scoreValue;
+
+        public bool HasBeenHit { get; set; } = false;
 
         protected void UpdateMovement()
         {
             //Debug.Log("move");
             pos += unitDirection * speed * Time.deltaTime;
             transform.position = pattern(pos, crossDirection, Time.time);
-
+            transform.rotation = Quaternion.LookRotation(prevPos- transform.position, Vector3.up);
+            prevPos = transform.position;
         }
 
         public void SetSpeed(float s)
@@ -60,6 +71,17 @@ namespace FishBash
         public bool CheckRadius(float radius)
         {
             return Vector3.Distance(transform.position, platform.transform.position) < radius;
+        }
+
+
+        public void HitFish()
+        {
+            if (!HasBeenHit)
+            {
+                HasBeenHit = true;
+                GameManager.instance.IncrementScore(scoreValue);
+                EventManager.TriggerEvent("FISHHIT");
+            }
         }
 
         protected void LeapBehavior()
@@ -88,6 +110,7 @@ namespace FishBash
             pos = transform.position;
             this.platform = FishManager.instance.platform;
             unitDirection = GetUnitDirection();
+            pattern = FishMovement.patterns[(int)currentPattern];
 
             crossDirection = Vector3.Cross(unitDirection, Vector3.up);
         }

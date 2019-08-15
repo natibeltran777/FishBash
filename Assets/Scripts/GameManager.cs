@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using FishBash.Waves;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,15 +13,49 @@ namespace FishBash
         [SerializeField]
         private bool test = false;
 
-        [SerializeField]
-        private GameObject menu;
-        [SerializeField]
-        private GameObject pointers;
-        private bool hasGameStarted = false;
+        public int CurrWave { get; private set; } = 0;
 
+        [SerializeField]
+        private DisplayTextInViewField textField;
+
+        [SerializeField]
+        private int initLives = 3;
+
+        [SerializeField, Tooltip("After getting hit, the player will be invulnerable for this long")]
+        private float invulnerableTime = 0.5f;
+
+        public int GetScore { get => playerScore; }
+        public int CurrLives { get => lives; }
+        private int lives;
+        private bool isPlayerInvulnerable = false;
+
+        /// <summary>
+        /// Returns total waves
+        /// </summary>
+        public int TotalWaves
+        {
+            get
+            {
+                return waveList.Length;
+            }
+        }
+
+        [SerializeField]
+        private int playerScore = 0;
+        [SerializeField]
+        private WaveContainer[] waveList;
+
+        private List<int> fishIDsHitPlayer = new List<int>();
         public static GameManager instance = null;
+        private IEnumerator currentExecutingWave;
+        private IEnumerator currentExecutingGame;
+        private IEnumerator waveHandler;
 
-        public TextMeshProUGUI uiText;
+        //TODO : Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. 
+        // However, in that case we should have a global variable to choose between the quest and go builds
+        [SerializeField, Tooltip("Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. However, in that case we should have a global variable to choose between the quest and go builds")]
+        private bool _isOculusGo;
+        public bool IsOculusGo { get => _isOculusGo; }
 
         #region UNITY_METHODS
         private void Awake()
@@ -50,11 +86,13 @@ namespace FishBash
         /// </summary>
         public void StartGame()
         {
-            hasGameStarted = true;
-            menu.SetActive(false);
-            pointers.SetActive(false);
-            FishManager.instance.InitializeWaves();
-            StartCoroutine(BeginGame());
+            FishManager.instance.InitializeFishList();
+            lives = initLives;
+            playerScore = 0;
+            CurrWave = 0;
+            EventManager.TriggerEvent("GAMESTART");
+            currentExecutingGame = BeginGame();
+            StartCoroutine(currentExecutingGame);
         }
 
         /// <summary>
@@ -68,49 +106,131 @@ namespace FishBash
             Application.Quit();
         #endif
          }
-#endregion //PUBLIC_METHODS
+         // methods to keep track of the fishes run into player
+         public void HandleFishHitPlayer(int itemID)
+         {
+            if (! fishIDsHitPlayer.Contains(itemID)) {
+                fishIDsHitPlayer.Add(itemID);
+                if (!isPlayerInvulnerable)
+                {
+                    StartCoroutine(DetractLives());
+                }
+            }
+         }
 
-            #region COROUTINES
-            /// <summary>
-            /// Central game loop - runs each wave until all waves have been executed
-            /// </summary>
-            /// <returns></returns>
-            IEnumerator BeginGame()
+        public void IncrementScore(int toAdd)
         {
-            yield return FishManager.instance.HandleWaves();
-            yield return EndGame();
+            playerScore += toAdd;
+            //Debug.Log("Fish Hit! Score is: " + playerScore);
+            //StartCoroutine(DisplayText(scoreText, 3));
         }
+        #endregion //PUBLIC_METHODS
+
 
         /// <summary>
         /// Handles game ending behavior - for when all waves are over \todo - add losing & winning behavior
         /// </summary>
+        private void EndGame(bool isWin)
+        {
+            if (isWin)
+            {
+                //Win behaviour
+
+            }
+            else
+            {
+                //Lose behaviour
+                FishManager.instance.DestroyAllFish();
+                StopAllCoroutines();
+            }
+
+            StartCoroutine(EndGameDisplay());
+            
+        }
+
+        #region COROUTINES
+        /// <summary>
+        /// Central game loop - runs each wave until all waves have been executed
+        /// </summary>
         /// <returns></returns>
-        IEnumerator EndGame()
+        IEnumerator BeginGame()
+        {
+            waveHandler = HandleWaves();
+            yield return StartCoroutine(waveHandler);
+            EndGame(true);
+        }
+
+        /// <summary>
+        /// Central game loop - runs each wave until all waves have been executed
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator HandleWaves()
+        {
+            while (CurrWave < waveList.Length)
+            {
+                yield return Break(CurrWave);
+                IWaves<WaveScriptable> wave = new MainWaves(waveList[CurrWave].subwaves, waveList[CurrWave].timeBetweenSubwaves, instance);
+                currentExecutingWave = wave.BeginWave();
+                yield return StartCoroutine(currentExecutingWave);
+                CurrWave++;
+            }
+            yield return null;
+        }
+
+        /// <summary>
+        /// Given a string outlining the order of fish, breaks string up into enumerable. Uses '.' as a seperator character
+        /// </summary>
+        /// <param name="order">String to process</param>
+        /// <returns>Enumerable list providing order of fish</returns>
+        [Obsolete] IEnumerable<int> ProcessString(string order)
+        {
+            string[] toReturn = order.Split('.');
+            int[] t = new int[toReturn.Length];
+            for (int i = 0; i < toReturn.Length; i++)
+            {
+                t[i] = int.Parse(toReturn[i]);
+            }
+            return t;
+        }
+
+        /// <summary>
+        /// Filler coroutine to run before each wave
+        /// </summary>
+        /// <param name="nextWave">Name of next wave</param>
+        /// <returns></returns>
+        private IEnumerator Break(int nextWave)
+        {
+            yield return textField.DisplayText("Beginning wave " + (nextWave + 1) + "...", 3);
+        }
+        
+        IEnumerator EndGameDisplay()
         {
             while (FishManager.instance.FishRemaining > 0)
             {
                 yield return null;
             }
-            yield return DisplayText("Game Over!", 3);
-            hasGameStarted = true;
-            menu.SetActive(true);
-            pointers.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            EventManager.TriggerEvent("GAMEEND");
+            yield return textField.DisplayText("Game Over!", 3);
         }
 
-        /// <summary>
-        /// Displays given text on screen for a set period of time
-        /// </summary>
-        /// <param name="text">Text to display</param>
-        /// <param name="timeToDisplay">Time to display text</param>
-        /// <returns></returns>
-        public IEnumerator DisplayText(string text, float timeToDisplay)
+        IEnumerator DetractLives()
         {
-            uiText.text = text;
-            uiText.gameObject.SetActive(true);
-            yield return new WaitForSeconds(timeToDisplay);
-            uiText.gameObject.SetActive(false);
-            yield return null;
+            isPlayerInvulnerable = true;
+            lives--;
+            EventManager.TriggerEvent("PLAYERHIT");
+            if (lives > 0)
+            {
+                yield return new WaitForSeconds(invulnerableTime);
+                isPlayerInvulnerable = false;
+            }
+            else
+            {
+                isPlayerInvulnerable = false;
+                EndGame(false);
+            }
         }
-#endregion //COROUTINES
+        #endregion //COROUTINES
+
     }
 }
