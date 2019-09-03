@@ -1,0 +1,13 @@
+Label {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+.ButtonContainer{
+	flex-direction: row;
+	align-self: stretch;
+}
+.HeaderButton{
+	flex-grow:50;
+	align-self: stretch;
+}
