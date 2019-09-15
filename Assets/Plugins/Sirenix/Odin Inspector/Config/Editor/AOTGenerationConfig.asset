@@ -16,7 +16,7 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 637003632128971050
+  lastScan: 637012264920505286
   supportSerializedTypes:
   - TypeName: FishBash.FishContainer, Assembly-CSharp
     IsCustom: 0
@@ -25,9 +25,6 @@ MonoBehaviour:
     IsCustom: 0
     Emit: 1
   - TypeName: System.Single, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Nullable`1[[System.Single, mscorlib]], mscorlib
     IsCustom: 0
     Emit: 1
   - TypeName: UnityEngine.GameObject, UnityEngine.CoreModule

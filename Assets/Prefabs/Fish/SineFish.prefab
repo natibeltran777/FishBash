@@ -90,30 +90,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 4848113677864469292, guid: ffccab39a7e33a24aabd99ed90742ae2,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4848113677864469292, guid: ffccab39a7e33a24aabd99ed90742ae2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4848113677864469292, guid: ffccab39a7e33a24aabd99ed90742ae2,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 4848113677864574732, guid: ffccab39a7e33a24aabd99ed90742ae2,
         type: 3}
       propertyPath: m_Name
       value: Fish
-      objectReference: {fileID: 0}
-    - target: {fileID: 4848113677866762698, guid: ffccab39a7e33a24aabd99ed90742ae2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffccab39a7e33a24aabd99ed90742ae2, type: 3}
