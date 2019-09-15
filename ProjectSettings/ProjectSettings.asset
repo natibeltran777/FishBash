@@ -387,8 +387,8 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_Enabled: 1
     m_Devices:
-    - Oculus
     - OpenVR
+    - Oculus
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
@@ -627,7 +627,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: VIU_PLUGIN;ODIN_INSPECTOR;VIU_OCULUSVR
+    1: ODIN_INSPECTOR;VIU_OCULUSVR;VIU_OCULUSVR_1_37_0_OR_NEWER;VIU_PLUGIN
     7: VIU_PLUGIN;ODIN_INSPECTOR;VIU_OCULUSVR
   platformArchitecture: {}
   scriptingBackend: {}
