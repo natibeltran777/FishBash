@@ -34,7 +34,9 @@ namespace FishBash
             {
                 Destroy(this);
             }
+
             _pt = this.gameObject.GetComponent<VivePoseTracker>();
+
         }
 
         public ViveRoleProperty BatPose {
@@ -67,11 +69,13 @@ namespace FishBash
             }
 
 
-
+            /*
             if (!GameManager.instance.IsOculusGo)
             {
+            */
                 ViveInput.AddPress(HandRole.LeftHand, ControllerButton.Trigger, LeftTrigger);
                 ViveInput.AddPress(HandRole.RightHand, ControllerButton.Trigger, RightTrigger);
+            /*
             }
             else
             {
@@ -79,15 +83,16 @@ namespace FishBash
                 _pt.viveRole.roleValue = goProperty.roleValue;
                 goProperty.onRoleChanged += GoProperty_onRoleChanged;
             }
+            */
         }
 
         private void EndGame()
-        {
+        {/*
             if (!GameManager.instance.IsOculusGo)
-            {
+            {*/
                 ViveInput.RemovePress(HandRole.LeftHand, ControllerButton.Trigger, LeftTrigger);
                 ViveInput.RemovePress(HandRole.RightHand, ControllerButton.Trigger, RightTrigger);
-            }
+            //}
             batObj.SetActive(false);
             leftHandObj.SetActive(true);
             rightHandObj.SetActive(true);

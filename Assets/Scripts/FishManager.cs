@@ -106,9 +106,6 @@ namespace FishBash
             fishList.Add(fish);
         }
 
-        #endregion //PUBLIC_METHODS
-
-        #region PRIVATE_METHODS
         /// <summary>
         /// Creates a fish of the specified object at the given position with the given speed
         /// </summary>
@@ -116,7 +113,7 @@ namespace FishBash
         /// <param name="position">Vector2 specifying x and z position of the fish</param>
         /// <param name="speedMultiplier">Optional multiplier for the fish speed</param>
         /// <returns>IFish component created</returns>
-        private IFish SpawnFish(GameObject fishToSpawn, Vector2 position, float speedMultiplier = 1)
+        public IFish SpawnFish(GameObject fishToSpawn, Vector2 position, float speedMultiplier = 1)
         {
             
             GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
@@ -125,8 +122,9 @@ namespace FishBash
             toReturn.Speed *= speedMultiplier;
             return toReturn;
         }
-        #endregion PRIVATE_METHODS
 
-        
+        #endregion //PUBLIC_METHODS
+
+
     }
 }

@@ -22,12 +22,12 @@ namespace FishBash
         private int initLives = 3;
 
         [SerializeField, Tooltip("After getting hit, the player will be invulnerable for this long")]
-        private float invulnerableTime = 0.5f;
+        protected float invulnerableTime = 0.5f;
 
         public int GetScore { get => playerScore; }
         public int CurrLives { get => lives; }
-        private int lives;
-        private bool isPlayerInvulnerable = false;
+        protected int lives;
+        protected bool isPlayerInvulnerable = false;
 
         /// <summary>
         /// Returns total waves
@@ -41,7 +41,7 @@ namespace FishBash
         }
 
         [SerializeField]
-        private int playerScore = 0;
+        protected int playerScore = 0;
         [SerializeField]
         private WaveContainer[] waveList;
 
@@ -86,6 +86,7 @@ namespace FishBash
         /// </summary>
         public void StartGame()
         {
+            Debug.Log("start game");
             FishManager.instance.InitializeFishList();
             lives = initLives;
             playerScore = 0;
@@ -205,6 +206,7 @@ namespace FishBash
         
         IEnumerator EndGameDisplay()
         {
+            
             while (FishManager.instance.FishRemaining > 0)
             {
                 yield return null;
@@ -214,7 +216,7 @@ namespace FishBash
             yield return textField.DisplayText("Game Over!", 3);
         }
 
-        IEnumerator DetractLives()
+        protected IEnumerator DetractLives()
         {
             isPlayerInvulnerable = true;
             lives--;
