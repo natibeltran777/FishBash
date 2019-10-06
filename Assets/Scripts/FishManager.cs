@@ -86,10 +86,13 @@ namespace FishBash
         /// </summary>
         /// <param name="f">Fish object</param>
         /// <param name="speedMultiplier">Speed multiplier for this wave</param>
-        public void SpawnFish(FishContainer f, float speedMultipler)
+        public GameObject SpawnFish(FishContainer f, float speedMultipler)
         {
-            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.Value, speedMultipler);
+            IFish fish;
+            GameObject obj;
+            (fish, obj) = SpawnFish(f.fishPrefab, f.spawnPositionOverride.Value, speedMultipler);
             fishList.Add(fish);
+            return obj;
         }
 
         /// <summary>
@@ -99,11 +102,14 @@ namespace FishBash
         /// <param name="speedMultiplier">Speed multiplier for this wave</param>
         /// <param name="distance">Range of distance for this wave</param>
         /// <param name="distance">Range of angles (in radians) for this wave</param>
-        public void RandomSpawnFish(FishContainer f, float speedMultiplier, Vector2 distance, Vector2 angle)
+        public GameObject RandomSpawnFish(FishContainer f, float speedMultiplier, Vector2 distance, Vector2 angle)
         {
             Vector2 position = Utility.RandomPointOnUnitCircle(distance, angle);
-            IFish fish = SpawnFish(f.fishPrefab, f.spawnPositionOverride.GetValueOrDefault(position), speedMultiplier);
+            IFish fish;
+            GameObject obj;
+            (fish, obj) = SpawnFish(f.fishPrefab, f.spawnPositionOverride.GetValueOrDefault(position), speedMultiplier);
             fishList.Add(fish);
+            return obj;
         }
 
         /// <summary>
@@ -113,14 +119,14 @@ namespace FishBash
         /// <param name="position">Vector2 specifying x and z position of the fish</param>
         /// <param name="speedMultiplier">Optional multiplier for the fish speed</param>
         /// <returns>IFish component created</returns>
-        public IFish SpawnFish(GameObject fishToSpawn, Vector2 position, float speedMultiplier = 1)
+        private (IFish,GameObject) SpawnFish(GameObject fishToSpawn, Vector2 position, float speedMultiplier = 1)
         {
             
             GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
             fish.layer = 10;
             IFish toReturn = fish.GetComponent<IFish>();
             toReturn.Speed *= speedMultiplier;
-            return toReturn;
+            return (toReturn,fish);
         }
 
         #endregion //PUBLIC_METHODS

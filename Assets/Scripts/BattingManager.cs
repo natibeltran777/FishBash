@@ -20,7 +20,7 @@ namespace FishBash
         }
 
         #region COROUTINES
-        private new IEnumerator DetractLives()
+        protected override IEnumerator DetractLives()
         {
             isPlayerInvulnerable = true;
             EventManager.TriggerEvent("PLAYERHIT");

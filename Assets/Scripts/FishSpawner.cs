@@ -1,8 +1,9 @@
 ﻿using HTC.UnityPlugin.Vive;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace FishBash {
 
@@ -12,11 +13,20 @@ namespace FishBash {
 
         [SerializeField]
         private GameObject[] fishObj;
+        //[SerializeField]
+        //private float cooldown;
         [SerializeField]
-        private float cooldown;
+        private Slider speedOverride;
 
-        private bool canSpawn = false;
+        [SerializeField]
+        private TextMeshProUGUI currentDistanceTxt;
+        [SerializeField]
+        private TextMeshProUGUI maxDistanceTxt;
 
+        private bool CanSpawn {
+            get => FishManager.instance.FishRemaining < 1;
+        }
+        public float SpeedOverride => speedOverride.value;
         // Start is called before the first frame update
         void Start()
         {
@@ -26,21 +36,61 @@ namespace FishBash {
             ViveInput.AddPressDown(HandRole.RightHand, ControllerButton.Grip, SpawnFish);
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
+            currentDistanceTxt.text = HitDistance;
 
+            maxDistanceTxt.text = maxDistance.ToString();
+        }
+
+        private GameObject activeFish;
+        private IFish fishComponent; 
+
+        public float Distance
+        {
+            get
+            {
+                if (activeFish != null && fishComponent != null && fishComponent.HasBeenHit)
+                {
+                    float d = Vector3.Distance(Vector3.zero, activeFish.transform.position);
+                    if (d > maxDistance){
+                        maxDistance = d;
+                    }
+                    return d;
+
+                }
+                else
+                {
+                    return -1f;
+                }
+            }
+        }
+
+        public float maxDistance = 0;
+
+        public string HitDistance
+        {
+            get
+            {
+                if(Distance == -1f)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return Distance.ToString();
+                }
+            }
         }
 
         private void OnDestroy()
         {
-            EventManager.TriggerEvent("GAMEEND");
+            //EventManager.TriggerEvent("GAMEEND");
         }
 
         private void Setup()
         {
             EventManager.TriggerEvent("GAMESTART");
-            canSpawn = true;
         }
 
         public void SpawnFish()
@@ -50,14 +100,14 @@ namespace FishBash {
 
         private IEnumerator SpawnFish_()
         {
-            if (canSpawn)
+            if (CanSpawn)
             {
-                canSpawn = false;
-                Vector2 spawnPoint = new Vector2(transform.position.x, transform.position.z);
-                int index = Random.Range(0, fishObj.Length - 1);
-                FishManager.instance.SpawnFish(fishObj[index], spawnPoint);
-                yield return new WaitForSeconds(cooldown);
-                canSpawn = true;
+                FishContainer f = new FishContainer();
+                f.spawnPositionOverride = new Vector2(transform.position.x, transform.position.z);
+                f.fishPrefab = fishObj[Random.Range(0, fishObj.Length)];
+                activeFish = FishManager.instance.SpawnFish(f, SpeedOverride);
+                fishComponent = activeFish.GetComponent<IFish>();
+
             }
             yield return null;
         }

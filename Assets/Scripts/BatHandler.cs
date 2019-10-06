@@ -22,6 +22,9 @@ namespace FishBash
         [SerializeField]
         private GameObject batObj;
 
+        [SerializeField]
+        private ControllerButton switchHandsBtn;
+
         private VivePoseTracker _pt;
 
         private void Awake()
@@ -73,8 +76,8 @@ namespace FishBash
             if (!GameManager.instance.IsOculusGo)
             {
             */
-                ViveInput.AddPress(HandRole.LeftHand, ControllerButton.Trigger, LeftTrigger);
-                ViveInput.AddPress(HandRole.RightHand, ControllerButton.Trigger, RightTrigger);
+                ViveInput.AddPress(HandRole.LeftHand, switchHandsBtn, LeftTrigger);
+                ViveInput.AddPress(HandRole.RightHand, switchHandsBtn, RightTrigger);
             /*
             }
             else
@@ -90,8 +93,8 @@ namespace FishBash
         {/*
             if (!GameManager.instance.IsOculusGo)
             {*/
-                ViveInput.RemovePress(HandRole.LeftHand, ControllerButton.Trigger, LeftTrigger);
-                ViveInput.RemovePress(HandRole.RightHand, ControllerButton.Trigger, RightTrigger);
+                ViveInput.RemovePress(HandRole.LeftHand, switchHandsBtn, LeftTrigger);
+                ViveInput.RemovePress(HandRole.RightHand, switchHandsBtn, RightTrigger);
             //}
             batObj.SetActive(false);
             leftHandObj.SetActive(true);

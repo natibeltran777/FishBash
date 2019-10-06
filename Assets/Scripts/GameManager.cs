@@ -86,7 +86,7 @@ namespace FishBash
         /// </summary>
         public void StartGame()
         {
-            Debug.Log("start game");
+            //Debug.Log("start game");
             FishManager.instance.InitializeFishList();
             lives = initLives;
             playerScore = 0;
@@ -206,7 +206,6 @@ namespace FishBash
         
         IEnumerator EndGameDisplay()
         {
-            
             while (FishManager.instance.FishRemaining > 0)
             {
                 yield return null;
@@ -216,7 +215,7 @@ namespace FishBash
             yield return textField.DisplayText("Game Over!", 3);
         }
 
-        protected IEnumerator DetractLives()
+        protected virtual IEnumerator DetractLives()
         {
             isPlayerInvulnerable = true;
             lives--;
