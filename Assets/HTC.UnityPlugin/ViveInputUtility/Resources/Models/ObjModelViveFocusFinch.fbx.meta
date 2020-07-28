@@ -1,82 +1,191 @@
 fileFormatVersion: 2
 guid: aa58a01d293edc24987fbbf6ec9578ad
-timeCreated: 1518523280
-licenseType: Pro
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: AppButton
-    100002: Body
-    100004: HomeButton
-    100006: //RootNode
-    100008: Side_button_L
-    100010: Side_button_R
-    100012: TouchPad
-    100014: Trigger
-    100016: body
-    100018: side_button
-    100020: trigger
-    400000: AppButton
-    400002: Body
-    400004: HomeButton
-    400006: //RootNode
-    400008: Side_button_L
-    400010: Side_button_R
-    400012: TouchPad
-    400014: Trigger
-    400016: body
-    400018: side_button
-    400020: trigger
-    2300000: AppButton
-    2300002: Body
-    2300004: HomeButton
-    2300006: Side_button_L
-    2300008: Side_button_R
-    2300010: TouchPad
-    2300012: Trigger
-    2300014: body
-    2300016: side_button
-    2300018: trigger
-    3300000: AppButton
-    3300002: Body
-    3300004: HomeButton
-    3300006: Side_button_L
-    3300008: Side_button_R
-    3300010: TouchPad
-    3300012: Trigger
-    3300014: body
-    3300016: side_button
-    3300018: trigger
-    4300000: TouchPad
-    4300002: Side_button_L
-    4300004: Side_button_R
-    4300006: AppButton
-    4300008: HomeButton
-    4300010: Body
-    4300012: Trigger
-    4300014: trigger
-    4300016: body
-    4300018: side_button
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: AppButton
+  - first:
+      1: 100002
+    second: Body
+  - first:
+      1: 100004
+    second: HomeButton
+  - first:
+      1: 100006
+    second: //RootNode
+  - first:
+      1: 100008
+    second: Side_button_L
+  - first:
+      1: 100010
+    second: Side_button_R
+  - first:
+      1: 100012
+    second: TouchPad
+  - first:
+      1: 100014
+    second: Trigger
+  - first:
+      1: 100016
+    second: body
+  - first:
+      1: 100018
+    second: side_button
+  - first:
+      1: 100020
+    second: trigger
+  - first:
+      4: 400000
+    second: AppButton
+  - first:
+      4: 400002
+    second: Body
+  - first:
+      4: 400004
+    second: HomeButton
+  - first:
+      4: 400006
+    second: //RootNode
+  - first:
+      4: 400008
+    second: Side_button_L
+  - first:
+      4: 400010
+    second: Side_button_R
+  - first:
+      4: 400012
+    second: TouchPad
+  - first:
+      4: 400014
+    second: Trigger
+  - first:
+      4: 400016
+    second: body
+  - first:
+      4: 400018
+    second: side_button
+  - first:
+      4: 400020
+    second: trigger
+  - first:
+      23: 2300000
+    second: AppButton
+  - first:
+      23: 2300002
+    second: Body
+  - first:
+      23: 2300004
+    second: HomeButton
+  - first:
+      23: 2300006
+    second: Side_button_L
+  - first:
+      23: 2300008
+    second: Side_button_R
+  - first:
+      23: 2300010
+    second: TouchPad
+  - first:
+      23: 2300012
+    second: Trigger
+  - first:
+      23: 2300014
+    second: body
+  - first:
+      23: 2300016
+    second: side_button
+  - first:
+      23: 2300018
+    second: trigger
+  - first:
+      33: 3300000
+    second: AppButton
+  - first:
+      33: 3300002
+    second: Body
+  - first:
+      33: 3300004
+    second: HomeButton
+  - first:
+      33: 3300006
+    second: Side_button_L
+  - first:
+      33: 3300008
+    second: Side_button_R
+  - first:
+      33: 3300010
+    second: TouchPad
+  - first:
+      33: 3300012
+    second: Trigger
+  - first:
+      33: 3300014
+    second: body
+  - first:
+      33: 3300016
+    second: side_button
+  - first:
+      33: 3300018
+    second: trigger
+  - first:
+      43: 4300000
+    second: TouchPad
+  - first:
+      43: 4300002
+    second: Side_button_L
+  - first:
+      43: 4300004
+    second: Side_button_R
+  - first:
+      43: 4300006
+    second: AppButton
+  - first:
+      43: 4300008
+    second: HomeButton
+  - first:
+      43: 4300010
+    second: Body
+  - first:
+      43: 4300012
+    second: Trigger
+  - first:
+      43: 4300014
+    second: trigger
+  - first:
+      43: 4300016
+    second: body
+  - first:
+      43: 4300018
+    second: side_button
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -84,13 +193,23 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -100,9 +219,14 @@ ModelImporter:
     normalSmoothAngle: 50
     normalImportMode: 0
     tangentImportMode: 2
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -112,11 +236,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

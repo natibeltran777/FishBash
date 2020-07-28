@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test Wave 2
   m_EditorClassIdentifier: 
   subwaves:
-  - {fileID: 11400000, guid: a4f88b1fe90490c41bbab1dcc12e3ba8, type: 2}
   - {fileID: 11400000, guid: ff2d75ba847bcdd4eb19eb91eb5fd95e, type: 2}
+  - {fileID: 11400000, guid: a4f88b1fe90490c41bbab1dcc12e3ba8, type: 2}
   timeBetweenSubwaves: 5
   totalPoints: 0

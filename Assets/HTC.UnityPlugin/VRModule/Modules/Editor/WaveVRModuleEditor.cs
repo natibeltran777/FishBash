@@ -13,6 +13,12 @@ namespace HTC.UnityPlugin.VRModuleManagement
         {
             Add(new SymbolRequirement()
             {
+                symbol = "VIU_WAVEVR_SUPPORT",
+                validateFunc = (req) => Vive.VIUSettingsEditor.supportWaveVR,
+            });
+
+            Add(new SymbolRequirement()
+            {
                 symbol = "VIU_WAVEVR",
                 reqTypeNames = new string[] { "WaveVR" },
                 reqFileNames = new string[] { "WaveVR.cs" },
@@ -95,6 +101,21 @@ namespace HTC.UnityPlugin.VRModuleManagement
                         }
                     }
                     return false;
+                },
+                reqFileNames = new string[] { "wvr.cs" },
+            });
+
+            Add(new SymbolRequirement()
+            {
+                symbol = "VIU_WAVEVR_3_1_3_OR_NEWER",
+                reqMethods = new SymbolRequirement.ReqMethodInfo[]
+                {
+                    new SymbolRequirement.ReqMethodInfo()
+                    {
+                        typeName = "wvr.Interop",
+                        name = "WVR_PostInit",
+                        bindingAttr = BindingFlags.Public | BindingFlags.Static,
+                    }
                 },
                 reqFileNames = new string[] { "wvr.cs" },
             });

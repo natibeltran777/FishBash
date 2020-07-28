@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ocean
-  m_Shader: {fileID: 4800000, guid: cb4f68440a7dbb04fa30274bb126d3b0, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 0a80324c0b9909c428cd5982ca65c8bc,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,6 +40,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 2800000, guid: b5a3094051c2f5249b5177737504a1fc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamTex:
+        m_Texture: {fileID: 2800000, guid: f719646d707cf0e48848212808567a41, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 66c4580cae2903646861a62234f82b09, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,20 +69,28 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Ripple_Cutoff: 0.5
     - _Amount: 0.5
     - _BumpScale: 1
+    - _Choppiness: 0.1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FlowSpeed: 0.1
+    - _FlowStrength: 0.0075
     - _Foam: 0.5
+    - _FoamDistance: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Height: 0.5
+    - _LightFoamOpacity: 0.9
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Opacity: 0.7
     - _Parallax: 0.02
+    - _Size: 8
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.5
@@ -82,5 +99,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.4009434, g: 1, b: 0.9872179, a: 1}
+    - _DarkFoamColor: {r: 0.04396583, g: 0.6062318, b: 0.7169812, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LightFoamColor: {r: 1, g: 1, b: 1, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 0.5}
+    - _WaterColor: {r: 0.13333327, g: 0.8444224, b: 0.98039216, a: 0}

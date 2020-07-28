@@ -12,17 +12,14 @@ public class DeathPanelController : MonoBehaviour
     [SerializeField]
     private float time;
 
-    void Start()
+    void Awake()
     {
         panel = GetComponent<Image>();
-        EventManager.StartListening("PLAYERHIT", StartTurnOn);
-        panel.canvasRenderer.SetAlpha(0.0f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        EventManager.StartListening("PLAYERHIT", StartTurnOn);
     }
 
     void StartTurnOn()
@@ -33,6 +30,7 @@ public class DeathPanelController : MonoBehaviour
 
     IEnumerator TurnOn()
     {
+        panel.enabled = true;
         panel.canvasRenderer.SetAlpha(0.0f);
         panel.CrossFadeAlpha(1.0f, time / 2, false);
         while(panel.canvasRenderer.GetAlpha() != 1.0f)
@@ -40,5 +38,6 @@ public class DeathPanelController : MonoBehaviour
             yield return null;
         }
         panel.CrossFadeAlpha(0.0f, time / 2, false);
+        panel.enabled = false;
     }
 }

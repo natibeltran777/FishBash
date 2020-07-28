@@ -1,13 +1,13 @@
-﻿using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using Sirenix.Serialization;
-using Sirenix.Utilities;
-using Sirenix.Utilities.Editor;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Sirenix.OdinInspector.Editor;
+using Sirenix.Utilities.Editor;
+using Sirenix.Utilities;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 
 namespace FishBash
 {

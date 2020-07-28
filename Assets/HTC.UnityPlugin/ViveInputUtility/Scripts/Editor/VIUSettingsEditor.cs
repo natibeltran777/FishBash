@@ -9,11 +9,12 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 #if UNITY_2018_1_OR_NEWER
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 #endif
+using GraphicsDeviceType = UnityEngine.Rendering.GraphicsDeviceType;
+
 
 namespace HTC.UnityPlugin.Vive
 {
@@ -712,6 +713,8 @@ namespace HTC.UnityPlugin.Vive
                 EditorUtility.SetDirty(VIUSettings.Instance);
 
                 VIUVersionCheck.UpdateIgnoredNotifiedSettingsCount(false);
+
+                VRModuleManagerEditor.UpdateScriptingDefineSymbols();
             }
 
             if (!string.IsNullOrEmpty(assetPath))

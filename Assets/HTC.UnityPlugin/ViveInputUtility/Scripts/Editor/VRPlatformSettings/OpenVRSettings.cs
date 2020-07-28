@@ -41,7 +41,11 @@ namespace HTC.UnityPlugin.Vive
 
             public RecommendedSteamVRInputFileSettings()
             {
+#if VIU_STEAMVR_2_4_0_OR_NEWER
+                m_mainDirPath = Path.GetDirectoryName(SteamVR_Input.GetActionsFilePath());
+#else
                 m_mainDirPath = Path.GetFullPath(Application.dataPath + "/../");
+#endif
                 m_partialDirPath = VIUProjectSettings.partialActionDirPath;
                 m_partialFileName = VIUProjectSettings.partialActionFileName;
 
@@ -76,6 +80,11 @@ namespace HTC.UnityPlugin.Vive
             private void Merge(bool value)
             {
                 if (!value) { return; }
+
+                if (!Directory.Exists(m_mainDirPath))
+                {
+                    Directory.CreateDirectory(m_mainDirPath);
+                }
 
                 VIUSteamVRActionFile mainFile;
                 VIUSteamVRActionFile exampleFile;
@@ -247,6 +256,7 @@ namespace HTC.UnityPlugin.Vive
                 recommendedValue = true,
             });
 
+#if !UNITY_2019_2_OR_NEWER
             Add(new VIUVersionCheck.RecommendedSetting<ResolutionDialogSetting>()
             {
                 settingTitle = "Display Resolution Dialog",
@@ -255,6 +265,7 @@ namespace HTC.UnityPlugin.Vive
                 setValueFunc = v => PlayerSettings.displayResolutionDialog = v,
                 recommendedValue = ResolutionDialogSetting.HiddenByDefault,
             });
+#endif
 
             Add(new VIUVersionCheck.RecommendedSetting<bool>()
             {
@@ -395,15 +406,23 @@ namespace HTC.UnityPlugin.Vive
                         virtualRealitySupported = false;
                     }
 #endif
+
+#if VIU_STEAMVR_2_2_0_OR_NEWER
+                    SteamVR_Settings.instance.autoEnableVR = false;
+                    EditorUtility.SetDirty(SteamVR_Settings.instance);
+                    AssetDatabase.SaveAssets();
+#elif VIU_STEAMVR_1_2_1_OR_NEWER && !(UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+                    SteamVR_Preferences.AutoEnableVR = false;
+#endif
                 }
             }
 
             public override void OnPreferenceGUI()
             {
-                const string title = "VIVE <size=9>(OpenVR compatible device)</size>";
+                const string title = "OpenVR";
                 if (canSupport)
                 {
-                    support = m_foldouter.ShowFoldoutButtonOnToggleEnabled(new GUIContent(title), support);
+                    support = m_foldouter.ShowFoldoutButtonOnToggleEnabled(new GUIContent(title, "VIVE, VIVE Pro, VIVE Pro Eye, VIVE Cosmos\nOculus Rift, Oculus Rift S, Windows MR"), support);
                 }
                 else
                 {

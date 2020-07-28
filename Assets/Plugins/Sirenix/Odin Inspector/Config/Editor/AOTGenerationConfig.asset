@@ -12,30 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
   m_Name: AOTGenerationConfig
   m_EditorClassIdentifier: 
-  automateBeforeBuilds: 1
+  automateBeforeBuilds: 0
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 637012264920505286
-  supportSerializedTypes:
-  - TypeName: FishBash.FishContainer, Assembly-CSharp
-    IsCustom: 0
-    Emit: 1
-  - TypeName: FishBash.FishContainer[], Assembly-CSharp
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Single, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: UnityEngine.GameObject, UnityEngine.CoreModule
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Int32, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: UnityEngine.Vector2, UnityEngine.CoreModule
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    IsCustom: 0
-    Emit: 1
+  lastScan: 0
+  supportSerializedTypes: []

@@ -12,32 +12,37 @@ PluginImporter:
   validateReferences: 1
   platformData:
   - first:
-      '': N3DS
+      : N3DS
     second:
       enabled: 1
       settings: {}
   - first:
-      '': PSM
+      : PSM
     second:
       enabled: 1
       settings: {}
   - first:
-      '': PSP2
+      : PSP2
     second:
       enabled: 1
       settings: {}
   - first:
-      '': SamsungTV
+      : SamsungTV
     second:
       enabled: 1
       settings: {}
   - first:
-      '': Tizen
+      : Tizen
     second:
       enabled: 1
       settings: {}
   - first:
-      '': WiiU
+      : WiiU
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+      Android: Android
     second:
       enabled: 1
       settings: {}
@@ -75,17 +80,7 @@ PluginImporter:
       settings:
         DefaultValueInitialized: true
   - first:
-      Facebook: WebGL
-    second:
-      enabled: 1
-      settings: {}
-  - first:
       PS4: PS4
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      Standalone: Win64
     second:
       enabled: 1
       settings: {}

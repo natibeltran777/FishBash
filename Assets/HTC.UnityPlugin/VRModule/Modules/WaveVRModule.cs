@@ -20,6 +20,12 @@ namespace HTC.UnityPlugin.VRModuleManagement
 #else
             false;
 #endif
+        public static readonly bool isWaveVRSupported =
+#if VIU_WAVEVR_SUPPORT
+            true;
+#else
+            false;
+#endif
     }
 
     public sealed class WaveVRModule : VRModule.ModuleBase
@@ -36,6 +42,9 @@ namespace HTC.UnityPlugin.VRModuleManagement
                 if (hook.GetComponent<WaveVR_Render>() == null)
                 {
                     hook.gameObject.AddComponent<WaveVR_Render>();
+#if VIU_WAVEVR_3_1_3_OR_NEWER && UNITY_EDITOR
+                    wvr.Interop.WVR_PostInit();
+#endif
                 }
                 if (hook.GetComponent<VivePoseTracker>() == null)
                 {
@@ -279,6 +288,8 @@ namespace HTC.UnityPlugin.VRModuleManagement
         {
 #if UNITY_EDITOR && !VIU_WAVEVR_2_1_0_OR_NEWER
             return false;
+#elif VIU_WAVEVR_3_1_3_OR_NEWER && UNITY_EDITOR
+            return UnityEditor.EditorPrefs.GetBool("WaveVR/DirectPreview/Enable Direct Preview", false);
 #else
             return VIUSettings.activateWaveVRModule;
 #endif
@@ -509,6 +520,7 @@ namespace HTC.UnityPlugin.VRModuleManagement
                     currState.serialNumber = content.type.ToString();
                     currState.modelNumber = content.type.ToString();
                     currState.renderModelName = content.type.ToString();
+                    currState.input2DType = VRModuleInput2DType.TouchpadOnly;
                 }
 
                 // update pose
@@ -638,12 +650,14 @@ namespace HTC.UnityPlugin.VRModuleManagement
             if (!VIUSettings.waveVRAddVirtualArmTo3DoFController && !VIUSettings.simulateWaveVR6DofController) { return; }
             var deviceType = (int)s_index2type[ctrlState.deviceIndex];
 
-#if VIU_WAVEVR_2_1_0_OR_NEWER && !VIU_WAVEVR_3_1_0_OR_NEWER && UNITY_EDITOR
-            if (!WaveVR.Instance.isSimulatorOn || WaveVR_Utils.WVR_GetDegreeOfFreedom_S() == (int)WVR_NumDoF.WVR_NumDoF_6DoF) { return; }
+#if !UNITY_EDITOR
+            if (Interop.WVR_GetDegreeOfFreedom((WVR_DeviceType)deviceType) == WVR_NumDoF.WVR_NumDoF_6DoF) { return; }
+#elif VIU_WAVEVR_3_1_3_OR_NEWER && UNITY_EDITOR
+            if (!WaveVR.EnableSimulator || WVR_DirectPreview.WVR_GetDegreeOfFreedom_S(0) == (int)WVR_NumDoF.WVR_NumDoF_6DoF) { return; }
 #elif VIU_WAVEVR_3_1_0_OR_NEWER && UNITY_EDITOR
             if (!WaveVR.EnableSimulator || WVR_Simulator.WVR_GetDegreeOfFreedom_S(0) == (int)WVR_NumDoF.WVR_NumDoF_6DoF) { return; }
-#else
-            if (Interop.WVR_GetDegreeOfFreedom((WVR_DeviceType)deviceType) == WVR_NumDoF.WVR_NumDoF_6DoF) { return; }
+#elif VIU_WAVEVR_2_1_0_OR_NEWER && UNITY_EDITOR
+            if (!WaveVR.Instance.isSimulatorOn || WaveVR_Utils.WVR_GetDegreeOfFreedom_S() == (int)WVR_NumDoF.WVR_NumDoF_6DoF) { return; }
 #endif
 
             if (VIUSettings.simulateWaveVR6DofController)
@@ -756,6 +770,36 @@ namespace HTC.UnityPlugin.VRModuleManagement
                 deviceInput.TriggerHapticPulse(durationMicroSec);
             }
         }
+
+#if VIU_WAVEVR_3_1_0_OR_NEWER
+        public override void TriggerHapticVibration(uint deviceIndex, float durationSeconds = 0.01f, float frequency = 85, float amplitude = 0.125f, float startSecondsFromNow = 0)
+        {
+            var deviceInput = WaveVR_Controller.Input(s_index2type[deviceIndex]);
+            if (deviceInput != null)
+            {
+                if (0 <= amplitude || amplitude <= 0.2)
+                {
+                    Interop.WVR_TriggerVibration(deviceInput.DeviceType, WVR_InputId.WVR_InputId_Alias1_Touchpad, (uint)(durationSeconds * 1000000), (uint)frequency, WVR_Intensity.WVR_Intensity_Weak);
+                }
+                else if (0.2 < amplitude || amplitude <= 0.4)
+                {
+                    Interop.WVR_TriggerVibration(deviceInput.DeviceType, WVR_InputId.WVR_InputId_Alias1_Touchpad, (uint)(durationSeconds * 1000000), (uint)frequency, WVR_Intensity.WVR_Intensity_Light);
+                }
+                else if (0.4 < amplitude || amplitude <= 0.6)
+                {
+                    Interop.WVR_TriggerVibration(deviceInput.DeviceType, WVR_InputId.WVR_InputId_Alias1_Touchpad, (uint)(durationSeconds * 1000000), (uint)frequency, WVR_Intensity.WVR_Intensity_Normal);
+                }
+                else if (0.6 < amplitude || amplitude <= 0.8)
+                {
+                    Interop.WVR_TriggerVibration(deviceInput.DeviceType, WVR_InputId.WVR_InputId_Alias1_Touchpad, (uint)(durationSeconds * 1000000), (uint)frequency, WVR_Intensity.WVR_Intensity_Strong);
+                }
+                else if (0.8 < amplitude || amplitude <= 1)
+                {
+                    Interop.WVR_TriggerVibration(deviceInput.DeviceType, WVR_InputId.WVR_InputId_Alias1_Touchpad, (uint)(durationSeconds * 1000000), (uint)frequency, WVR_Intensity.WVR_Intensity_Severe);
+                }
+            }
+        }
+#endif
 #endif
     }
 }

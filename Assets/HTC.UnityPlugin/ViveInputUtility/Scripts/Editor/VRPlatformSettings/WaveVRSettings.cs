@@ -5,7 +5,9 @@ using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+#if UNITY_5_6_OR_NEWER
 using UnityEditor.Build;
+#endif
 #if UNITY_2018_1_OR_NEWER
 using UnityEditor.Build.Reporting;
 #endif
@@ -68,11 +70,11 @@ namespace HTC.UnityPlugin.Vive
             set { WaveVRSettings.instance.support = value; }
         }
 
-        private class WaveVRSettings : VRPlatformSetting,
+        private class WaveVRSettings : VRPlatformSetting
 #if UNITY_2018_1_OR_NEWER
-        IPreprocessBuildWithReport
-#else
-		IPreprocessBuild
+        , IPreprocessBuildWithReport
+#elif UNITY_5_6_OR_NEWER
+		, IPreprocessBuild
 #endif
         {
             private Foldouter m_foldouter = new Foldouter();
@@ -163,10 +165,10 @@ namespace HTC.UnityPlugin.Vive
 
             public override void OnPreferenceGUI()
             {
-                const string title = "VIVE Focus <size=9>(WaveVR compatible device)</size>";
+                const string title = "WaveVR";
                 if (canSupport)
                 {
-                    support = m_foldouter.ShowFoldoutButtonOnToggleEnabled(new GUIContent(title), support);
+                    support = m_foldouter.ShowFoldoutButtonOnToggleEnabled(new GUIContent(title, "VIVE Focus, VIVE Focus Plus"), support);
                 }
                 else
                 {

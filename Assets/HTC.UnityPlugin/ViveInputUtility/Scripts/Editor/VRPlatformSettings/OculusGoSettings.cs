@@ -7,7 +7,9 @@ using UnityEngine.Rendering;
 using System.Linq;
 using System.IO;
 using System;
+#if UNITY_5_6_OR_NEWER
 using UnityEditor.Build;
+#endif
 #if UNITY_2018_1_OR_NEWER
 using UnityEditor.Build.Reporting;
 #endif
@@ -278,7 +280,11 @@ namespace HTC.UnityPlugin.Vive
                     if (lv2qualitySetting.FindPropertyRelative("anisotropicTextures").intValue != (int)AnisotropicFiltering.Disable) { return false; }
                     var antiAliasingLevel = lv2qualitySetting.FindPropertyRelative("antiAliasing").intValue; if (antiAliasingLevel > 4 || antiAliasingLevel < 2) { return false; }
                     if (lv2qualitySetting.FindPropertyRelative("shadows").intValue >= (int)ShadowQuality.All) { return false; }
+#if UNITY_2019_1_OR_NEWER
+                    if (lv2qualitySetting.FindPropertyRelative("skinWeights").intValue > 2) { return false; }
+#else
                     if (lv2qualitySetting.FindPropertyRelative("blendWeights").intValue > 2) { return false; }
+#endif
                     if (lv2qualitySetting.FindPropertyRelative("vSyncCount").intValue != 0) { return false; }
 
                     return true;
@@ -337,8 +343,13 @@ namespace HTC.UnityPlugin.Vive
                     var shadowsProp = lv2qualitySetting.FindPropertyRelative("shadows");
                     if (shadowsProp.intValue >= (int)ShadowQuality.All) { shadowsProp.intValue = (int)ShadowQuality.HardOnly; }
 
+#if UNITY_2019_1_OR_NEWER
+                    var blendWeightsProp = lv2qualitySetting.FindPropertyRelative("skinWeights");
+                    if (blendWeightsProp.intValue > 2) { blendWeightsProp.intValue = 2; }
+#else
                     var blendWeightsProp = lv2qualitySetting.FindPropertyRelative("blendWeights");
                     if (blendWeightsProp.intValue > 2) { blendWeightsProp.intValue = 2; }
+#endif
 
                     lv2qualitySetting.FindPropertyRelative("vSyncCount").intValue = 0;
 
@@ -417,11 +428,11 @@ namespace HTC.UnityPlugin.Vive
             set { OculusGoSettings.instance.support = value; }
         }
 
-        private class OculusGoSettings : VRPlatformSetting,
+        private class OculusGoSettings : VRPlatformSetting
 #if UNITY_2018_1_OR_NEWER
-        IPreprocessBuildWithReport
-#else
-		IPreprocessBuild
+        , IPreprocessBuildWithReport
+#elif UNITY_5_6_OR_NEWER
+		, IPreprocessBuild
 #endif
         {
             private Foldouter m_foldouter = new Foldouter();
@@ -440,7 +451,7 @@ namespace HTC.UnityPlugin.Vive
                 {
 #if VIU_OCULUSVR
                     var monoScripts = MonoImporter.GetAllRuntimeMonoScripts();
-                    var monoScript = monoScripts.FirstOrDefault(script => script.GetClass() == typeof(OVRPlugin));
+                    var monoScript = monoScripts.FirstOrDefault(script => script.GetClass() == typeof(OVRInput));
                     var path = Path.GetDirectoryName(AssetDatabase.GetAssetPath(monoScript));
                     var fullPath = Path.GetFullPath((path.Substring(0, path.Length - "Scripts".Length) + "Editor/AndroidManifest.OVRSubmission.xml").Replace("\\", "/"));
 
@@ -514,10 +525,10 @@ namespace HTC.UnityPlugin.Vive
 
             public override void OnPreferenceGUI()
             {
-                const string title = "Oculus (Android)";
+                const string title = "Oculus Android";
                 if (canSupport)
                 {
-                    support = m_foldouter.ShowFoldoutButtonOnToggleEnabled(new GUIContent(title), support);
+                    support = m_foldouter.ShowFoldoutButtonOnToggleEnabled(new GUIContent(title, "Oculus Go, Oculus Quest"), support);
                 }
                 else
                 {
@@ -535,10 +546,10 @@ namespace HTC.UnityPlugin.Vive
                     else if (!PackageManagerHelper.IsPackageInList(OCULUS_ANDROID_PACKAGE_NAME))
                     {
                         GUI.enabled = false;
-                        ShowToggle(new GUIContent(title, "Oculus (Android) package required."), false, GUILayout.Width(230f));
+                        ShowToggle(new GUIContent(title, "Oculus Android package required."), false, GUILayout.Width(230f));
                         GUI.enabled = true;
                         GUILayout.FlexibleSpace();
-                        ShowAddPackageButton("Oculus (Android)", OCULUS_ANDROID_PACKAGE_NAME);
+                        ShowAddPackageButton("Oculus Android", OCULUS_ANDROID_PACKAGE_NAME);
                     }
                     else if (!VRModule.isOculusVRPluginDetected)
                     {

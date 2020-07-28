@@ -12,24 +12,34 @@ PluginImporter:
   validateReferences: 1
   platformData:
   - first:
-      '': OSXIntel
+      : Linux
     second:
       enabled: 1
       settings: {}
   - first:
-      '': OSXIntel64
+      : LinuxUniversal
     second:
       enabled: 1
       settings: {}
   - first:
-      '': PSM
+      : OSXIntel
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+      : OSXIntel64
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+      : PSM
     second:
       enabled: 0
       settings: {}
   - first:
       Android: Android
     second:
-      enabled: 1
+      enabled: 0
       settings: {}
   - first:
       Any: 
@@ -65,29 +75,7 @@ PluginImporter:
       settings:
         DefaultValueInitialized: true
   - first:
-      Facebook: Win
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      Facebook: Win64
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      Standalone: Linux
-    second:
-      enabled: 1
-      settings:
-        CPU: 
-  - first:
       Standalone: Linux64
-    second:
-      enabled: 1
-      settings:
-        CPU: 
-  - first:
-      Standalone: LinuxUniversal
     second:
       enabled: 1
       settings:
@@ -107,7 +95,7 @@ PluginImporter:
   - first:
       Standalone: Win64
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: 
   - first:
