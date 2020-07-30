@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.41
   currentPattern: 0
+  rippleGenerator: {fileID: 2882770392625186814}
   scoreValue: 10
   magnitudeRange: {x: 0.5, y: 5}
   frequencyRange: {x: 0.5, y: 5}
@@ -583,6 +584,12 @@ GameObject:
 --- !u!4 &559112737991385256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+    type: 3}
+  m_PrefabInstance: {fileID: 4808654314271954915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2882770392625186814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7690580230383357981, guid: 1ed4bcea703b13c42abd46269b2b1e49,
     type: 3}
   m_PrefabInstance: {fileID: 4808654314271954915}
   m_PrefabAsset: {fileID: 0}

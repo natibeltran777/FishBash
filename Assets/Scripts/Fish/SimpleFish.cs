@@ -26,6 +26,9 @@ namespace FishBash
         [SerializeField]
         protected FishPatterns currentPattern;
 
+        [SerializeField]
+        protected GameObject rippleGenerator;
+
         /// <summary>
         /// Direction for fish to move in
         /// </summary>
@@ -90,6 +93,7 @@ namespace FishBash
             Vector3 force = GetUnitDirection() + Vector3.up;
             Debug.DrawLine(Vector3.zero,force, Color.red);
             rb.AddForce(force*7.2f, ForceMode.Impulse);
+            rippleGenerator.SetActive(false);
             hasLeapt = true;
         }
 

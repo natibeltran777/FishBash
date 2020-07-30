@@ -1,4 +1,4 @@
-﻿//========= Copyright 2016-2019, HTC Corporation. All rights reserved. ===========
+﻿//========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
@@ -14,6 +14,11 @@ namespace HTC.UnityPlugin.VRModuleManagement
 {
     public sealed partial class UnityEngineVRModule : VRModule.ModuleBase
     {
+        public override int moduleOrder { get { return (int)DefaultModuleOrder.UnityNativeVR; } }
+
+        public override int moduleIndex { get { return (int)VRModuleSelectEnum.UnityNativeVR; } }
+
+#if !UNITY_2020_1_OR_NEWER
         private static KeyCode[] s_keyCodes = new KeyCode[]
         {
             KeyCode.JoystickButton0,
@@ -86,8 +91,6 @@ namespace HTC.UnityPlugin.VRModuleManagement
         public static int GetUnityAxisIdByIndex(int index) { return index + 1; }
 #endif
 
-        public override int moduleIndex { get { return (int)VRModuleActiveEnum.UnityNativeVR; } }
-
         public override bool ShouldActiveModule() { return VIUSettings.activateUnityNativeVRModule && XRSettings.enabled; }
 
         public override void Update()
@@ -118,6 +121,7 @@ namespace HTC.UnityPlugin.VRModuleManagement
                     Update_L_OculusTouch(prevState, currState);
                     break;
                 case VRModuleDeviceModel.KnucklesLeft:
+                case VRModuleDeviceModel.IndexControllerLeft:
                     Update_L_Knuckles(prevState, currState);
                     break;
                 case VRModuleDeviceModel.WMRControllerLeft:
@@ -140,6 +144,7 @@ namespace HTC.UnityPlugin.VRModuleManagement
                     Update_R_OculusTouch(prevState, currState);
                     break;
                 case VRModuleDeviceModel.KnucklesRight:
+                case VRModuleDeviceModel.IndexControllerRight:
                     Update_R_Knuckles(prevState, currState);
                     break;
                 case VRModuleDeviceModel.WMRControllerRight:
@@ -401,5 +406,6 @@ namespace HTC.UnityPlugin.VRModuleManagement
             currState.SetAxisValue(VRModuleRawAxis.JoystickX, stickX);
             currState.SetAxisValue(VRModuleRawAxis.JoystickY, -stickY);
         }
+#endif
     }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: VIUProjectSettings
   m_EditorClassIdentifier: 
   m_ignoreKeys:
-  - UseOculusMobilerecommendedQualitySettings
+  - AddMissingAssemblyDefinitionsinOculusSDK

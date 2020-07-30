@@ -27,6 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.68
   currentPattern: 1
+  rippleGenerator: {fileID: 8364132312832156264}
   scoreValue: 7
 --- !u!1001 &1859232035469450485
 PrefabInstance:
@@ -185,6 +186,12 @@ GameObject:
 --- !u!4 &6615973063082460478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+    type: 3}
+  m_PrefabInstance: {fileID: 2209354262983373429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8364132312832156264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7690580230383357981, guid: 1ed4bcea703b13c42abd46269b2b1e49,
     type: 3}
   m_PrefabInstance: {fileID: 2209354262983373429}
   m_PrefabAsset: {fileID: 0}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance = null;
-    public AudioSource efxSource;
+    public AudioSource vfxSource;
     public AudioSource musicSource;
 
     public float lowPitchRange = 0.95f;
@@ -47,7 +47,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="sound">Sound to play</param>
     public void PlaySingle(AudioClip sound)
     {
-        PlaySingleOnObject(sound, efxSource);
+        PlaySingleOnObject(sound, vfxSource);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="clips">Sounds to select from</param>
     public void RandomizeSfx(params AudioClip[] clips)
     {
-        RandomizeSfxOnObject(efxSource, clips);
+        RandomizeSfxOnObject(vfxSource, clips);
     }
 
     /// <summary>

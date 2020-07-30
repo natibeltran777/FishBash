@@ -28,6 +28,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   currentPattern: 0
+  rippleGenerator: {fileID: 7689775046651662954}
   scoreValue: 5
 --- !u!1001 &3936598294102647
 PrefabInstance:
@@ -106,6 +107,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7690580230383357980, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690580230383357980, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed4bcea703b13c42abd46269b2b1e49, type: 3}
 --- !u!1 &1874245074941597592 stripped
@@ -117,6 +128,12 @@ GameObject:
 --- !u!4 &5004739284909602108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5006203493653624651, guid: 1ed4bcea703b13c42abd46269b2b1e49,
+    type: 3}
+  m_PrefabInstance: {fileID: 3936598294102647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7689775046651662954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7690580230383357981, guid: 1ed4bcea703b13c42abd46269b2b1e49,
     type: 3}
   m_PrefabInstance: {fileID: 3936598294102647}
   m_PrefabAsset: {fileID: 0}

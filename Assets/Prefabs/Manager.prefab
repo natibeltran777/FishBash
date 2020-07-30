@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6325823911790532568}
   - component: {fileID: 169306295}
   - component: {fileID: 833364968133662637}
+  - component: {fileID: 8216253874794889070}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -97,6 +98,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f773140e49351b248b657d606b13902f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8216253874794889070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325823911790532573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e977317b4b38842adba00a9157d267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxSource: {fileID: 0}
+  musicSource: {fileID: 0}
+  lowPitchRange: 0.95
+  highPitchRange: 1.05
 --- !u!1001 &6299441030111228070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,6 +121,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6325823911790532575}
     m_Modifications:
+    - target: {fileID: 3644344059081093604, guid: ff9f8969bd8ab5646998ee76f6abdc78,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 169306295}
     - target: {fileID: 6299441029632623182, guid: ff9f8969bd8ab5646998ee76f6abdc78,
         type: 3}
       propertyPath: m_Name
@@ -165,11 +187,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308214345145448923, guid: ff9f8969bd8ab5646998ee76f6abdc78,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 169306295}
-    - target: {fileID: 3644344059081093604, guid: ff9f8969bd8ab5646998ee76f6abdc78,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
