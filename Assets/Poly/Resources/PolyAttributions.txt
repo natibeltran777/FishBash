@@ -1,5 +1,17 @@
 This project uses the following items from Poly (http://poly.google.com):
 
+Title: Baseball bat
+Author: Poly by Google
+URL: https://poly.google.com/view/9FPflHIzK73
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Fish
+Author: Poly by Google
+URL: https://poly.google.com/view/52s3JpUSjmX
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
 Title: Fish of Nightmares
 Author: Clay Bavor
 URL: https://poly.google.com/view/df0KaOqgFFr
