@@ -20,6 +20,8 @@ namespace FishBash
             }
         }
 
+        [SerializeField] AudioClip[] fishSounds;
+
         [Range(1,10)]
         public float innerRadius;
 
@@ -122,6 +124,7 @@ namespace FishBash
         {
             
             GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
+            SoundManager.instance.RandomizeSfxOnObject(fish, out _, fishSounds);
             fish.layer = 10;
             IFish toReturn = fish.GetComponent<IFish>();
             toReturn.Speed *= speedMultiplier;

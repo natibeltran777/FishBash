@@ -3687,10 +3687,20 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.z
       value: 417538500
       objectReference: {fileID: 0}
+    - target: {fileID: 3174856184564615904, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4306286087388045024, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967176
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685987602846455535, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4709863031080366848, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a,
         type: 3}
@@ -4568,9 +4578,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7512880394421346302, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
+      propertyPath: fishSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512880394421346302, guid: 29217eef9c479d94e815a4bd7ba27e9c,
+        type: 3}
       propertyPath: platform
       value: 
       objectReference: {fileID: 2071436244}
+    - target: {fileID: 7512880394421346302, guid: 29217eef9c479d94e815a4bd7ba27e9c,
+        type: 3}
+      propertyPath: fishSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e9005e649aebd064d97f0619511c5406, type: 3}
+    - target: {fileID: 7512880394421346302, guid: 29217eef9c479d94e815a4bd7ba27e9c,
+        type: 3}
+      propertyPath: fishSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 70a7a2bce9e036b40bb0bc46ae09ddc8, type: 3}
+    - target: {fileID: 7512880394421346302, guid: 29217eef9c479d94e815a4bd7ba27e9c,
+        type: 3}
+      propertyPath: fishSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 797a325eefe61264e856213dab8d0eb4, type: 3}
     - target: {fileID: 8258646392019227556, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
       propertyPath: musicSource

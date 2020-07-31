@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828fe194ba67e5945b16ce5ff3028eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishSounds:
+  - {fileID: 8300000, guid: a63d4120baba2b849a7d3c3bb9b49f07, type: 3}
+  - {fileID: 8300000, guid: 797a325eefe61264e856213dab8d0eb4, type: 3}
+  - {fileID: 8300000, guid: 70a7a2bce9e036b40bb0bc46ae09ddc8, type: 3}
   innerRadius: 6
   platform: {fileID: 0}
 --- !u!114 &6325823911790532568

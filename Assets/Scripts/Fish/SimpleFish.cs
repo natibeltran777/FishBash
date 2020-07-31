@@ -29,6 +29,10 @@ namespace FishBash
         [SerializeField]
         protected GameObject rippleGenerator;
 
+        [SerializeField]
+        protected AudioClip[] fishJumpSounds;
+        protected AudioSource fishAudio;
+
         /// <summary>
         /// Direction for fish to move in
         /// </summary>
@@ -89,7 +93,8 @@ namespace FishBash
 
         protected void LeapBehavior()
         {
-
+            fishAudio.Stop();
+            SoundManager.instance.RandomizeSfxOnObject(fishAudio, fishJumpSounds);
             Vector3 force = GetUnitDirection() + Vector3.up;
             Debug.DrawLine(Vector3.zero,force, Color.red);
             rb.AddForce(force*7.2f, ForceMode.Impulse);
@@ -115,8 +120,8 @@ namespace FishBash
             this.platform = FishManager.instance.platform;
             unitDirection = GetUnitDirection();
             pattern = FishMovement.patterns[(int)currentPattern];
-
             crossDirection = Vector3.Cross(unitDirection, Vector3.up);
+            fishAudio = GetComponent<AudioSource>();
         }
 
         void Update()
