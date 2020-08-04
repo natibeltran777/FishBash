@@ -1,59 +1,51 @@
 ﻿------------------------------------
-Fantasy Skybox 1.4.0
+Fantasy Skybox 1.5.0
 ------------------------------------
 
-	Fantasy Skybox contains 34 high-quality skybox. There are hand-painted textures for sun/sunless and moon/moonless. Demo scenes let you navigate through all skyboxes to find which one is the best for your game.
+	Fantasy Skybox contains 98 high quality skyboxes with sun/sunless and moon/moonless textures.
 
-	Features: 
+	Features:
 
-		• High-quiality hand-painted textures. 
-		• Contains 34 skyboxes.
-		• Contains Sun/sunless and moon/moonless skyboxes. 
-		• Contains demo scene and sample scripts. 
+		• 18 hand-painted cubemap skyboxes.
+		• 80 new panoramic skyboxes.
+		• Sun/sunless and moon/moonless skyboxes.
+		• Day, night, rainy snowy, sunrise, sunset textures.
 		• Desktop and Mobile friendly.
 		• Support all build player platforms.
-		
+
 	Compatible:
 
-		• Unity 2017.3.1 or higher.
+		• Unity 2019.3.0f1 or higher.
 
 	Available on Unity Asset Store:
-	
+
 		Fantasy Skybox
-		https://www.assetstore.unity3d.com/en/#!/content/18216
 		https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-18216
 
 		Fantasy Skybox FREE
-		https://www.assetstore.unity3d.com/en/#!/content/18353
 		https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353
 
 	YouTube:
 
-		Demo: https://youtu.be/FI6HHl_GtEU
-
-		Tutorial: https://youtu.be/CZwStQ_VbN4
-
-	Facebook Page:
-
-		https://www.facebook.com/GETeamPage/
-
-	Please direct any bugs/comments/suggestions to geteamdev@gmail.com.
+		Demo: https://youtu.be/l2dqewgSs3s
 		
 	Thank you for your support,
 
 	Gold Experience Team
-	Webpage: https://www.facebook.com/GETeamPage/
-	Support E-mail: geteamdev@gmail.com
-
-------------------------------------
-Manual
-------------------------------------
-
-	See Manual.chm in 'Fantasy Skybox' folder. Windows users can use Microsoft Edge or other browsers to open chm file, macOS users may require CMH Reader (https://itunes.apple.com/us/app/chm-reader/id424182884?mt=12) which is free.
+	geteamdev@gmail.com
 
 ------------------------------------------------------------------
 Release notes
 ------------------------------------------------------------------
+
+	Version 1.5.0 
+
+		• Added new 80 high quality panoramic skyboxes.
+		• Updated 18 classic skyboxes to cubemap skyboxes.
+		• Rearraged folders and moved 18 classic skyboxes to Classic folder.
+		• Removed Manual.chm file.
+		• Updated demo scene.
+		• Unity 2019.3.0f1 or higher compatible.
 
 	Version 1.4.0 
 
