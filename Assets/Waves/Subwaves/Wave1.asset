@@ -19,7 +19,6 @@ MonoBehaviour:
     - {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720, type: 3}
     - {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d, type: 3}
     - {fileID: 1874245074941597592, guid: 9c2608e4fd2be544eab9f89247a2e48b, type: 3}
-    - {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -36,6 +35,9 @@ MonoBehaviour:
       Data: 1|FishBash.FishContainer, Assembly-CSharp
     - Name: fishPrefab
       Entry: 10
+      Data: 0
+    - Name: fishId
+      Entry: 3
       Data: 0
     - Name: pointVal
       Entry: 3
@@ -67,6 +69,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 0
+    - Name: fishId
+      Entry: 3
+      Data: 0
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -97,6 +102,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 1
+    - Name: fishId
+      Entry: 3
+      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -127,6 +135,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 1
+    - Name: fishId
+      Entry: 3
+      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -157,6 +168,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 2
+    - Name: fishId
+      Entry: 3
+      Data: 1
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -187,6 +201,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 2
+    - Name: fishId
+      Entry: 3
+      Data: 1
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -217,6 +234,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 1
+    - Name: fishId
+      Entry: 3
+      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -247,6 +267,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 1
+    - Name: fishId
+      Entry: 3
+      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -276,7 +299,10 @@ MonoBehaviour:
       Data: 9|FishBash.FishContainer, Assembly-CSharp
     - Name: fishPrefab
       Entry: 10
-      Data: 3
+      Data: 0
+    - Name: fishId
+      Entry: 3
+      Data: 0
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -307,6 +333,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 2
+    - Name: fishId
+      Entry: 3
+      Data: 1
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -337,6 +366,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 1
+    - Name: fishId
+      Entry: 3
+      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -367,6 +399,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 1
+    - Name: fishId
+      Entry: 3
+      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -396,7 +431,10 @@ MonoBehaviour:
       Data: 13|FishBash.FishContainer, Assembly-CSharp
     - Name: fishPrefab
       Entry: 10
-      Data: 3
+      Data: 0
+    - Name: fishId
+      Entry: 3
+      Data: 0
     - Name: pointVal
       Entry: 3
       Data: 0

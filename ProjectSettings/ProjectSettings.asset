@@ -111,10 +111,13 @@ PlayerSettings:
   switchNVNShaderPoolsGranularity: 33554432
   switchNVNDefaultPoolsGranularity: 16777216
   switchNVNOtherPoolsGranularity: 16777216
+  switchNVNMaxPublicTextureIDCount: 0
+  switchNVNMaxPublicSamplerIDCount: 0
   stadiaPresentMode: 0
   stadiaTargetFramerate: 0
   vulkanNumSwapchainBuffers: 3
   vulkanEnableSetSRGBWrite: 0
+  vulkanEnableLateAcquireNextImage: 0
   m_SupportedAspectRatios:
     4:3: 1
     5:4: 1
@@ -649,7 +652,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: ODIN_INSPECTOR;VIU_PLUGIN;VIU_OCULUSVR;VIU_OCULUSVR_1_37_0_OR_NEWER;VIU_OCULUSVR_DESKTOP_SUPPORT;VIU_OPENVR_SUPPORT
+    1: ODIN_INSPECTOR;VIU_OCULUSVR_DESKTOP_SUPPORT;VIU_OCULUSVR;VIU_OCULUSVR_1_37_0_OR_NEWER;VIU_OPENVR_SUPPORT;VIU_PLUGIN
     7: VIU_OCULUSVR;VIU_OCULUSVR_1_37_0_OR_NEWER;VIU_PLUGIN;VIU_OCULUSVR_ANDROID_SUPPORT;ODIN_INSPECTOR
   platformArchitecture: {}
   scriptingBackend:

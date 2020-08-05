@@ -51,6 +51,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 0
+    - Name: fishId
+      Entry: 3
+      Data: 0
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -81,6 +84,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 1
+    - Name: fishId
+      Entry: 3
+      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -111,6 +117,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 2
+    - Name: fishId
+      Entry: 3
+      Data: 3
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -141,6 +150,9 @@ MonoBehaviour:
     - Name: fishPrefab
       Entry: 10
       Data: 3
+    - Name: fishId
+      Entry: 3
+      Data: 1
     - Name: pointVal
       Entry: 3
       Data: 0

@@ -9,7 +9,7 @@ namespace FishBash
     public class FishContainer 
     {
         public GameObject fishPrefab;
-
+        public int fishId;
         public int pointVal;
 
         public Vector2? spawnPositionOverride;

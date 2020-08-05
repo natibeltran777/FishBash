@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace FishBash
 {
-    
+
     public interface IFish
     {
         float Speed { get; set; }
@@ -17,9 +17,17 @@ namespace FishBash
         /// <returns>True if it is close</returns>
         bool CheckRadius(float radius);
 
-        void Destroy(float t);
+        int FishId { get; }
+
+        void Reclaim();
 
         void HitFish();
+
+        FishPool Pool{ get; set;}
+
+        GameObject GameObject { get; }
+
+        float Distance { get; }
 
     }
 }

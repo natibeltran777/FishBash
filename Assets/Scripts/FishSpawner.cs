@@ -13,6 +13,7 @@ namespace FishBash {
 
         [SerializeField]
         private GameObject[] fishObj;
+        private int[] fishIds;
         //[SerializeField]
         //private float cooldown;
         [SerializeField]
@@ -23,48 +24,37 @@ namespace FishBash {
         [SerializeField]
         private TextMeshProUGUI maxDistanceTxt;
 
-        private bool CanSpawn {
-            get => FishManager.instance.FishRemaining < 1;
-        }
+        private bool canSpawn = true;
         public float SpeedOverride => speedOverride.value;
         // Start is called before the first frame update
         void Start()
         {
+            fishIds = new int[fishObj.Length];
+            for(int i = 0; i < fishIds.Length; i++)
+            {
+                fishIds[i] = fishObj[i].GetComponent<IFish>().FishId;
+            }
             Invoke("Setup", 0.5f);
             FishManager.instance.InitializeFishList();
             ViveInput.AddPressDown(HandRole.LeftHand, ControllerButton.Grip, SpawnFish);
             ViveInput.AddPressDown(HandRole.RightHand, ControllerButton.Grip, SpawnFish);
+            activeFishes = new List<GameObject>();
+            fishComponents = new List<IFish>();
+            distance = new List<float>();
         }
 
         private void Update()
         {
+            UpdateDistance();
             currentDistanceTxt.text = HitDistance;
 
             maxDistanceTxt.text = maxDistance.ToString();
         }
 
-        private GameObject activeFish;
-        private IFish fishComponent; 
+        private List<GameObject> activeFishes;
+        private List<IFish> fishComponents;
 
-        public float Distance
-        {
-            get
-            {
-                if (activeFish != null && fishComponent != null && fishComponent.HasBeenHit)
-                {
-                    float d = Vector3.Distance(Vector3.zero, activeFish.transform.position);
-                    if (d > maxDistance){
-                        maxDistance = d;
-                    }
-                    return d;
-
-                }
-                else
-                {
-                    return -1f;
-                }
-            }
-        }
+        public List<float> distance;
 
         public float maxDistance = 0;
 
@@ -72,14 +62,37 @@ namespace FishBash {
         {
             get
             {
-                if(Distance == -1f)
+                string val = "-";
+                foreach (float f in distance)
                 {
-                    return "-";
+                    if (f > 0)
+                    {
+                        val = f.ToString();
+                        if (f > maxDistance) maxDistance = f;
+                    }
                 }
+                return val;
+            }
+        }
+
+        private void UpdateDistance()
+        {
+            List<int> deadIndexes = new List<int>();
+            for(int i = 0; i < activeFishes.Count; i++)
+            {
+                if (activeFishes[i] == null || !activeFishes[i].activeSelf) deadIndexes.Add(i);
                 else
                 {
-                    return Distance.ToString();
+                    if(fishComponents[i].HasBeenHit)
+                        distance[i] = fishComponents[i].Distance;
                 }
+            }
+
+            foreach(int i in deadIndexes)
+            {
+                activeFishes.RemoveAt(i);
+                fishComponents.RemoveAt(i);
+                distance.RemoveAt(i);
             }
         }
 
@@ -100,14 +113,20 @@ namespace FishBash {
 
         private IEnumerator SpawnFish_()
         {
-            if (CanSpawn)
+            if (canSpawn)
             {
+                canSpawn = false;
                 FishContainer f = new FishContainer();
                 f.spawnPositionOverride = new Vector2(transform.position.x, transform.position.z);
-                f.fishPrefab = fishObj[Random.Range(0, fishObj.Length)];
-                activeFish = FishManager.instance.SpawnFish(f, SpeedOverride);
-                fishComponent = activeFish.GetComponent<IFish>();
+                f.fishId = fishIds[Random.Range(0, fishIds.Length)];
+                GameObject spawned = FishManager.instance.SpawnFish(f, SpeedOverride);
+                fishComponents.Add(spawned.GetComponent<IFish>());
+                activeFishes.Add(spawned);
+                distance.Add(-1f);
 
+                yield return new WaitForSeconds(0.2f);
+
+                canSpawn = true;
             }
             yield return null;
         }

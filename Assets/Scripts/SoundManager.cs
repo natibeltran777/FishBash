@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
     }
 
@@ -99,7 +99,8 @@ public class SoundManager : MonoBehaviour
 
         obj.pitch = randomPitch;
         obj.clip = clips[randomIndex];
-        obj.Play();
+        if(obj.isActiveAndEnabled)
+            obj.Play();
     }
 
     /// <summary>

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FishBash {
 	public class PlayerCapsule : MonoBehaviour
@@ -12,13 +13,17 @@ namespace FishBash {
         {
             cameraTransform = Camera.main.transform;
             offset = transform.localPosition.y;
+            SceneManager.activeSceneChanged += UpdateCamera;
         }
 
         private void Update()
         {
-            Vector3 position = cameraTransform.position;
-            position.y += offset;
-            transform.position = position;
+            if (cameraTransform.gameObject != null)
+            {
+                Vector3 position = cameraTransform.position;
+                position.y += offset;
+                transform.position = position;
+            }
         }
         public void OnTriggerEnter(Collider col)
 	    {
@@ -26,6 +31,11 @@ namespace FishBash {
 
 	        GameManager.instance.HandleFishHitPlayer(itemID);
 	    }
+
+        void UpdateCamera(Scene _, Scene _1)
+        {
+            cameraTransform = Camera.main.transform;
+        }
 	}
 }
 

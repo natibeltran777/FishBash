@@ -13,9 +13,9 @@ namespace FishBash
         private Vector2 frequencyRange;
 
         //Sets pattern to a sine wave
-        new void Start()
+        new void Awake()
         {
-            base.Start();
+            base.Awake();
             gen = new SinWaveGenerator(Random.Range(magnitudeRange.x, magnitudeRange.y), Random.Range(frequencyRange.x, frequencyRange.y));
             pattern = gen.SineWave;
         }

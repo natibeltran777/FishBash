@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10aa3baa6f4d9834ab297318e5228133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.68
+  startSpeed: 1
   currentPattern: 1
   rippleGenerator: {fileID: 8364132312832156264}
   fishJumpSounds:
@@ -38,6 +38,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 379c640c268399545998a45664cd63b7, type: 3}
   - {fileID: 8300000, guid: 250d94a4acbbfa84e90fd435f5228d8b, type: 3}
   scoreValue: 7
+  fishId: 3
 --- !u!1001 &1859232035469450485
 PrefabInstance:
   m_ObjectHideFlags: 0

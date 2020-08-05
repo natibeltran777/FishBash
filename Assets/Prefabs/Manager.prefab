@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828fe194ba67e5945b16ce5ff3028eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 11400000, guid: 4afd31866ab508a48b8b2eee2549a7fc, type: 2}
   fishSounds:
   - {fileID: 8300000, guid: a63d4120baba2b849a7d3c3bb9b49f07, type: 3}
   - {fileID: 8300000, guid: 797a325eefe61264e856213dab8d0eb4, type: 3}
@@ -195,6 +196,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 169306295}
+    - target: {fileID: 6582987921308952999, guid: ff9f8969bd8ab5646998ee76f6abdc78,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff9f8969bd8ab5646998ee76f6abdc78, type: 3}
 --- !u!4 &629863145 stripped

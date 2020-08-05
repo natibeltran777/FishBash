@@ -9,6 +9,8 @@ namespace FishBash
     {
         public static FishManager instance = null;
 
+        [SerializeField] FishPool pool;
+
         /// <summary>
         /// Returns fish remaining in current wave
         /// </summary>
@@ -30,6 +32,7 @@ namespace FishBash
         private IList<IFish> fishList;
 
         #region UNITY_METHODS
+        // \todo: need to restructure this. Should be a singleton, but either needs to be dontdestroyonload or destroy itself on scene change or smth like that
         private void Awake()
         {
             if(instance == null)
@@ -52,7 +55,11 @@ namespace FishBash
         public void DestroyFish(IFish toDestroy, float t)
         {
             fishList.Remove(toDestroy);
-            toDestroy.Destroy(t);
+            if (t == 0) toDestroy.Reclaim();
+            else
+            {
+                StartCoroutine(DestroyFishAfterTime(toDestroy, t));
+            }
         }
 
         /// <summary>
@@ -91,7 +98,7 @@ namespace FishBash
         {
             IFish fish;
             GameObject obj;
-            (fish, obj) = SpawnFish(f.fishPrefab, f.spawnPositionOverride.Value, speedMultipler);
+            (fish, obj) = SpawnFish(f.fishId, f.spawnPositionOverride.Value, speedMultipler);
             fishList.Add(fish);
             return obj;
         }
@@ -108,7 +115,7 @@ namespace FishBash
             Vector2 position = Utility.RandomPointOnUnitCircle(distance, angle);
             IFish fish;
             GameObject obj;
-            (fish, obj) = SpawnFish(f.fishPrefab, f.spawnPositionOverride.GetValueOrDefault(position), speedMultiplier);
+            (fish, obj) = SpawnFish(f.fishId, f.spawnPositionOverride.GetValueOrDefault(position), speedMultiplier);
             fishList.Add(fish);
             return obj;
         }
@@ -120,19 +127,32 @@ namespace FishBash
         /// <param name="position">Vector2 specifying x and z position of the fish</param>
         /// <param name="speedMultiplier">Optional multiplier for the fish speed</param>
         /// <returns>IFish component created</returns>
-        private (IFish,GameObject) SpawnFish(GameObject fishToSpawn, Vector2 position, float speedMultiplier = 1)
+        private (IFish,GameObject) SpawnFish(int fishId, Vector2 position, float speedMultiplier = 1)
         {
-            
-            GameObject fish = Instantiate(fishToSpawn, new Vector3(position.x, 0, position.y), new Quaternion(), transform);
+            IFish toReturn = pool.GetFish(fishId);
+            GameObject fish = toReturn.GameObject;
+            fish.transform.position = new Vector3(position.x, 0, position.y);
             SoundManager.instance.RandomizeSfxOnObject(fish, out _, fishSounds);
-            fish.layer = 10;
-            IFish toReturn = fish.GetComponent<IFish>();
+            fish.SetActive(true); //speed is initialized in OnEnable, so this has to go before the speed multiplier.
             toReturn.Speed *= speedMultiplier;
             return (toReturn,fish);
         }
 
         #endregion //PUBLIC_METHODS
 
+        #region PRIVATE_METHODS
+        /// <summary>
+        /// Reclaim the fish after waiting for t seconds
+        /// </summary>
+        /// <param name="fish">Fish to reclaim</param>
+        /// <param name="t">Time to wait</param>
+        /// <returns></returns>
+        IEnumerator DestroyFishAfterTime(IFish fish, float t)
+        {
+            yield return new WaitForSeconds(t);
+            fish.Reclaim();
+        }
+        #endregion //PRIVATE_METHODS
 
     }
 }

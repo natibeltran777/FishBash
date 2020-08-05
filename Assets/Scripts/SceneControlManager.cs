@@ -12,7 +12,7 @@ public class SceneControlManager : MonoBehaviour
     {
         if(instance != null)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -22,8 +22,38 @@ public class SceneControlManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public static void LoadScene(int index)
+    public void LoadScene(int index)
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadSceneAsync(index);
+        //StartCoroutine(LoadAsync(index));
+    }
+
+    // \todo: make this nicer to end user (ie load screen, etc)
+    // \todo: Right now this doesn't work, do to the overuse of singletons w/o dontdestoyonload flags. 
+    // Ideally, we want something like this, since it allows object pools to persist across scenes. 
+    IEnumerator LoadAsync(int index)
+    {
+        Debug.Log("Loading scene...");
+
+        AsyncOperation load = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+        load.allowSceneActivation = false;
+
+        Scene toLoad = SceneManager.GetSceneByBuildIndex(index);
+
+        while (!load.isDone)
+        {
+
+            if(load.progress >= 0.9f)
+            {
+                Scene currentActiveScene = SceneManager.GetActiveScene();
+                SceneManager.UnloadSceneAsync(currentActiveScene);
+                load.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
+        SceneManager.SetActiveScene(toLoad);
+
+
     }
 }

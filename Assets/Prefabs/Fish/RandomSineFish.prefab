@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774ee0bd533ccc14e820293bd369242b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.41
+  startSpeed: 1.5
   currentPattern: 0
   rippleGenerator: {fileID: 2882770392625186814}
   fishJumpSounds:
@@ -354,6 +354,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 379c640c268399545998a45664cd63b7, type: 3}
   - {fileID: 8300000, guid: 250d94a4acbbfa84e90fd435f5228d8b, type: 3}
   scoreValue: 10
+  fishId: 2
   magnitudeRange: {x: 0.5, y: 5}
   frequencyRange: {x: 0.5, y: 5}
 --- !u!1 &7380719463318016433

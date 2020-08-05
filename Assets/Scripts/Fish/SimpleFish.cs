@@ -20,8 +20,9 @@ namespace FishBash
         /// </summary>
         [SerializeField]
         [Range(0,10)]
-        protected float speed;
-        public float Speed { get => speed; set => speed = value; }
+        protected float startSpeed;
+
+        public float Speed { get; set; }
 
         [SerializeField]
         protected FishPatterns currentPattern;
@@ -61,10 +62,39 @@ namespace FishBash
 
         public bool HasBeenHit { get; set; } = false;
 
+        public float Distance
+        {
+            get
+            {
+                return Vector3.Distance(transform.position, platform.transform.position);
+            }
+        }
+
+        private FishPool _pool = null;
+
+        [SerializeField] int fishId = 0;
+
+        public int FishId { get => fishId; }
+
+        public GameObject GameObject { get => gameObject; }
+
+        public FishPool Pool
+        {
+            set
+            {
+                if (_pool == null) _pool = value;
+                else
+                {
+                    Debug.LogError("Can't reassign pool");
+                }
+            }
+            get => _pool;
+        }
+
         protected void UpdateMovement()
         {
             //Debug.Log("move");
-            pos += unitDirection * speed * Time.deltaTime;
+            pos += unitDirection * Speed * Time.deltaTime;
             transform.position = pattern(pos, crossDirection, Time.time);
             transform.rotation = Quaternion.LookRotation(prevPos- transform.position, Vector3.up);
             prevPos = transform.position;
@@ -72,12 +102,12 @@ namespace FishBash
 
         public void SetSpeed(float s)
         {
-            speed = s;
+            Speed = s;
         }
 
         public bool CheckRadius(float radius)
         {
-            return Vector3.Distance(transform.position, platform.transform.position) < radius;
+            return Distance < radius;
         }
 
 
@@ -107,21 +137,36 @@ namespace FishBash
             return (platform.transform.position - transform.position).normalized;
         }
 
-        public void Destroy(float t)
+        public void Reclaim()
         {
-            Destroy(this.gameObject, t);
+            Pool.Recycle(this);
+        }
+
+        public void OnEnable()
+        {
+            pos = transform.position;
+            platform = FishManager.instance.platform;
+            unitDirection = GetUnitDirection();
+            crossDirection = Vector3.Cross(unitDirection, Vector3.up);
+            hasLeapt = false;
+            HasBeenHit = false;
+            rippleGenerator.SetActive(true);
+            transform.rotation = Quaternion.identity;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            Speed = startSpeed;
+            fishAudio.Play();
         }
 
         #region UNITY_MONOBEHAVIOUR_METHODS
-        protected void Start()
+        protected void Awake()
         {
             rb = GetComponent<Rigidbody>();
-            pos = transform.position;
-            this.platform = FishManager.instance.platform;
-            unitDirection = GetUnitDirection();
+            //this.platform = FishManager.instance.platform;
             pattern = FishMovement.patterns[(int)currentPattern];
-            crossDirection = Vector3.Cross(unitDirection, Vector3.up);
             fishAudio = GetComponent<AudioSource>();
+            gameObject.layer = 10;
+            //Initialize();
         }
 
         void Update()
@@ -141,7 +186,8 @@ namespace FishBash
             {
                 //Probably need to make this more complicated, and implement some kind of score system here
                 rb.AddForce(Vector3.down * 9.8f, ForceMode.Acceleration);
-                FishManager.instance.DestroyFish(this, 3f);
+                if(this.transform.position.y <= -20)
+                    FishManager.instance.DestroyFish(this, 0f);
 
             }
             

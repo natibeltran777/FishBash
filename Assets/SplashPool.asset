@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff9063ff47c0aa4980186143cb90fc1, type: 3}
+  m_Name: SplashPool
+  m_EditorClassIdentifier: 
+  prefab: {fileID: -3552444558773930802, guid: 9b090b2a2f8b89a43a90090cc11cd7ac, type: 3}

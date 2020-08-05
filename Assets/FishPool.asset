@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be01037ac95b24a48a72c917b3ebb714, type: 3}
+  m_Name: FishPool
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720, type: 3}
+  - {fileID: 1874245074941597592, guid: 9c2608e4fd2be544eab9f89247a2e48b, type: 3}
+  - {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d, type: 3}
+  - {fileID: 335069951650211738, guid: f8eca319d2e98514cb5ed3e97dea67c6, type: 3}
