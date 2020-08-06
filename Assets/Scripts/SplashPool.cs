@@ -3,71 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[CreateAssetMenu]
-public class SplashPool : ScriptableObject
+namespace FishBash
 {
-
-    [SerializeField] Splash prefab;
-
-    private Scene poolScene;
-
-    [System.NonSerialized] List<Splash> pool;
-
-    void CreatePool()
+    namespace Splash
     {
-        pool = new List<Splash>();
-        if (Application.isEditor)
+        [CreateAssetMenu]
+        public class SplashPool : ScriptableObject
         {
-            poolScene = SceneManager.GetSceneByName(name);
-            if (poolScene.isLoaded)
+
+            [SerializeField] SplashObj prefab;
+
+            private Scene poolScene;
+
+            [System.NonSerialized] List<SplashObj> pool;
+
+            void CreatePool()
             {
-                GameObject[] rootObjects = poolScene.GetRootGameObjects();
-                for (int i = 0; i < rootObjects.Length; i++)
+                pool = new List<SplashObj>();
+                if (Application.isEditor)
                 {
-                    Splash pooledShape = rootObjects[i].GetComponent<Splash>();
-                    if (!pooledShape.gameObject.activeSelf)
+                    poolScene = SceneManager.GetSceneByName(name);
+                    if (poolScene.isLoaded)
                     {
-                        pool.Add(pooledShape);
+                        GameObject[] rootObjects = poolScene.GetRootGameObjects();
+                        for (int i = 0; i < rootObjects.Length; i++)
+                        {
+                            SplashObj pooledShape = rootObjects[i].GetComponent<SplashObj>();
+                            if (!pooledShape.gameObject.activeSelf)
+                            {
+                                pool.Add(pooledShape);
+                            }
+                        }
+                        return;
                     }
                 }
-                return;
+
+                poolScene = SceneManager.CreateScene(name);
             }
+
+            public SplashObj GetSplash()
+            {
+                SplashObj instance;
+                if (pool == null || !poolScene.IsValid()) CreatePool();
+
+                int lastIndex = pool.Count - 1;
+
+                if (lastIndex >= 0)
+                {
+                    instance = pool[lastIndex];
+                    instance.gameObject.SetActive(true);
+                    pool.RemoveAt(lastIndex);
+                }
+                else
+                {
+                    instance = Instantiate(prefab);
+                    instance.Pool = this;
+                    SceneManager.MoveGameObjectToScene(instance.gameObject, poolScene);
+                }
+
+                return instance;
+            }
+
+
+            public void RecycleSplash(SplashObj toRecycle)
+            {
+                if (pool == null || !poolScene.IsValid()) CreatePool();
+
+                pool.Add(toRecycle);
+                toRecycle.gameObject.SetActive(false);
+                toRecycle.ResetSplash();
+            }
+
         }
-
-        poolScene = SceneManager.CreateScene(name);
     }
-
-    public Splash GetSplash()
-    {
-        Splash instance;
-        if (pool == null || !poolScene.IsValid()) CreatePool();
-
-        int lastIndex = pool.Count - 1;
-
-        if(lastIndex >= 0)
-        {
-            instance = pool[lastIndex];
-            instance.gameObject.SetActive(true);
-            pool.RemoveAt(lastIndex);
-        }
-        else
-        {
-            instance = Instantiate(prefab);
-            instance.Pool = this;
-            SceneManager.MoveGameObjectToScene(instance.gameObject, poolScene);
-        }
-
-        return instance;
-    }
-
-
-    public void RecycleSplash(Splash toRecycle)
-    {
-        if (pool == null || !poolScene.IsValid()) CreatePool();
-
-        pool.Add(toRecycle);
-        toRecycle.gameObject.SetActive(false);
-        toRecycle.ResetSplash();
-    }
-
 }

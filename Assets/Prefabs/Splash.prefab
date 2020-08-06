@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -3552444558773930802}
   - component: {fileID: 11068196342395794}
   - component: {fileID: 7353891673771931768}
+  - component: {fileID: 285128641001758731}
   m_Layer: 0
   m_Name: Splash
   m_TagString: Untagged
@@ -45,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010eb6a2b225e564d8d12e8442770aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength: 1
+  initSpeedRange: {x: 3, y: 5}
 --- !u!198 &11068196342395794
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -54,7 +57,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8597600640117758255}
   serializedVersion: 6
   lengthInSec: 2
-  simulationSpeed: 1
+  simulationSpeed: 3
   stopAction: 3
   cullingMode: 0
   ringBufferMode: 0
@@ -181,7 +184,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 15
+      scalar: 5
       minScalar: 3
       maxCurve:
         serializedVersion: 2
@@ -673,7 +676,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 30
+    angle: 10
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
@@ -4825,3 +4828,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!135 &285128641001758731
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8597600640117758255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}

@@ -60,6 +60,8 @@ namespace FishBash
 
         public int scoreValue;
 
+        public int ScoreVal { get => scoreValue; }
+
         public bool HasBeenHit { get; set; } = false;
 
         public float Distance

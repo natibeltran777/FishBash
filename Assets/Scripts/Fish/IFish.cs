@@ -19,6 +19,8 @@ namespace FishBash
 
         int FishId { get; }
 
+        int ScoreVal { get; }
+
         void Reclaim();
 
         void HitFish();
