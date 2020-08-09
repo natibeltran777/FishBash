@@ -18,5 +18,12 @@ namespace FishBash
 
         }
         #endregion //COROUTINES
+
+        public void SetNewTarget()
+        {
+            Target = this.transform;
+        }
+
+
     }
 }

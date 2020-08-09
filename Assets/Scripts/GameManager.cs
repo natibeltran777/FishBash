@@ -10,24 +10,44 @@ namespace FishBash
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager instance = null;
+
         [SerializeField]
         private bool test = false;
-
-        public int CurrWave { get; private set; } = 0;
-
         [SerializeField]
         private DisplayTextInViewField textField;
-
         [SerializeField]
         private int initLives = 3;
-
         [SerializeField, Tooltip("After getting hit, the player will be invulnerable for this long")]
         protected float invulnerableTime = 0.5f;
+        [SerializeField]
+        protected int playerScore = 0;
+        [SerializeField]
+        private WaveContainer[] waveList;
 
-        public int GetScore { get => playerScore; }
-        public int CurrLives { get => lives; }
+
         protected int lives;
         protected bool isPlayerInvulnerable = false;
+        
+        private List<int> fishIDsHitPlayer = new List<int>();
+        private IEnumerator currentExecutingWave;
+        private IEnumerator currentExecutingGame;
+        private IEnumerator waveHandler;
+
+        [SerializeField] private Transform m_homingTarget;
+
+        //TODO : Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. 
+        // However, in that case we should have a global variable to choose between the quest and go builds
+        [SerializeField, Tooltip("Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. However, in that case we should have a global variable to choose between the quest and go builds")]
+        private bool _isOculusGo;
+
+        public bool IsOculusGo { get => _isOculusGo; }
+        public int CurrWave { get; private set; } = 0;
+        public int GetScore { get => playerScore; }
+        public int CurrLives { get => lives; }
+
+        public delegate void GameManagerDelegate();
+        public event GameManagerDelegate OnTargetChanged;
 
         /// <summary>
         /// Returns total waves
@@ -40,22 +60,23 @@ namespace FishBash
             }
         }
 
-        [SerializeField]
-        protected int playerScore = 0;
-        [SerializeField]
-        private WaveContainer[] waveList;
+        /// <summary>
+        /// When homing target has been changed we fire an event to let the homing functionality know what the new target is
+        /// </summary>
+        public Transform Target
+        {
+            set
+            {
+                if (OnTargetChanged != null) OnTargetChanged();
+                m_homingTarget = value;
+            }
+            get
+            {
+                return m_homingTarget;
+            }
+        }
 
-        private List<int> fishIDsHitPlayer = new List<int>();
-        public static GameManager instance = null;
-        private IEnumerator currentExecutingWave;
-        private IEnumerator currentExecutingGame;
-        private IEnumerator waveHandler;
 
-        //TODO : Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. 
-        // However, in that case we should have a global variable to choose between the quest and go builds
-        [SerializeField, Tooltip("Do to different manifest files, i think its best to configure a seperate quest/go build rather than trying to have one build that works for both. However, in that case we should have a global variable to choose between the quest and go builds")]
-        private bool _isOculusGo;
-        public bool IsOculusGo { get => _isOculusGo; }
 
         #region UNITY_METHODS
         private void Awake()
@@ -126,7 +147,6 @@ namespace FishBash
             //StartCoroutine(DisplayText(scoreText, 3));
         }
         #endregion //PUBLIC_METHODS
-
 
         /// <summary>
         /// Handles game ending behavior - for when all waves are over \todo - add losing & winning behavior

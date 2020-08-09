@@ -23,6 +23,8 @@ namespace FishBash
 
         void HitFish();
 
+        void HomingHit(Vector3 initialPos, Vector3 finalPos, Vector3 dirOfImpact, Vector3 velocity);
+
         FishPool Pool{ get; set;}
 
         GameObject GameObject { get; }
