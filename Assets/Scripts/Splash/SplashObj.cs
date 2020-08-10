@@ -14,12 +14,17 @@ namespace FishBash
             ParticleSystem.ShapeModule shape;
             ParticleSystem.MainModule main;
 
-            ParticleSystem.MinMaxCurve speed;
+            AudioSource splashAudio;
+
+            [SerializeField] AudioClip[] splashSounds;
 
             [SerializeField, Tooltip("Only does anything in the editor, use for testing purposes")]
             float strength;
             [SerializeField, Tooltip("Replaces the start speed property on the particle system")]
             Vector2 initSpeedRange;
+
+            const int fishLayerPath = 1 << 10;
+            Collider[] targetBuffer = new Collider[10];
 
             public SplashPool Pool
             {
@@ -40,6 +45,7 @@ namespace FishBash
             {
                 SetupParticleSystem();
                 col = GetComponent<SphereCollider>();
+                splashAudio = GetComponent<AudioSource>();
             }
 
             void SetupParticleSystem()
@@ -48,13 +54,32 @@ namespace FishBash
                 shape = particleSystem.shape;
                 main = particleSystem.main;
                 main.simulationSpeed = 3.0f;
-
-                speed = main.startSpeed;
             }
 
             private void OnParticleSystemStopped()
             {
                 RecycleSplash();
+            }
+
+            private void CheckCollider()
+            {
+                int hits = Physics.OverlapSphereNonAlloc(transform.position, strength, targetBuffer, fishLayerPath);
+                int multiplier = hits;
+                if (hits > 0)
+                {
+                    for (int i = 0; i < hits; i++)
+                    {
+                        IFish f = targetBuffer[0].gameObject.GetComponent<IFish>();
+                        if (!f.HasBeenHit && !f.HasLeaped)
+                        {
+                            //\todo: Setup a more balanced multiplier here
+                            GameManager.instance.IncrementScore(f.ScoreVal * hits);
+
+                            //\todo: Animate this, highlight shader would be useful for this actually
+                            FishManager.instance.DestroyFish(f, 0f);
+                        }
+                    }
+                }
             }
 
             public void ResetSplash()
@@ -90,8 +115,10 @@ namespace FishBash
                 position.y = 0;
 
                 //\todo: Also experiment with setting emission speed here
-
+                SoundManager.instance.RandomizeSfxOnObject(splashAudio, splashSounds);
                 particleSystem.Play();
+                Physics.SyncTransforms();
+                CheckCollider();
             }
 
             private void RecycleSplash()
@@ -99,14 +126,17 @@ namespace FishBash
                 _pool.RecycleSplash(this);
             }
 
+            /*
             private void OnCollisionEnter(Collision collision)
             {
-                IFish f = gameObject.GetComponent<IFish>();
+                Debug.Log(collision.gameObject.name);
+                IFish f = collision.gameObject.GetComponent<IFish>();
                 GameManager.instance.IncrementScore(f.ScoreVal);
 
                 //\todo: Animate this, highlight shader would be useful for this actually
                 FishManager.instance.DestroyFish(f, 0.1f);
             }
+            */
 
 
 

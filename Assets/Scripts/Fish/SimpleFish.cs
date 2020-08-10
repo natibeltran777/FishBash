@@ -34,6 +34,7 @@ namespace FishBash
         protected AudioClip[] fishJumpSounds;
         protected AudioSource fishAudio;
 
+        protected TrailRenderer trail;
         /// <summary>
         /// Direction for fish to move in
         /// </summary>
@@ -93,6 +94,8 @@ namespace FishBash
             get => _pool;
         }
 
+        public bool HasLeaped { get => hasLeapt;}
+
         protected void UpdateMovement()
         {
             //Debug.Log("move");
@@ -126,6 +129,8 @@ namespace FishBash
         protected void LeapBehavior()
         {
             fishAudio.Stop();
+            fishAudio.loop = false;
+            trail.emitting = true;
             SoundManager.instance.RandomizeSfxOnObject(fishAudio, fishJumpSounds);
             Vector3 force = GetUnitDirection() + Vector3.up;
             Debug.DrawLine(Vector3.zero,force, Color.red);
@@ -158,6 +163,8 @@ namespace FishBash
             rb.angularVelocity = Vector3.zero;
             Speed = startSpeed;
             fishAudio.Play();
+            fishAudio.loop = true;
+            trail.emitting = false;
         }
 
         #region UNITY_MONOBEHAVIOUR_METHODS
@@ -167,6 +174,7 @@ namespace FishBash
             //this.platform = FishManager.instance.platform;
             pattern = FishMovement.patterns[(int)currentPattern];
             fishAudio = GetComponent<AudioSource>();
+            trail = GetComponent<TrailRenderer>();
             gameObject.layer = 10;
             //Initialize();
         }

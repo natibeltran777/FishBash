@@ -11,6 +11,8 @@ namespace FishBash
         float Speed { get; set; }
         bool HasBeenHit { get; set; }
 
+        bool HasLeaped { get; }
+
         /// <summary>
         /// Checks if the fish is within a set radius of the fish's goal
         /// </summary>

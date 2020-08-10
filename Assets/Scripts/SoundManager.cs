@@ -99,7 +99,7 @@ public class SoundManager : MonoBehaviour
 
         obj.pitch = randomPitch;
         obj.clip = clips[randomIndex];
-        if(obj.isActiveAndEnabled)
+        if(obj.enabled)
             obj.Play();
     }
 
