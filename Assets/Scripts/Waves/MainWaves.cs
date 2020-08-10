@@ -24,7 +24,7 @@ namespace FishBash
             {
                 foreach (WaveScriptable s in _subWaves)
                 {
-                    //Debug.Log("Begin subwave");
+                    Debug.Log("Begin subwave");
                     IWaves<FishContainer> subWave;
                     if (s.GetType() == typeof(RandomWaveScriptable))
                     {
@@ -37,10 +37,10 @@ namespace FishBash
                         subWave = new DeterministicSubWave(s);
                         yield return _caller.StartCoroutine(subWave.BeginWave());
                     }
-                    //Debug.Log("Finish subwave. Waiting...");
+                    Debug.Log("Finish subwave. Waiting...");
                     yield return new WaitForSeconds(_timeBetweenWaves);
                 }
-
+                
                 while(FishManager.instance.FishRemaining > 0)
                 {
                     yield return null;

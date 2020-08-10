@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 namespace FishBash
 {
@@ -18,6 +16,7 @@ namespace FishBash
         {
             get
             {
+                Debug.Log("Fish Remaining: " + fishList.Count);
                 return fishList.Count;
             }
         }
@@ -54,11 +53,18 @@ namespace FishBash
         /// <param name="t">Time in seconds to wait before destroying</param>
         public void DestroyFish(IFish toDestroy, float t)
         {
-            fishList.Remove(toDestroy);
-            if (t == 0) toDestroy.Reclaim();
+            if (fishList.Contains(toDestroy))
+            {
+                fishList.Remove(toDestroy);
+                if (t == 0) toDestroy.Reclaim();
+                else
+                {
+                    StartCoroutine(DestroyFishAfterTime(toDestroy, t));
+                }
+            }
             else
             {
-                StartCoroutine(DestroyFishAfterTime(toDestroy, t));
+                Debug.Log("This fish shouldn't exist!");
             }
         }
 

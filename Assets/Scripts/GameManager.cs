@@ -206,6 +206,7 @@ namespace FishBash
         
         IEnumerator EndGameDisplay()
         {
+            Debug.Log("End game");
             while (FishManager.instance.FishRemaining > 0)
             {
                 yield return null;

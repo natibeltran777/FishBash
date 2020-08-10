@@ -121,6 +121,7 @@ namespace FishBash
             if (!HasBeenHit)
             {
                 HasBeenHit = true;
+                trail.emitting = true;
                 GameManager.instance.IncrementScore(scoreValue);
                 EventManager.TriggerEvent("FISHHIT");
             }
@@ -128,9 +129,9 @@ namespace FishBash
 
         protected void LeapBehavior()
         {
-            fishAudio.Stop();
+            //fishAudio.Stop();
             fishAudio.loop = false;
-            trail.emitting = true;
+            //trail.emitting = true;
             SoundManager.instance.RandomizeSfxOnObject(fishAudio, fishJumpSounds);
             Vector3 force = GetUnitDirection() + Vector3.up;
             Debug.DrawLine(Vector3.zero,force, Color.red);
@@ -146,7 +147,8 @@ namespace FishBash
 
         public void Reclaim()
         {
-            Pool.Recycle(this);
+            if(this.gameObject.activeSelf) //ensure we can't reclaim twice
+                Pool.Recycle(this);
         }
 
         public void OnEnable()
