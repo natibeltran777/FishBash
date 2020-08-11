@@ -42,6 +42,7 @@ namespace FishBash
         protected AudioClip[] fishJumpSounds;
         protected AudioSource fishAudio;
 
+        protected TrailRenderer trail;
         /// <summary>
         /// Direction for fish to move in
         /// </summary>
@@ -67,6 +68,8 @@ namespace FishBash
         private bool hasLeapt = false;
 
         public int scoreValue;
+
+        public int ScoreVal { get => scoreValue; }
 
         public bool HasBeenHit { get; set; } = false;
 
@@ -99,6 +102,8 @@ namespace FishBash
             get => _pool;
         }
 
+        public bool HasLeaped { get => hasLeapt;}
+
         protected void UpdateMovement()
         {
             //Debug.Log("move");
@@ -124,6 +129,7 @@ namespace FishBash
             if (!HasBeenHit)
             {
                 HasBeenHit = true;
+                trail.emitting = true;
                 GameManager.instance.IncrementScore(scoreValue);
                 EventManager.TriggerEvent("FISHHIT");
             }
@@ -154,7 +160,9 @@ namespace FishBash
 
         protected void LeapBehavior()
         {
-            fishAudio.Stop();
+            //fishAudio.Stop();
+            fishAudio.loop = false;
+            //trail.emitting = true;
             SoundManager.instance.RandomizeSfxOnObject(fishAudio, fishJumpSounds);
             Vector3 force = GetUnitDirection() + Vector3.up;
             Debug.DrawLine(Vector3.zero,force, Color.red);
@@ -170,7 +178,8 @@ namespace FishBash
 
         public void Reclaim()
         {
-            Pool.Recycle(this);
+            if(this.gameObject.activeSelf) //ensure we can't reclaim twice
+                Pool.Recycle(this);
         }
 
         public void OnEnable()
@@ -187,6 +196,8 @@ namespace FishBash
             fishRigidBody.angularVelocity = Vector3.zero;
             Speed = startSpeed;
             fishAudio.Play();
+            fishAudio.loop = true;
+            trail.emitting = false;
         }
 
         /// <summary>
@@ -206,6 +217,7 @@ namespace FishBash
             //this.platform = FishManager.instance.platform;
             pattern = FishMovement.patterns[(int)currentPattern];
             fishAudio = GetComponent<AudioSource>();
+            trail = GetComponent<TrailRenderer>();
             gameObject.layer = 10;
             //Initialize();
         }

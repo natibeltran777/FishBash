@@ -6464,7 +6464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool: {fileID: 11400000, guid: 826e787a9d5049847b00af37bd15bd3d, type: 2}
-  strengthRange: {x: 0.50894094, y: 5.013755}
+  strengthRange: {x: 1.017644, y: 7.041526}
 --- !u!1 &4709863032970610496
 GameObject:
   m_ObjectHideFlags: 0
