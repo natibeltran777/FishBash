@@ -75,6 +75,12 @@ namespace FishBash
                 return m_homingTarget;
             }
         }
+        
+        public void SetNewTarget(Transform newTarget)
+        {
+            Target = newTarget;
+        }
+
 
 
 
