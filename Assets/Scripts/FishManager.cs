@@ -59,6 +59,7 @@ namespace FishBash
                 if (t == 0) toDestroy.Reclaim();
                 else
                 {
+                    toDestroy.MarkDestroyed();
                     StartCoroutine(DestroyFishAfterTime(toDestroy, t));
                 }
             }

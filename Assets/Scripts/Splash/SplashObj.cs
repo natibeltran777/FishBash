@@ -76,7 +76,7 @@ namespace FishBash
                             GameManager.instance.IncrementScore(f.ScoreVal * hits);
 
                             //\todo: Animate this, highlight shader would be useful for this actually
-                            FishManager.instance.DestroyFish(f, 0f);
+                            FishManager.instance.DestroyFish(f, 0.5f);
                         }
                     }
                 }

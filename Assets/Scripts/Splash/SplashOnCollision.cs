@@ -18,6 +18,7 @@ namespace FishBash
             {
                 if (other.TryGetComponent(out IFish fish))
                 {
+                    Debug.Log("fish");
                     if (fish.HasBeenHit)
                     {
                         //Note: this means fish will only splash if the player hits them, fish leaping and hitting the player will reenter the water splashless-ly
@@ -30,6 +31,14 @@ namespace FishBash
 
                         FishManager.instance.DestroyFish(fish, 1);
                     }
+                    else
+                    {
+                        Debug.Log("fish was not hit");
+                    }
+                }
+                else
+                {
+                    Debug.Log("not a fish");
                 }
             }
         }

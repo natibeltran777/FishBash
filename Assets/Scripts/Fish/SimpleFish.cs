@@ -23,6 +23,8 @@ namespace FishBash
 
         private Vector3 initialPosition, middleBezierPosition, finalPosition = Vector3.zero;
 
+        static readonly int highlightEnabled = Shader.PropertyToID("_HighlightEnabled");
+
         /// <summary>
         /// Speed for fish to move in
         /// </summary>
@@ -41,6 +43,8 @@ namespace FishBash
         [SerializeField]
         protected AudioClip[] fishJumpSounds;
         protected AudioSource fishAudio;
+
+        protected List<Material> fishMats;
 
         protected TrailRenderer trail;
         /// <summary>
@@ -126,6 +130,7 @@ namespace FishBash
 
         public void HitFish()
         {
+            Debug.Log("Hit: " + HasBeenHit);
             if (!HasBeenHit)
             {
                 HasBeenHit = true;
@@ -137,6 +142,7 @@ namespace FishBash
 
         public void HomingHit(Vector3 initialPos, Vector3 finalPos, Vector3 dirOfImpact, Vector3 velocity)
         {
+            Debug.Log("Hit: " + HasBeenHit);
             if (!HasBeenHit)
             {
                 HasBeenHit = true;
@@ -152,9 +158,17 @@ namespace FishBash
                 
                 //m_fruit = other.attachedRigidbody;
                 activateBezier = true;
-
+                trail.emitting = true;
                 GameManager.instance.IncrementScore(scoreValue);
                 EventManager.TriggerEvent("FISHHIT");
+            }
+        }
+
+        public void MarkDestroyed()
+        {
+            foreach(Material m in fishMats)
+            {
+                m.SetFloat(highlightEnabled, 1.0f);
             }
         }
 
@@ -182,6 +196,36 @@ namespace FishBash
                 Pool.Recycle(this);
         }
 
+        
+
+        /// <summary>
+        /// Get's the distance between the fruit and the target naval enemy
+        /// </summary>
+        /// <returns> Magnitude of vector to mid point </returns>
+        private float GetMidDistance(Vector3 finalPos)
+        {
+            Vector3 midpoint = (finalPos - this.transform.position) / 2;
+            return midpoint.magnitude;
+        }
+
+        #region UNITY_MONOBEHAVIOUR_METHODS
+        protected void Awake()
+        {
+            fishRigidBody = GetComponent<Rigidbody>();
+            Renderer[] renderers = GetComponentsInChildren<Renderer>(includeInactive: true);
+            fishMats = new List<Material>();
+            foreach(Renderer r in renderers)
+            {
+                fishMats.AddRange(r.materials);
+            }
+            //this.platform = FishManager.instance.platform;
+            pattern = FishMovement.patterns[(int)currentPattern];
+            fishAudio = GetComponent<AudioSource>();
+            trail = GetComponent<TrailRenderer>();
+            gameObject.layer = 10;
+            //Initialize();
+        }
+
         public void OnEnable()
         {
             pos = transform.position;
@@ -198,28 +242,10 @@ namespace FishBash
             fishAudio.Play();
             fishAudio.loop = true;
             trail.emitting = false;
-        }
-
-        /// <summary>
-        /// Get's the distance between the fruit and the target naval enemy
-        /// </summary>
-        /// <returns> Magnitude of vector to mid point </returns>
-        private float GetMidDistance(Vector3 finalPos)
-        {
-            Vector3 midpoint = (finalPos - this.transform.position) / 2;
-            return midpoint.magnitude;
-        }
-
-        #region UNITY_MONOBEHAVIOUR_METHODS
-        protected void Awake()
-        {
-            fishRigidBody = GetComponent<Rigidbody>();
-            //this.platform = FishManager.instance.platform;
-            pattern = FishMovement.patterns[(int)currentPattern];
-            fishAudio = GetComponent<AudioSource>();
-            trail = GetComponent<TrailRenderer>();
-            gameObject.layer = 10;
-            //Initialize();
+            foreach (Material m in fishMats)
+            {
+                m.SetFloat(highlightEnabled, 0.0f);
+            }
         }
 
         void Update()
