@@ -14,6 +14,8 @@ public class TargetBehaviour : MonoBehaviour
 
     private bool m_isOn = true;
 
+    private static int glowId = Shader.PropertyToID("_GlowPower");
+
     private void Start()
     {
         m_glowMaterial = transform.parent.GetComponentInChildren<Renderer>().material;
@@ -25,7 +27,7 @@ public class TargetBehaviour : MonoBehaviour
         if (!m_isOn)
         {
             BattingManager.instance.SetNewTarget(m_target);
-            m_glowMaterial.DOFloat(m_glowOnVal, "Vector1_604F3D38", m_glowTransitionDuration);
+            m_glowMaterial.DOFloat(m_glowOnVal, glowId, m_glowTransitionDuration);
             m_isOn = true;
         }
     }
@@ -35,7 +37,7 @@ public class TargetBehaviour : MonoBehaviour
         if (m_isOn)
         {
             BattingManager.instance.SetNewTarget(null);
-            m_glowMaterial.DOFloat(m_glowOffVal, "Vector1_604F3D38", m_glowTransitionDuration);
+            m_glowMaterial.DOFloat(m_glowOffVal, glowId, m_glowTransitionDuration);
             m_isOn = false;
         }
     }
