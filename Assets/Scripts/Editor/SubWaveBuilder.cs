@@ -165,11 +165,36 @@ namespace FishBash
             {
                 [HideLabel, OnInspectorGUI("DrawPreview")]
                 public Texture2D texture = tex;
+                [HideIf("Hide")]
+                private List<Rect> dots = new List<Rect>();
 
                 private void DrawPreview()
                 {
-                    if (tex == null) return;
-                    GUILayout.Label(tex, GUILayout.Width(250));
+                    //if (tex == null) return;
+                    //GUILayout.Label(tex, GUILayout.Width(250));
+
+                    Rect boxRect = SirenixEditorGUI.DrawSolidRect(250f, 250f, Color.cyan);
+
+                    Event currEvent = Event.current;
+                    if (currEvent.OnLeftClick(boxRect))
+                    {
+                        Rect toDraw = SirenixEditorGUI.DrawSolidRect(200f, 200f, Color.black);
+                        toDraw.position = currEvent.mousePosition;
+                        dots.Add(toDraw);
+                        Debug.Log(boxRect.center + ", " + currEvent.mousePosition);
+                    }
+
+                    foreach(Rect r in dots)
+                    {
+                        
+                        SirenixEditorGUI.DrawSolidRect(r, Color.black);
+                        
+                    }
+                }
+
+                private bool Hide()
+                {
+                    return true;
                 }
 
             }
