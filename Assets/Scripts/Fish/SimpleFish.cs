@@ -21,7 +21,7 @@ namespace FishBash
         private float lengthOfCurve = 0;
         private float timeToTraverseCurve = 0; 
 
-        private Vector3 initialPosition, middleBezierPosition, finalPosition = Vector3.zero;
+        private Vector3 initialBezierPosition, middleBezierPosition, finalBezierPosition = Vector3.zero;
 
         static readonly int highlightEnabled = Shader.PropertyToID("_HighlightEnabled");
 
@@ -146,15 +146,17 @@ namespace FishBash
             if (!HasBeenHit)
             {
                 HasBeenHit = true;
-                initialPosition = initialPos;
+                initialBezierPosition = initialPos;
                 float midMagnitude = GetMidDistance(finalPos);
                 middleBezierPosition = initialPos + dirOfImpact * midMagnitude;
-                finalPosition = finalPos;
+                finalBezierPosition = finalPos;
 
                 // We get an estimated length of the curve we're using to home on an object
-                lengthOfCurve = (finalPos - middleBezierPosition).magnitude + (middleBezierPosition - finalPos).magnitude;
+                //lengthOfCurve = (finalBezierPosition - middleBezierPosition).magnitude + (initialBezierPosition - middleBezierPosition).magnitude;
+
+                lengthOfCurve = GetLengthOfBezier();
                 // Divide that length by the initial velocity of impact to get an estimated time it would take to traverse the curve at a constant velocity
-                timeToTraverseCurve = velocity.magnitude / lengthOfCurve;
+                timeToTraverseCurve = lengthOfCurve / velocity.magnitude;
                 
                 //m_fruit = other.attachedRigidbody;
                 activateBezier = true;
@@ -208,6 +210,19 @@ namespace FishBash
             return midpoint.magnitude;
         }
 
+        private float GetLengthOfBezier()
+        {
+            // Simpsons rule to get length of curve
+            return ((0.125f)*(BezierPositionGivenTime(0) + 3 * BezierPositionGivenTime(0.33f) + 3 * BezierPositionGivenTime(0.66f) + BezierPositionGivenTime(1))).magnitude;
+        }
+
+        private Vector3 BezierPositionGivenTime(float t)
+        {
+            return initialBezierPosition * 1 * Mathf.Pow(t, 0) * Mathf.Pow((1 - t), 2)
+                        + middleBezierPosition * 2 * Mathf.Pow(t, 1) * Mathf.Pow((1 - t), 1)
+                        + finalBezierPosition * 1 * Mathf.Pow(t, 2) * Mathf.Pow((1 - t), 0);
+        }
+
         #region UNITY_MONOBEHAVIOUR_METHODS
         protected void Awake()
         {
@@ -248,16 +263,27 @@ namespace FishBash
             }
         }
 
-        void Update()
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(initialBezierPosition, 0.2f);
+            Gizmos.DrawSphere(middleBezierPosition, 0.2f);
+            Gizmos.DrawSphere(finalBezierPosition, 0.2f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(initialBezierPosition, middleBezierPosition);
+            Gizmos.DrawLine(middleBezierPosition, finalBezierPosition);
+        }
+
+
+        void FixedUpdate()
         {
             if (activateBezier)
             {
-                Vector3 newPosition = initialPosition * 1 * Mathf.Pow(timeVal, 0) * Mathf.Pow((1 - timeVal), 2)
-                        + middleBezierPosition * 2 * Mathf.Pow(timeVal, 1) * Mathf.Pow((1 - timeVal), 1)
-                        + finalPosition * 1 * Mathf.Pow(timeVal, 2) * Mathf.Pow((1 - timeVal), 0);
+
+                Vector3 newPosition = BezierPositionGivenTime(timeVal);
 
                 this.transform.position = newPosition;
-                timeVal += Time.deltaTime * (1 / Mathf.Max(0.5f,timeToTraverseCurve));
+                timeVal += Time.deltaTime * (1 / timeToTraverseCurve);
                 fishRigidBody.AddRelativeTorque(1, 0.8f, 0.2f);
 
                 if (timeVal > 1)
@@ -283,7 +309,7 @@ namespace FishBash
             if (hasLeapt)
             {
                 //Probably need to make this more complicated, and implement some kind of score system here
-                fishRigidBody.AddForce(Vector3.down * 9.8f, ForceMode.Acceleration);
+                fishRigidBody.AddForce(Vector3.down * 7f, ForceMode.Acceleration);
                 if(this.transform.position.y <= -20)
                     FishManager.instance.DestroyFish(this, 0f);
 

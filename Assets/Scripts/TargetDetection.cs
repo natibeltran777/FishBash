@@ -10,13 +10,6 @@ public class TargetDetection : MonoBehaviour
     private TargetBehaviour m_currentTarget;
     private TargetBehaviour m_previousTarget;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         GetGazePos(cam);
@@ -31,15 +24,15 @@ public class TargetDetection : MonoBehaviour
             m_currentTarget = hit.collider.gameObject.GetComponent<TargetBehaviour>();
             if (m_currentTarget != m_previousTarget)
             {
-                if (m_previousTarget != null) m_previousTarget.TurnOffGlow();
+                if (m_previousTarget != null) m_previousTarget.OnTargetGazed();
             }
-            m_currentTarget.TurnOnGlow();
+            m_currentTarget.OnTargetGazed();
             m_previousTarget = m_currentTarget;
             return true;
         }
         else {
             if(m_currentTarget != null)
-                m_currentTarget.TurnOffGlow();
+                m_currentTarget.OnTargetUngazed();
 
             return false; }
     }
@@ -58,16 +51,16 @@ public class TargetDetection : MonoBehaviour
             m_currentTarget = hit.collider.gameObject.GetComponent<TargetBehaviour>();
             if (m_currentTarget != m_previousTarget)
             {
-                if (m_previousTarget != null) m_previousTarget.TurnOffGlow();
+                if (m_previousTarget != null) m_previousTarget.OnTargetUngazed();
             }
-            if (m_currentTarget != null) m_currentTarget.TurnOnGlow();
+            if (m_currentTarget != null) m_currentTarget.OnTargetGazed();
             m_previousTarget = m_currentTarget;
             return true;
         }
         else
         {
             if (m_currentTarget != null)
-                m_currentTarget.TurnOffGlow();
+                m_currentTarget.OnTargetUngazed();
 
             return false;
         }
