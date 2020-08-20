@@ -24,7 +24,7 @@ namespace FishBash
             canvasObj.transform.SetParent(parentTracker.transform);
 
             canvasObj.SetActive(false);
-            if(BatHandler.instance.BatPose.IsRole(HandRole.RightHand))
+            if(BatHandler.Instance.BatPose.IsRole(HandRole.RightHand))
             {
                 parentTracker.viveRole.SetEx(HandRole.LeftHand);
             }
@@ -32,7 +32,7 @@ namespace FishBash
             {
                 parentTracker.viveRole.SetEx(HandRole.RightHand);
             }
-            BatHandler.instance.BatPose.onRoleChanged += ChangeHand;
+            BatHandler.Instance.BatPose.onRoleChanged += ChangeHand;
             EventManager.StartListening("GAMESTART", GameStart);
             EventManager.StartListening("GAMEEND", GameEnd);
             EventManager.StartListening("PLAYERHIT", PlayerHit);

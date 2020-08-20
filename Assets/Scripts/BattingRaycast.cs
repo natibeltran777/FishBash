@@ -14,7 +14,7 @@ namespace FishBash
         {
             parentTracker = GetComponent<VivePoseTracker>();
 
-            if (BatHandler.instance.BatPose.IsRole(HandRole.RightHand))
+            if (BatHandler.Instance.BatPose.IsRole(HandRole.RightHand))
             {
                 parentTracker.viveRole.SetEx(HandRole.LeftHand);
             }
@@ -22,7 +22,7 @@ namespace FishBash
             {
                 parentTracker.viveRole.SetEx(HandRole.RightHand);
             }
-            BatHandler.instance.BatPose.onRoleChanged += ChangeHand;
+            BatHandler.Instance.BatPose.onRoleChanged += ChangeHand;
         }
 
         void ChangeHand()

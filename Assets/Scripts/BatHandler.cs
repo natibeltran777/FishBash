@@ -1,5 +1,4 @@
 ﻿using HTC.UnityPlugin.Vive;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,17 @@ namespace FishBash
 {
     public class BatHandler : MonoBehaviour
     {
-        public static BatHandler instance = null;
+        private static BatHandler instance = null;
+
+        public static BatHandler Instance { get
+            {
+                if (!instance)
+                {
+                    instance = FindObjectOfType<BatHandler>();
+                }
+                return instance;
+            } 
+        }
 
         [SerializeField]
         private bool rightHandIsOn = true;
@@ -26,6 +35,9 @@ namespace FishBash
         private ControllerButton switchHandsBtn;
 
         private VivePoseTracker _pt;
+#if UNITY_EDITOR
+        [SerializeField] private List<Offset> offsets = new List<Offset>();
+#endif
 
         private void Awake()
         {
@@ -33,7 +45,7 @@ namespace FishBash
             {
                 instance = this;
             }
-            else
+            else if(instance != this)
             {
                 Destroy(this);
             }
@@ -149,4 +161,5 @@ namespace FishBash
             }
         }
     }
+
 }
