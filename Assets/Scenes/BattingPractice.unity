@@ -453,6 +453,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!20 &126817735 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1508006581720828192, guid: 44cd3314cc574924785fd673d80dd8c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 748857494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &233468263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1374,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 748857495}
+      objectReference: {fileID: 126817735}
     - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1406,12 +1412,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cd3314cc574924785fd673d80dd8c0, type: 3}
---- !u!20 &748857495 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1508006581720828192, guid: 44cd3314cc574924785fd673d80dd8c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 748857494}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &748857496 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1845633805, guid: 44cd3314cc574924785fd673d80dd8c0,
@@ -2857,7 +2857,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 748857495}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3025,8 +3025,7 @@ MonoBehaviour:
   showOnHitOnly: 1
   hitTarget: {fileID: 0}
   hitDistance: 0
-  defaultReticleMaterial: {fileID: 2100000, guid: 3320905fb6f6bd54297f26399d87c525,
-    type: 2}
+  defaultReticleMaterial: {fileID: 0}
   reticleRenderer:
   - {fileID: 1765992504}
   - {fileID: 1676423614}
@@ -3213,7 +3212,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 748857495}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5236,12 +5235,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 748857495}
+      objectReference: {fileID: 0}
     - target: {fileID: 5156604728557430068, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 748857495}
+      objectReference: {fileID: 0}
     - target: {fileID: 5156604728816508038, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
       propertyPath: parentTracker
@@ -5251,7 +5250,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 748857495}
+      objectReference: {fileID: 0}
     - target: {fileID: 5156604730463294212, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
       propertyPath: m_Enabled
