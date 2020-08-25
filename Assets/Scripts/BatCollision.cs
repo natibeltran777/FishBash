@@ -40,7 +40,7 @@ namespace FishBash {
                     if (Vector3.Angle(finalPosDir.normalized, directionOfImpact.normalized) < m_angleToactivateBezier)
                     {
                         fish.HomingHit(initialPosition, finalPosition, directionOfImpact, batCollisionRigidBody.velocity);
-                        ViveInput.TriggerHapticPulse(BatHandler.instance.BatPose, 500);
+                        ViveInput.TriggerHapticPulse(BatHandler.Instance.BatPose, 500);
                         return;
                     }
                 }
@@ -48,7 +48,7 @@ namespace FishBash {
 
             fish.HitFish();
             fishRigidBody.AddForce(batCollisionRigidBody.velocity);
-            ViveInput.TriggerHapticPulse(BatHandler.instance.BatPose, 500);
+            ViveInput.TriggerHapticPulse(BatHandler.Instance.BatPose, 500);
         }
     }
 }

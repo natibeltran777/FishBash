@@ -1,0 +1,15 @@
+{
+    "name": "Fishbash.Splash",
+    "references": [
+        "GUID:74eb816eb7764ff4287eb210d46d362f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

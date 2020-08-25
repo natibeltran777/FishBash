@@ -1,9 +1,8 @@
-﻿using FishBash.Waves;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using FishBash.Waves;
 
 
 namespace FishBash

@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: e84dd2b7c85e5464ca660b19efa0595c,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -453,6 +453,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!20 &126817735 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1508006581720828192, guid: 44cd3314cc574924785fd673d80dd8c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 748857494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &233468263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,19 +1260,158 @@ PrefabInstance:
       propertyPath: batObj
       value: 
       objectReference: {fileID: 1335270631}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[1].offset.x
+      value: 0.062164307
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[1].offset.y
+      value: 0.9980422
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[1].offset.z
+      value: -0.3497627
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[1].rotation.x
+      value: 0.90269774
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[1].rotation.y
+      value: -0.035907283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[1].rotation.z
+      value: -0.0123869935
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[1].rotation.w
+      value: 0.42859557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[0].offset.x
+      value: -0.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[0].offset.y
+      value: 0.852
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[0].offset.z
+      value: -0.185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[0].rotation.x
+      value: 0.45167497
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[0].rotation.y
+      value: 0.024430074
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[0].rotation.z
+      value: -0.004238514
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[0].rotation.w
+      value: 0.891838
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[2].offset.x
+      value: 0.036690593
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[2].offset.y
+      value: 1.0043404
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[2].offset.z
+      value: -0.33607233
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[2].rotation.x
+      value: 0.9078208
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[2].rotation.y
+      value: -0.0025067609
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[2].rotation.z
+      value: -0.018515158
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666345105789195095, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: offsets.Array.data[2].rotation.w
+      value: 0.41894203
+      objectReference: {fileID: 0}
     - target: {fileID: 5427828883268126209, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 326140448}
+    - target: {fileID: 5803704658569008615, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 126817735}
+    - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.45167497
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.024430074
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.004238514
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.891838
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.148
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.185
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cd3314cc574924785fd673d80dd8c0, type: 3}
---- !u!20 &748857495 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1508006581720828192, guid: 44cd3314cc574924785fd673d80dd8c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 748857494}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &748857496 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1845633805, guid: 44cd3314cc574924785fd673d80dd8c0,
@@ -2712,7 +2857,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 748857495}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2880,8 +3025,7 @@ MonoBehaviour:
   showOnHitOnly: 1
   hitTarget: {fileID: 0}
   hitDistance: 0
-  defaultReticleMaterial: {fileID: 2100000, guid: 3320905fb6f6bd54297f26399d87c525,
-    type: 2}
+  defaultReticleMaterial: {fileID: 0}
   reticleRenderer:
   - {fileID: 1765992504}
   - {fileID: 1676423614}
@@ -3068,7 +3212,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 748857495}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5091,12 +5235,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 748857495}
+      objectReference: {fileID: 0}
     - target: {fileID: 5156604728557430068, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 748857495}
+      objectReference: {fileID: 0}
     - target: {fileID: 5156604728816508038, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
       propertyPath: parentTracker
@@ -5106,7 +5250,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 748857495}
+      objectReference: {fileID: 0}
     - target: {fileID: 5156604730463294212, guid: 29217eef9c479d94e815a4bd7ba27e9c,
         type: 3}
       propertyPath: m_Enabled

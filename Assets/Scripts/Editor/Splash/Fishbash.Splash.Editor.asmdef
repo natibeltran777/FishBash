@@ -1,0 +1,17 @@
+{
+    "name": "Fishbash.Splash.Editor",
+    "references": [
+        "GUID:506ea27e04f51b1418886c68dd2fbbc9"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
