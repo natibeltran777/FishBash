@@ -23,7 +23,7 @@ namespace FishBash
                     {
                         //Note: this means fish will only splash if the player hits them, fish leaping and hitting the player will reenter the water splashless-ly
                         // To me this makes sense, since splashing (will) damage fish but it could be a little odd visually
-                        SplashObj splash = pool.GetSplash();
+                        SplashObj splash = pool.Get();
 
                         float strength = Mathf.Lerp(strengthRange.x, strengthRange.y, Mathf.InverseLerp(0, 50f, fish.Distance));
 

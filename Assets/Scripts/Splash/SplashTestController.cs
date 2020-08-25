@@ -40,7 +40,7 @@ namespace FishBash
 
                     if (hitinfo.collider == col)
                     {
-                        SplashObj splash = pool.GetSplash();
+                        SplashObj splash = pool.Get();
                         splash.InitializeSplash(strength, hitinfo.point);
                     }
 
