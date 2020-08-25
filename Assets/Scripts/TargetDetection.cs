@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using FishBash;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// In charge of updating which Target is currently being selected 
+/// </summary>
 public class TargetDetection : MonoBehaviour
 {
     [SerializeField] private LayerMask m_layerMask;
@@ -9,60 +13,111 @@ public class TargetDetection : MonoBehaviour
 
     private TargetBehaviour m_currentTarget;
     private TargetBehaviour m_previousTarget;
+    private TargetBehaviour m_selectedTarget;
+
+    private IEnumerator m_coolDown;
+
+
+    private bool m_targetIsSelected = false;
+    private bool m_cooldownActive = false;
+    private float m_targetPickCoolDown = 2.0f;
 
     void Update()
     {
         GetGazePos(cam);
     }
 
-    private bool GetMousePos(Camera cam)
+    private void GetMousePos(Camera cam)
     {
         Ray r = cam.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(r, out RaycastHit hit, 50f, m_layerMask.value))
-        {
-            m_currentTarget = hit.collider.gameObject.GetComponent<TargetBehaviour>();
-            if (m_currentTarget != m_previousTarget)
-            {
-                if (m_previousTarget != null) m_previousTarget.OnTargetGazed();
-            }
-            m_currentTarget.OnTargetGazed();
-            m_previousTarget = m_currentTarget;
-            return true;
-        }
-        else {
-            if(m_currentTarget != null)
-                m_currentTarget.OnTargetUngazed();
-
-            return false; }
+        RaycastToTarget(r);
     }
 
-
     // Replace this with eye tracking 
-    private bool GetGazePos(Camera cam)
+    private void GetGazePos(Camera cam)
     {
         Vector3 point = new Vector3(0.5f, 0.5f, 0f);
-
-        // Haven't really tested Mono vs left here
         Ray r = cam.ViewportPointToRay(point, Camera.MonoOrStereoscopicEye.Mono);
+        RaycastToTarget(r);
+    }
 
+    private void SelectTarget(TargetBehaviour target)
+    {
+        target.OnTargetGazed();
+        BattingManager.instance.SetNewTarget(target.GetTargetMesh);
+        m_selectedTarget = target;
+    }
+
+    private void DeselectTarget(TargetBehaviour target)
+    {
+        if (target != null) target.OnTargetUngazed();
+        BattingManager.instance.SetNewTarget(null);
+        m_selectedTarget = null;
+    }
+
+    private void RaycastToTarget(Ray r)
+    {
         if (Physics.Raycast(r, out RaycastHit hit, 100f, m_layerMask.value))
         {
-            m_currentTarget = hit.collider.gameObject.GetComponent<TargetBehaviour>();
-            if (m_currentTarget != m_previousTarget)
-            {
-                if (m_previousTarget != null) m_previousTarget.OnTargetUngazed();
+            TargetBehaviour target;
+            target = hit.collider.gameObject.GetComponent<TargetBehaviour>();
+
+            m_currentTarget = target;
+
+            // if curr is not null
+            if (m_currentTarget != null)
+            {   
+                // if when curr is lit, prev is a different target that isn't null, 
+                if (m_currentTarget != m_previousTarget)
+                {
+                    if (m_coolDown != null)
+                    {
+                        StopCoroutine(m_coolDown);
+                        m_coolDown = null;
+                        m_cooldownActive = false;
+                    }
+                    if (m_previousTarget == m_selectedTarget)
+                        DeselectTarget(m_previousTarget);
+
+                    // we interrupt prev's cooldown and unlight prev
+                }
+                // curr is lit
+                if (m_currentTarget != m_selectedTarget)
+                {
+                    SelectTarget(m_currentTarget);
+                }
+                
             }
-            if (m_currentTarget != null) m_currentTarget.OnTargetGazed();
             m_previousTarget = m_currentTarget;
-            return true;
+            return;
+        }
+        {
+            if (!m_cooldownActive && m_selectedTarget != null)
+            {
+                m_coolDown = GazeCoolDown(m_selectedTarget);
+                StartCoroutine(m_coolDown);
+                m_cooldownActive = true;
+                //we intiate cooldown 
+            }
+            m_currentTarget = null;
+        }
+    }
+
+    private IEnumerator GazeCoolDown(TargetBehaviour target)
+    {
+        TargetBehaviour targetToCool = target;
+        yield return new WaitForSeconds(m_targetPickCoolDown);
+        
+        if (m_currentTarget == target)
+        {
+            m_coolDown = GazeCoolDown(target);
+            StartCoroutine(m_coolDown);
         }
         else
         {
-            if (m_currentTarget != null)
-                m_currentTarget.OnTargetUngazed();
-
-            return false;
+            m_coolDown = null;
+            m_cooldownActive = false;
+            DeselectTarget(target);
         }
     }
 
