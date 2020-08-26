@@ -245,8 +245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 0
-  cam: {fileID: 0}
+    m_Bits: 16384
+  cam: {fileID: 1508006581720828192}
 --- !u!1 &5656071291210678954
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,14 +343,14 @@ MonoBehaviour:
   leftHandObj: {fileID: 1508006581721487840}
   rightHandObj: {fileID: 1508006581721520792}
   batObj: {fileID: 6858874052059532363}
-  switchHandsBtn: 0
+  switchHandsBtn: 12
   offsets:
   - label: Zero Offset
     offset: {x: 0, y: 1, z: 0}
     rotation: {x: -0, y: -0, z: -0, w: 1}
   - label: Oculus Quest/RiftS
-    offset: {x: -0.014, y: 0.852, z: -0.185}
-    rotation: {x: 0.45167497, y: 0.024430074, z: -0.004238514, w: 0.891838}
+    offset: {x: 0.06664127, y: 0.9251523, z: -0.29884082}
+    rotation: {x: 0.8378317, y: 0.033643216, z: -0.04179244, w: 0.5432861}
   - label: Index
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -575,6 +575,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1508006581721388162}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1508006581721472016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 116882, guid: cb3370c18187bb444b240cfb08dcc02f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1508006581721388162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1508006581721487840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 101730, guid: cb3370c18187bb444b240cfb08dcc02f,
@@ -599,15 +605,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1508006581721388162}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1508006581721266662 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 404836, guid: cb3370c18187bb444b240cfb08dcc02f,
+--- !u!20 &1508006581720828192 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2071970, guid: cb3370c18187bb444b240cfb08dcc02f,
     type: 3}
   m_PrefabInstance: {fileID: 1508006581721388162}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1508006581721472016 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 116882, guid: cb3370c18187bb444b240cfb08dcc02f,
+--- !u!4 &1508006581721266662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 404836, guid: cb3370c18187bb444b240cfb08dcc02f,
     type: 3}
   m_PrefabInstance: {fileID: 1508006581721388162}
   m_PrefabAsset: {fileID: 0}

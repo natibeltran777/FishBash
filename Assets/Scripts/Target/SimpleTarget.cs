@@ -9,17 +9,18 @@ namespace FishBash
         {
             [SerializeField] private Transform m_target;
             private ParticleSystem particles;
-            private float m_glowTransitionDuration = 0.5f;
-            private float m_glowOnVal = 0.5f;
+            private float m_glowTransitionDuration = 0.2f;
+            private float m_glowOnVal = 0.2f;
             private float m_glowOffVal = 20f;
             private float m_targetPickCoolDown = 2.5f;
             private bool m_isOn = true;
-            private Material m_glowMaterial;
+            private bool m_targetIsSelected = false;
+            private Material[] m_glowMaterials;
             private static int glowId = Shader.PropertyToID("_GlowPower");
             private GenericPool<SimpleTarget> _pool = null;
 
             private bool isBeingDestroyed = false;
-            
+
 
             public GenericPool<SimpleTarget> Pool
             {
@@ -44,7 +45,7 @@ namespace FishBash
             private void Start()
             {
                 particles = GetComponent<ParticleSystem>();
-                m_glowMaterial = m_target.GetComponent<Renderer>().material;
+                m_glowMaterials = m_target.GetComponent<Renderer>().materials;
                 OnTargetUngazed();
             }
 
@@ -53,7 +54,10 @@ namespace FishBash
                 if (!m_isOn)
                 {
                     GameManager.instance.SetNewTarget(m_target);
-                    m_glowMaterial.DOFloat(m_glowOnVal, glowId, m_glowTransitionDuration);
+                    foreach(Material material in m_glowMaterials)
+                    {
+                        material.DOFloat(m_glowOnVal, glowId, m_glowTransitionDuration);
+                    }
                     m_isOn = true;
                 }
             }
@@ -63,7 +67,10 @@ namespace FishBash
                 if (m_isOn)
                 {
                     GameManager.instance.SetNewTarget(null);
-                    m_glowMaterial.DOFloat(m_glowOffVal, glowId, m_glowTransitionDuration);
+                    foreach (Material material in m_glowMaterials)
+                    {
+                        material.DOFloat(m_glowOffVal, glowId, m_glowTransitionDuration);
+                    }
                     m_isOn = false;
                 }
             }
