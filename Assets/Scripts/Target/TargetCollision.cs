@@ -13,7 +13,7 @@ namespace FishBash
             public void OnCollisionEnter(Collision collision)
             {
                 Debug.Log("hit target");
-                target.Recycle();
+                target.Recycle(false);
             }
         }
     }

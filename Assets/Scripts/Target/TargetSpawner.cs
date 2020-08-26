@@ -29,7 +29,7 @@ namespace FishBash
                     t += Time.deltaTime;
                     if(t > targetLifetime)
                     {
-                        testTarget.Recycle();
+                        testTarget.Recycle(true);
                         testTarget = null;
                     }
                 }

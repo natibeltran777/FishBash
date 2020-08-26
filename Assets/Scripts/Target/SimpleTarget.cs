@@ -8,6 +8,7 @@ namespace FishBash
         public class SimpleTarget : TargetBehaviour, IPoolable
         {
             [SerializeField] private Transform m_target;
+            private ParticleSystem particles;
             private float m_glowTransitionDuration = 0.5f;
             private float m_glowOnVal = 0.5f;
             private float m_glowOffVal = 20f;
@@ -16,6 +17,9 @@ namespace FishBash
             private Material m_glowMaterial;
             private static int glowId = Shader.PropertyToID("_GlowPower");
             private GenericPool<SimpleTarget> _pool = null;
+
+            private bool isBeingDestroyed = false;
+            
 
             public GenericPool<SimpleTarget> Pool
             {
@@ -39,7 +43,8 @@ namespace FishBash
 
             private void Start()
             {
-                m_glowMaterial = transform.GetComponentInChildren<Renderer>().material;
+                particles = GetComponent<ParticleSystem>();
+                m_glowMaterial = m_target.GetComponent<Renderer>().material;
                 OnTargetUngazed();
             }
 
@@ -65,12 +70,34 @@ namespace FishBash
 
             public void Reset()
             {
+                m_target.gameObject.SetActive(true);
                 OnTargetUngazed();
+                isBeingDestroyed = false;
             }
 
-            public void Recycle()
+            private void OnParticleSystemStopped()
             {
                 _pool.Recycle(this);
+            }
+
+            private void DestroyedByFish()
+            {
+                m_target.gameObject.SetActive(false);
+                particles.Play();
+            }
+
+            public void Recycle(bool instant)
+            {
+                if (instant && !isBeingDestroyed)
+                {
+                    isBeingDestroyed = true;
+                    _pool.Recycle(this);
+                }
+                else if (!isBeingDestroyed)
+                {
+                    isBeingDestroyed = true;
+                    DestroyedByFish();
+                }
             }
         }
     }
