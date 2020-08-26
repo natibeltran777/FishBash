@@ -11,23 +11,27 @@ namespace FishBash
             [SerializeField] private TargetPool targetFactory;
 
             [SerializeField, Range(0, 10)] float radius;
-            [SerializeField, Range(0, 5)] float targetLifetime;
+            [SerializeField, Range(0, 20)] float targetLifetime;
 
             SimpleTarget testTarget = null;
 
-            // \todo: replace once target break behaviour is implemented
-            private IEnumerator Start()
+            float t = 0;
+
+            private void Update()
             {
-                while (true)
+                if (!testTarget || !testTarget.gameObject.activeInHierarchy)
                 {
-                    if (!testTarget)
+                    t = 0;
+                    SpawnTargetRandom();
+                }
+                else
+                {
+                    t += Time.deltaTime;
+                    if(t > targetLifetime)
                     {
-                        SpawnTargetRandom();
-                        yield return new WaitForSeconds(targetLifetime);
                         testTarget.Recycle();
                         testTarget = null;
                     }
-                    yield return null;
                 }
             }
 

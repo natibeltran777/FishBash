@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7099251901850164695}
   - component: {fileID: 7099251901850164694}
   - component: {fileID: 7099251901850164699}
-  - component: {fileID: 8554434688462091331}
+  - component: {fileID: 186602726567144974}
   m_Layer: 15
   m_Name: Mesh
   m_TagString: Untagged
@@ -187,7 +187,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8554434688462091331
+--- !u!114 &186602726567144974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7099251901850164693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7cfcaa1506186945858d48f47fa83ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 6628ca36b6df7204982bb99c1229dd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 6022762068397939612}

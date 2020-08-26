@@ -30,15 +30,15 @@ namespace FishBash
 
             private void Start()
             {
-                m_glowMaterial = transform.parent.GetComponentInChildren<Renderer>().material;
-                OnTargetGazed();
+                m_glowMaterial = transform.GetComponentInChildren<Renderer>().material;
+                OnTargetUngazed();
             }
 
             public override void OnTargetGazed()
             {
                 if (!m_isOn)
                 {
-                    BattingManager.instance.SetNewTarget(m_target);
+                    GameManager.instance.SetNewTarget(m_target);
                     m_glowMaterial.DOFloat(m_glowOnVal, glowId, m_glowTransitionDuration);
                     m_isOn = true;
                 }
@@ -48,7 +48,7 @@ namespace FishBash
             {
                 if (m_isOn)
                 {
-                    BattingManager.instance.SetNewTarget(null);
+                    GameManager.instance.SetNewTarget(null);
                     m_glowMaterial.DOFloat(m_glowOffVal, glowId, m_glowTransitionDuration);
                     m_isOn = false;
                 }
@@ -56,7 +56,7 @@ namespace FishBash
 
             public void Reset()
             {
-                m_isOn = false;
+                OnTargetUngazed();
             }
 
             public void Recycle()
