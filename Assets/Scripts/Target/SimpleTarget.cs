@@ -11,6 +11,7 @@ namespace FishBash
             private float m_glowTransitionDuration = 0.5f;
             private float m_glowOnVal = 0.5f;
             private float m_glowOffVal = 20f;
+            private float m_targetPickCoolDown = 2.5f;
             private bool m_isOn = true;
             private Material m_glowMaterial;
             private static int glowId = Shader.PropertyToID("_GlowPower");
@@ -25,6 +26,14 @@ namespace FishBash
                     {
                         Debug.LogError("Can't reassign pool");
                     }
+                }
+            }
+
+            public override Transform GetTargetMesh
+            {
+                get
+                {
+                    return m_target;
                 }
             }
 
