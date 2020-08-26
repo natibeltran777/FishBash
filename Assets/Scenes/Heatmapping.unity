@@ -2658,7 +2658,7 @@ PrefabInstance:
     - target: {fileID: 5803704658569008615, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}
       propertyPath: m_layerMask.m_Bits
-      value: 50176
+      value: 17408
       objectReference: {fileID: 0}
     - target: {fileID: 5803704658569008615, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}

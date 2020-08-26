@@ -750,6 +750,52 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &498712959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 498712961}
+  - component: {fileID: 498712960}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &498712960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498712959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4121e2e3ef8408b4e8a2a3fd6aadaf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetFactory: {fileID: 11400000, guid: 54c8b8b096330e346b01a591b673acfb, type: 2}
+  radius: 5
+  targetLifetime: 10
+--- !u!4 &498712961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498712959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 6, z: 15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577711874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1421,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 126817735}
+    - target: {fileID: 5803704658569008615, guid: 44cd3314cc574924785fd673d80dd8c0,
+        type: 3}
+      propertyPath: m_layerMask.m_Bits
+      value: 17408
+      objectReference: {fileID: 0}
     - target: {fileID: 6050013884007579811, guid: 44cd3314cc574924785fd673d80dd8c0,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1695,6 +1746,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55fd61464807a548999b64dd6b8d2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &830562485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830562487}
+  - component: {fileID: 830562486}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &830562486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830562485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4121e2e3ef8408b4e8a2a3fd6aadaf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetFactory: {fileID: 11400000, guid: 54c8b8b096330e346b01a591b673acfb, type: 2}
+  radius: 5
+  targetLifetime: 10
+--- !u!4 &830562487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830562485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 6, z: 15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &868632172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,6 +3799,14 @@ PrefabInstance:
     - target: {fileID: 1641138524, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a, type: 3}
       propertyPath: m_BoundingSphereOverride.z
       value: 417538500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641138524, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.98823535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641138524, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.98823535
       objectReference: {fileID: 0}
     - target: {fileID: 1641138525, guid: b39d5b93c9e9e5042a1e9d68e84a3b2a, type: 3}
       propertyPath: m_LocalRotation.x

@@ -6,10 +6,10 @@ namespace FishBash
 {
     namespace Splash
     {
-        public class SplashObj : MonoBehaviour
+        public class SplashObj : MonoBehaviour, IPoolable
         {
             new ParticleSystem particleSystem;
-            private SplashPool _pool = null;
+            private GenericPool<SplashObj> _pool = null;
             private SphereCollider col;
             ParticleSystem.ShapeModule shape;
             ParticleSystem.MainModule main;
@@ -26,7 +26,7 @@ namespace FishBash
             const int fishLayerPath = 1 << 10;
             Collider[] targetBuffer = new Collider[10];
 
-            public SplashPool Pool
+            public GenericPool<SplashObj> Pool
             {
                 set
                 {
@@ -82,7 +82,7 @@ namespace FishBash
                 }
             }
 
-            public void ResetSplash()
+            public void Reset()
             {
                 particleSystem.Clear();
                 transform.position = Vector3.zero;
@@ -123,7 +123,7 @@ namespace FishBash
 
             private void RecycleSplash()
             {
-                _pool.RecycleSplash(this);
+                _pool.Recycle(this);
             }
 
             /*

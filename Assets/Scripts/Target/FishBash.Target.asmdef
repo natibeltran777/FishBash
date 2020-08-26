@@ -1,8 +1,7 @@
 {
-    "name": "FishBash",
+    "name": "FishBash.Target",
     "references": [
-        "GUID:f8e9e99ac37879f4ba7ac60ea467c7e1",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:74eb816eb7764ff4287eb210d46d362f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

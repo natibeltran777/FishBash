@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.coalcar.heatmapparticles": {
+      "version": "https://github.com/unoctium1/com.coalcar.heatmapparticles.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "cb9154298c3c2389949ee622f109d174ebf3f15e"
+    },
     "com.unity.ext.nunit": {
       "version": "1.0.0",
       "depth": 0,
@@ -59,7 +66,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.14",
+      "version": "1.1.16",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -76,13 +83,6 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.timeline": {
-      "version": "1.2.15",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.ugui": {
