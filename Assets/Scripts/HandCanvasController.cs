@@ -36,7 +36,8 @@ namespace FishBash
             EventManager.StartListening("GAMESTART", GameStart);
             EventManager.StartListening("GAMEEND", GameEnd);
             EventManager.StartListening("PLAYERHIT", PlayerHit);
-            EventManager.StartListening("FISHHIT", FishHit);
+            EventManager.StartListening("FISHHIT", ScoreChange);
+            EventManager.StartListening("TARGETHIT", ScoreChange);
         }
 
         void ChangeHand()
@@ -54,6 +55,7 @@ namespace FishBash
         void GameStart()
         {
             livesLabel.text = GameManager.instance.CurrLives.ToString();
+            pointsLabel.text = GameManager.instance.GetScore.ToString();
             canvasObj.SetActive(true);
         }
 
@@ -67,7 +69,7 @@ namespace FishBash
             livesLabel.text = GameManager.instance.CurrLives.ToString();
         }
 
-        void FishHit()
+        void ScoreChange()
         {
             pointsLabel.text = GameManager.instance.GetScore.ToString();
         }

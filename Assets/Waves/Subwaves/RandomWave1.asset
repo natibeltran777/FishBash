@@ -15,165 +15,38 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720, type: 3}
-    - {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d, type: 3}
-    - {fileID: 335069951650211738, guid: f8eca319d2e98514cb5ed3e97dea67c6, type: 3}
-    - {fileID: 1874245074941597592, guid: 9c2608e4fd2be544eab9f89247a2e48b, type: 3}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: fishInWave
-      Entry: 6
+      Entry: 7
+      Data: 0|FishBash.FishContainer[], FishBash
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: RandomWaveScriptable+fishInWave
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FishBash.FishContainer, Assembly-CSharp],[System.Int32,
+      Data: 1|System.Collections.Generic.Dictionary`2[[FishBash.FishContainer, FishBash],[System.Int32,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[FishBash.FishContainer,
-        Assembly-CSharp]], mscorlib
+      Data: 2|System.Collections.Generic.ObjectEqualityComparer`1[[FishBash.FishContainer,
+        FishBash]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 2|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
       Data: 0
-    - Name: fishId
-      Entry: 3
-      Data: 0
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 3|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 1
-    - Name: fishId
-      Entry: 3
-      Data: 2
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 4|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 2
-    - Name: fishId
-      Entry: 3
-      Data: 3
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: 5|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 3
-    - Name: fishId
-      Entry: 3
-      Data: 1
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 

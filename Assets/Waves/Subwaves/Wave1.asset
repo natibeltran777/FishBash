@@ -15,10 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1874245074941597592, guid: bf0d8efcd90bb4d439094be14abf5720, type: 3}
-    - {fileID: 6391907736762614284, guid: a30e7a98b7b458e4a9d8f3566443561d, type: 3}
-    - {fileID: 1874245074941597592, guid: 9c2608e4fd2be544eab9f89247a2e48b, type: 3}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -26,217 +23,19 @@ MonoBehaviour:
     SerializationNodes:
     - Name: fishInWave
       Entry: 7
-      Data: 0|FishBash.FishContainer[], Assembly-CSharp
+      Data: 0|FishBash.FishContainer[], FishBash
     - Name: 
       Entry: 12
-      Data: 13
+      Data: 4
     - Name: 
       Entry: 7
-      Data: 1|FishBash.FishContainer, Assembly-CSharp
+      Data: 1|FishBash.FishContainer, FishBash
     - Name: fishPrefab
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: fishId
       Entry: 3
       Data: 0
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: -50
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 2|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 0
-    - Name: fishId
-      Entry: 3
-      Data: 0
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -25
-    - Name: 
-      Entry: 4
-      Data: -45
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 3|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 1
-    - Name: fishId
-      Entry: 3
-      Data: 2
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -45
-    - Name: 
-      Entry: 4
-      Data: -25
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 1
-    - Name: fishId
-      Entry: 3
-      Data: 2
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -50
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 2
-    - Name: fishId
-      Entry: 3
-      Data: 1
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -45
-    - Name: 
-      Entry: 4
-      Data: 25
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 6|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 2
-    - Name: fishId
-      Entry: 3
-      Data: 1
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -25
-    - Name: 
-      Entry: 4
-      Data: 45
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 7|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 1
-    - Name: fishId
-      Entry: 3
-      Data: 2
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -263,13 +62,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 8|FishBash.FishContainer, Assembly-CSharp
+      Data: 2|FishBash.FishContainer, FishBash
     - Name: fishPrefab
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: fishId
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -281,7 +80,7 @@ MonoBehaviour:
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 25
+      Data: 15
     - Name: 
       Entry: 4
       Data: 45
@@ -296,10 +95,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 9|FishBash.FishContainer, Assembly-CSharp
+      Data: 3|FishBash.FishContainer, FishBash
     - Name: fishPrefab
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: fishId
       Entry: 3
       Data: 0
@@ -312,13 +111,13 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -15
     - Name: 
       Entry: 4
       Data: 45
     - Name: 
-      Entry: 4
-      Data: 25
-    - Name: 
       Entry: 8
       Data: 
     - Name: 
@@ -329,13 +128,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 10|FishBash.FishContainer, Assembly-CSharp
+      Data: 4|FishBash.FishContainer, FishBash
     - Name: fishPrefab
-      Entry: 10
-      Data: 2
+      Entry: 6
+      Data: 
     - Name: fishId
       Entry: 3
-      Data: 1
+      Data: 3
     - Name: pointVal
       Entry: 3
       Data: 0
@@ -345,111 +144,12 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 4
       Data: 50
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 11|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 1
-    - Name: fishId
-      Entry: 3
-      Data: 2
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 45
-    - Name: 
-      Entry: 4
-      Data: -25
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 12|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 1
-    - Name: fishId
-      Entry: 3
-      Data: 2
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 25
-    - Name: 
-      Entry: 4
-      Data: -45
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 13|FishBash.FishContainer, Assembly-CSharp
-    - Name: fishPrefab
-      Entry: 10
-      Data: 0
-    - Name: fishId
-      Entry: 3
-      Data: 0
-    - Name: pointVal
-      Entry: 3
-      Data: 0
-    - Name: spawnPositionOverride
-      Entry: 7
-      Data: System.Nullable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: -50
     - Name: 
       Entry: 8
       Data: 

@@ -16,6 +16,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &1331440757543329938
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961134039659912840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.000001
+  m_Center: {x: -0.0000014305115, y: 0.0000011920931, z: -4.2351647e-21}
 --- !u!114 &5752669668852300268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,10 +751,10 @@ ParticleSystem:
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 1
+    radiusThickness: 0
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 303.71, y: 39, z: 23.606386}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -1617,7 +1630,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -1780,7 +1793,7 @@ ParticleSystem:
     orbitalX:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1833,7 +1846,7 @@ ParticleSystem:
     orbitalY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2755,11 +2768,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4912,7 +4925,7 @@ PrefabInstance:
     - target: {fileID: 2217524126908980967, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2217524126908980967, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
@@ -4937,7 +4950,7 @@ PrefabInstance:
     - target: {fileID: 2217524126908980967, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2217524126908980967, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
@@ -4952,17 +4965,17 @@ PrefabInstance:
     - target: {fileID: 2217524126908980967, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.30452728
+      value: 0.21673815
       objectReference: {fileID: 0}
     - target: {fileID: 2217524126908980967, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.07621074
+      value: 0.054240704
       objectReference: {fileID: 0}
     - target: {fileID: 2217524126908980967, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.30452728
+      value: 0.21673815
       objectReference: {fileID: 0}
     - target: {fileID: 2470359899711746461, guid: 519aa6f4f8d2b294ca55aef260489839,
         type: 3}
@@ -23994,7 +24007,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6391347089283102165, guid: 519aa6f4f8d2b294ca55aef260489839, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 519aa6f4f8d2b294ca55aef260489839, type: 3}
 --- !u!1 &961134039659912840 stripped
 GameObject:
