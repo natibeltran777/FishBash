@@ -17,6 +17,8 @@ namespace FishBash
 
             float t = 0;
 
+            static Vector3 lookAtPos = new Vector3(0f, 0f, 0f);
+
             private void Update()
             {
                 if (!testTarget || !testTarget.gameObject.activeInHierarchy)
@@ -49,6 +51,7 @@ namespace FishBash
                 Vector3 position = (Random.insideUnitSphere * radius) + transform.position;
                 testTarget = targetFactory.Get();
                 testTarget.transform.position = position;
+                testTarget.transform.LookAt(lookAtPos);
             }
 
             private void OnDrawGizmos()

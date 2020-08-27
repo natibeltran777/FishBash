@@ -15,6 +15,7 @@ namespace FishBash
                 if (collision.gameObject.TryGetComponent(out IFish fish)){
                     target.Recycle(false);
                     GameManager.instance.IncrementScore(3 * fish.ScoreVal);
+                    EventManager.TriggerEvent("TARGETHIT");
                 }
             }
         }
