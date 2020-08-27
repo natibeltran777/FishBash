@@ -35,6 +35,15 @@ namespace FishBash
                 }
             }
 
+            private void OnDisable()
+            {
+                if (testTarget)
+                {
+                    testTarget.Recycle(true);
+                    testTarget = null;
+                }
+            }
+
             private void SpawnTargetRandom()
             {
                 Vector3 position = (Random.insideUnitSphere * radius) + transform.position;

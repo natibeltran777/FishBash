@@ -12,8 +12,10 @@ namespace FishBash
 
             public void OnCollisionEnter(Collision collision)
             {
-                Debug.Log("hit target");
-                target.Recycle(false);
+                if (collision.gameObject.TryGetComponent(out IFish fish)){
+                    target.Recycle(false);
+                    GameManager.instance.IncrementScore(3 * fish.ScoreVal);
+                }
             }
         }
     }

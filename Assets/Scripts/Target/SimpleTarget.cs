@@ -21,7 +21,6 @@ namespace FishBash
 
             private bool isBeingDestroyed = false;
 
-
             public GenericPool<SimpleTarget> Pool
             {
                 set
