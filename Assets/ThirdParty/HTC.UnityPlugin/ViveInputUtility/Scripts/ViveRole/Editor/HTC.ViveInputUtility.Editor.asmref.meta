@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 5c39e08c2dbf906479e19d3646fcd3f7
-NativeFormatImporter:
+guid: ba5ec75e8b306a348a71e47acb6c59d5
+AssemblyDefinitionReferenceImporter:
   externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
