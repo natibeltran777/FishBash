@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "cb9154298c3c2389949ee622f109d174ebf3f15e"
+      "hash": "2ce22d0d5248e48ab8018da1f1d201998a3a0b0a"
     },
     "com.unity.ext.nunit": {
       "version": "1.0.0",
@@ -90,7 +90,8 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.modules.ui": "1.0.0"
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
       }
     },
     "com.unity.xr.oculus.android": {
